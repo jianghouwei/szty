@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szty.commos.shiros.dao.SysGroupsUsersMapper">
+
+	<!--实体映射-->
+	<resultMap id="sysGroupsUsersResultMap" type="com.szty.commos.shiros.model.SysGroupsUsers">
+		<!---->
+		<result column="id"  property="id" />
+		<!---->
+		<result column="group_id"  property="groupId" />
+		<!---->
+		<result column="user_id"  property="userId" />
+	</resultMap>
+
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+	id,	group_id,	user_id
+	</sql>
+
+
+	<!-- 查询条件-->
+	<sql id="modelwheresql">
+	<where>
+
+			<if test="id != null and id != '' ">
+				 and id = #{id}
+			</if>
+			<if test="groupId != null and groupId != '' ">
+				 and group_id = #{groupId}
+			</if>
+			<if test="userId != null and userId != '' ">
+				 and user_id = #{userId}
+			</if>
+
+	</where>
+	</sql>
+
+
+	<sql id="limitsql">
+			<if test="limitStart != null and pageSize != null">
+				 <![CDATA[  
+				 order by id desc limit #{limitStart} , #{pageSize} 
+				 ]]>  
+			</if>
+	</sql>	<!-- 添加 -->
+	<insert id="save" parameterType="com.szty.commos.shiros.model.SysGroupsUsers">
+		 <selectKey resultType="long" keyProperty="id">
+		 SELECT LAST_INSERT_ID()
+		 </selectKey>
+		 INSERT INTO sys_groups_users
+ 		(group_id,user_id) 
+		 VALUES 
+ 		(#{groupId},#{userId}) 
+	</insert>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="com.szty.commos.shiros.model.SysGroupsUsers">
+		 INSERT INTO sys_groups_users
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null">
+				 id,
+			</if>
+			<if test="groupId != null">
+				 group_id,
+			</if>
+			<if test="userId != null">
+				 user_id,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="id!=null and id!='' ">
+				 #{id},
+			</if>
+			<if test="groupId!=null and groupId!='' ">
+				 #{groupId},
+			</if>
+			<if test="userId!=null and userId!='' ">
+				 #{userId},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 添加 -->
+	<insert id="saveBatchSysGroupsUsers" parameterType="java.util.List">
+		 INSERT INTO sys_groups_users
+ 		(group_id,user_id) 
+		 VALUES 
+ 		 <foreach collection="list" item="item" index="index" separator="," >  
+ 		(#{item.groupId},#{item.userId}) 
+ 		 </foreach>
+	</insert>
+
+	<!-- 修 改id-->
+	<update id="updateByPrimaryKey" parameterType="com.szty.commos.shiros.model.SysGroupsUsers">
+		 UPDATE sys_groups_users
+		 <set> 
+			<if test="groupId != null">
+				 group_id = #{groupId},
+			</if>
+			<if test="userId != null">
+				 user_id = #{userId}
+			</if>
+
+		 </set> 		 WHERE id = #{id}
+	</update>
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectByPrimaryKey"  resultMap="sysGroupsUsersResultMap" parameterType="java.lang.Long">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM sys_groups_users
+		 WHERE id = #{id}
+	</select>
+
+	<!-- 刪除 -->
+	<delete  id="delByPrimaryKey" parameterType="java.lang.Long">
+		 delete
+		 FROM sys_groups_users
+		 WHERE id = #{id}
+	</delete>
+
+	<!-- 查询  List 查询 -->
+	<select id="queryList" resultMap="sysGroupsUsersResultMap" parameterType="com.szty.commos.shiros.model.SysGroupsUsers">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM sys_groups_users
+		  
+		 <include refid="modelwheresql" />
+	</select>
+
+	<!-- 查询 分页总数 -->
+	<select id="queryPageCount"  resultType="java.lang.Integer"  parameterType="com.szty.commos.shiros.model.SysGroupsUsers">
+		 SELECT
+		 count(1)
+		 FROM sys_groups_users
+		  
+		 <include refid="modelwheresql" />
+	</select>
+	<!-- 查询 分页查询 -->
+	<select id="queryPageList" resultMap="sysGroupsUsersResultMap"  parameterType="com.szty.commos.shiros.model.SysGroupsUsers">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM sys_groups_users
+		  
+		 <include refid="modelwheresql" />
+		 <include refid="limitsql" />
+	</select>
+
+</mapper>

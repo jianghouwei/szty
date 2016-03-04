@@ -9,4 +9,19 @@
   <artifactId>commos-plugin</artifactId>
   <name>commos-plugin</name>
   <description>commoss-plugin</description>
+  
+  <dependencies>
+       <dependency>
+			<groupId>com.szty.commos.deps</groupId>
+            <artifactId>commos-deps</artifactId>
+			<version>${project.version}</version>
+			<type>pom</type>
+		</dependency>
+        <dependency>
+			<groupId>com.szty.main.framework</groupId>
+            <artifactId>framework</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+  </dependencies>
+ 
 </project>

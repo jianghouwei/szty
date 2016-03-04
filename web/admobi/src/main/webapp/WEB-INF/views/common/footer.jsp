@@ -1,51 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-<!-- Ad, you can remove it -->
-<div class="row">
-	<div class="col-md-9 col-lg-9 col-xs-9 hidden-xs">
-		<script async
-			src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		<!-- Charisma Demo 2 -->
-		<ins class="adsbygoogle"
-			style="display: inline-block; width: 728px; height: 90px"
-			data-ad-client="ca-pub-5108790028230107" data-ad-slot="3193373905"></ins>
-		<script>
-			(adsbygoogle = window.adsbygoogle || []).push({});
-		</script>
-	</div>
-	<div
-		class="col-md-2 col-lg-3 col-sm-12 col-xs-12 email-subscription-footer">
-		<div class="mc_embed_signup">
-			<form
-				action="//halalit.us3.list-manage.com/subscribe/post?u=444b176aa3c39f656c66381f6&amp;id=eeb0c04e84"
-				method="post" id="mc-embedded-subscribe-form"
-				name="mc-embedded-subscribe-form" class="validate" target="_blank"
-				novalidate>
-				<div>
-					<label>Keep up with my work</label> <input type="email" value=""
-						name="EMAIL" class="email" placeholder="Email address" required>
-
-					<div class="power_field">
-						<input type="text" name="b_444b176aa3c39f656c66381f6_eeb0c04e84"
-							tabindex="-1" value="">
-					</div>
-					<div class="clear">
-						<input type="submit" value="Subscribe" name="subscribe"
-							class="button">
-					</div>
-				</div>
-			</form>
-		</div>
-		<!--End mc_embed_signup-->
-	</div>
-</div>
-<!-- Ad ends -->
-<hr>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-	aria-labelledby="myModalLabel" aria-hidden="true">
-
+	aria-labelledby="myModalLabel" aria-hidden="false">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -66,50 +23,43 @@
 
 <footer class="row">
 	<p class="col-md-9 col-sm-9 col-xs-12 copyright">
-		&copy; <a href="http://usman.it" target="_blank">Muhammad Usman</a>
-		2012 - 2015
+		&copy; copyRight 2012 - 2015
 	</p>
-
-	<p class="col-md-3 col-sm-3 col-xs-12 powered-by">
-		Powered by: <a href="http://usman.it/free-responsive-admin-template">Charisma</a>
+	<p class="col-md-3 col-sm-3 col-xs-12 powered-by"> Powered by: <a href="#">数字天域</a>
 	</p>
 </footer>
 
-</div>
 <!--/.fluid-container-->
-
 <!-- external javascript -->
+	<script src="charisma/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<!-- library for cookie management -->
+	<script src="charisma/js/jquery.cookie.js"></script>
+	<!-- calender plugin -->
+	<script src="charisma/bower_components/moment/min/moment.min.js"></script>
+	<script src="charisma/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+	<!-- data table plugin -->
+	<script src="charisma/js/jquery.dataTables.min.js"></script>
 
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
-<!-- library for cookie management -->
-<script src="js/jquery.cookie.js"></script>
-<!-- calender plugin -->
-<script src='bower_components/moment/min/moment.min.js'></script>
-<script src='bower_components/fullcalendar/dist/fullcalendar.min.js'></script>
-<!-- data table plugin -->
-<script src='js/jquery.dataTables.min.js'></script>
-
-<!-- select or dropdown enhancer -->
-<script src="bower_components/chosen/chosen.jquery.min.js"></script>
-<!-- plugin for gallery image view -->
-<script src="bower_components/colorbox/jquery.colorbox-min.js"></script>
-<!-- notification plugin -->
-<script src="js/jquery.noty.js"></script>
-<!-- library for making tables responsive -->
-<script src="bower_components/responsive-tables/responsive-tables.js"></script>
-<!-- tour plugin -->
-<script
-	src="bower_components/bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
-<!-- star rating plugin -->
-<script src="js/jquery.raty.min.js"></script>
-<!-- for iOS style toggle switch -->
-<script src="js/jquery.iphone.toggle.js"></script>
-<!-- autogrowing textarea plugin -->
-<script src="js/jquery.autogrow-textarea.js"></script>
-<!-- multiple file upload plugin -->
-<script src="js/jquery.uploadify-3.1.min.js"></script>
-<!-- history.js for cross-browser state change on ajax -->
-<script src="js/jquery.history.js"></script>
-<!-- application script for Charisma demo -->
-<script src="js/charisma.js"></script>
+	<!-- select or dropdown enhancer -->
+	<script src="charisma/bower_components/chosen/chosen.jquery.min.js"></script>
+	<!-- plugin for gallery image view -->
+	<script src="charisma/bower_components/colorbox/jquery.colorbox-min.js"></script>
+	<!-- notification plugin -->
+	<script src="charisma/js/jquery.noty.js"></script>
+	<!-- library for making tables responsive -->
+	<script src="charisma/bower_components/responsive-tables/responsive-tables.js"></script>
+	<!-- tour plugin -->
+	<script
+		src="charisma/bower_components/bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
+	<!-- star rating plugin -->
+	<script src="charisma/js/jquery.raty.min.js"></script>
+	<!-- for iOS style toggle switch -->
+	<script src="charisma/js/jquery.iphone.toggle.js"></script>
+	<!-- autogrowing textarea plugin -->
+	<script src="charisma/js/jquery.autogrow-textarea.js"></script>
+	<!-- multiple file upload plugin -->
+	<script src="charisma/js/jquery.uploadify-3.1.min.js"></script>
+	<!-- history.js for cross-browser state change on ajax -->
+	<script src="charisma/js/jquery.history.js"></script>
+	<!-- application script for Charisma demo -->
+	<script src="charisma/js/charisma.js"></script>

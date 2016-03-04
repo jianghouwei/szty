@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szty.commos.shiros.dao.SysAuthRolesMapper">
+
+	<!--实体映射-->
+	<resultMap id="sysAuthRolesResultMap" type="com.szty.commos.shiros.model.SysAuthRoles">
+		<!---->
+		<result column="id"  property="id" />
+		<!---->
+		<result column="authority_id"  property="authorityId" />
+		<!---->
+		<result column="role_id"  property="roleId" />
+	</resultMap>
+
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+	id,	authority_id,	role_id
+	</sql>
+
+
+	<!-- 查询条件-->
+	<sql id="modelwheresql">
+	<where>
+
+			<if test="id != null and id != '' ">
+				 and id = #{id}
+			</if>
+			<if test="authorityId != null and authorityId != '' ">
+				 and authority_id = #{authorityId}
+			</if>
+			<if test="roleId != null and roleId != '' ">
+				 and role_id = #{roleId}
+			</if>
+
+	</where>
+	</sql>
+
+
+	<sql id="limitsql">
+			<if test="limitStart != null and pageSize != null">
+				 <![CDATA[  
+				 order by id desc limit #{limitStart} , #{pageSize} 
+				 ]]>  
+			</if>
+	</sql>	<!-- 添加 -->
+	<insert id="save" parameterType="com.szty.commos.shiros.model.SysAuthRoles">
+		 <selectKey resultType="long" keyProperty="id">
+		 SELECT LAST_INSERT_ID()
+		 </selectKey>
+		 INSERT INTO sys_auth_roles
+ 		(authority_id,role_id) 
+		 VALUES 
+ 		(#{authorityId},#{roleId}) 
+	</insert>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="com.szty.commos.shiros.model.SysAuthRoles">
+		 INSERT INTO sys_auth_roles
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null">
+				 id,
+			</if>
+			<if test="authorityId != null">
+				 authority_id,
+			</if>
+			<if test="roleId != null">
+				 role_id,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="id!=null and id!='' ">
+				 #{id},
+			</if>
+			<if test="authorityId!=null and authorityId!='' ">
+				 #{authorityId},
+			</if>
+			<if test="roleId!=null and roleId!='' ">
+				 #{roleId},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 添加 -->
+	<insert id="saveBatchSysAuthRoles" parameterType="java.util.List">
+		 INSERT INTO sys_auth_roles
+ 		(authority_id,role_id) 
+		 VALUES 
+ 		 <foreach collection="list" item="item" index="index" separator="," >  
+ 		(#{item.authorityId},#{item.roleId}) 
+ 		 </foreach>
+	</insert>
+
+	<!-- 修 改id-->
+	<update id="updateByPrimaryKey" parameterType="com.szty.commos.shiros.model.SysAuthRoles">
+		 UPDATE sys_auth_roles
+		 <set> 
+			<if test="authorityId != null">
+				 authority_id = #{authorityId},
+			</if>
+			<if test="roleId != null">
+				 role_id = #{roleId}
+			</if>
+
+		 </set> 		 WHERE id = #{id}
+	</update>
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectByPrimaryKey"  resultMap="sysAuthRolesResultMap" parameterType="java.lang.Long">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM sys_auth_roles
+		 WHERE id = #{id}
+	</select>
+
+	<!-- 刪除 -->
+	<delete  id="delByPrimaryKey" parameterType="java.lang.Long">
+		 delete
+		 FROM sys_auth_roles
+		 WHERE id = #{id}
+	</delete>
+
+	<!-- 查询  List 查询 -->
+	<select id="queryList" resultMap="sysAuthRolesResultMap" parameterType="com.szty.commos.shiros.model.SysAuthRoles">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM sys_auth_roles
+		  
+		 <include refid="modelwheresql" />
+	</select>
+
+	<!-- 查询 分页总数 -->
+	<select id="queryPageCount"  resultType="java.lang.Integer"  parameterType="com.szty.commos.shiros.model.SysAuthRoles">
+		 SELECT
+		 count(1)
+		 FROM sys_auth_roles
+		  
+		 <include refid="modelwheresql" />
+	</select>
+	<!-- 查询 分页查询 -->
+	<select id="queryPageList" resultMap="sysAuthRolesResultMap"  parameterType="com.szty.commos.shiros.model.SysAuthRoles">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM sys_auth_roles
+		  
+		 <include refid="modelwheresql" />
+		 <include refid="limitsql" />
+	</select>
+
+</mapper>

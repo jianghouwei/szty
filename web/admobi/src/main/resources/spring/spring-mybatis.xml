@@ -11,7 +11,7 @@
        http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-	<context:component-scan base-package="com.szty.**.service" />
+	<context:component-scan base-package="com.szty.commos.**.service" />
 
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		init-method="init" destroy-method="close">
@@ -40,11 +40,11 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="mapperLocations"
 			value="classpath*:com/szty/commos/shiros/dao*Mapper.xml" />
-		<property name="typeAliasesPackage" value="com.szty.wxyd.data.model" />
+		<property name="typeAliasesPackage" value="com.szty.commos.shiros.model" />
 	</bean>
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.szty.wxyd.dao" />
+		<property name="basePackage" value="com.szty.commos.shiros.dao" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 
@@ -68,7 +68,6 @@
 			<tx:method name="get*" read-only="true" />
 			<tx:method name="post*" propagation="REQUIRES_NEW" />
 			<tx:method name="one*" propagation="REQUIRED" />
-			<!-- 不影响外层事物 REQUIRES_NEW -->
 			<tx:method name="setDirver*" propagation="REQUIRES_NEW" />
 			<tx:method name="*" />
 		</tx:attributes>

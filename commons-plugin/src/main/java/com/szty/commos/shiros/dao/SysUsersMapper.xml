@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szty.commos.shiros.dao.SysUsersMapper">
+
+	<!--实体映射-->
+	<resultMap id="sysUsersResultMap" type="com.szty.commos.shiros.model.SysUsers">
+		<!--id-->
+		<result column="id"  property="id" />
+		<!--用户名-->
+		<result column="user_name"  property="userName" />
+		<!--密码-->
+		<result column="user_password"  property="userPassword" />
+		<!--员工编码-->
+		<result column="user_code"  property="userCode" />
+		<!---->
+		<result column="user_email"  property="userEmail" />
+		<!--性别-->
+		<result column="user_sex"  property="userSex" />
+		<!--联系电话-->
+		<result column="user_tel"  property="userTel" />
+		<!---->
+		<result column="is_enable"  property="isEnable" />
+		<!---->
+		<result column="is_delete"  property="isDelete" />
+		<!---->
+		<result column="upate_user"  property="upateUser" />
+		<!---->
+		<result column="update_time"  property="updateTime" />
+		<!---->
+		<result column="create_time"  property="createTime" />
+		<!---->
+		<result column="create_user"  property="createUser" />
+	</resultMap>
+
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+	id,	user_name,	user_password,	user_code,	user_email,	user_sex,	user_tel,	is_enable,	is_delete,	upate_user,	update_time,	create_time,	create_user
+	</sql>
+
+
+	<!-- 查询条件-->
+	<sql id="modelwheresql">
+	<where>
+
+			<if test="id != null and id != '' ">
+				 and id = #{id}
+			</if>
+			<if test="userName != null and userName != '' ">
+				 and user_name = #{userName}
+			</if>
+			<if test="userPassword != null and userPassword != '' ">
+				 and user_password = #{userPassword}
+			</if>
+			<if test="userCode != null and userCode != '' ">
+				 and user_code = #{userCode}
+			</if>
+			<if test="userEmail != null and userEmail != '' ">
+				 and user_email = #{userEmail}
+			</if>
+			<if test="userSex != null and userSex != '' ">
+				 and user_sex = #{userSex}
+			</if>
+			<if test="userTel != null and userTel != '' ">
+				 and user_tel = #{userTel}
+			</if>
+			<if test="isEnable != null and isEnable != '' ">
+				 and is_enable = #{isEnable}
+			</if>
+			<if test="isDelete != null and isDelete != '' ">
+				 and is_delete = #{isDelete}
+			</if>
+			<if test="upateUser != null and upateUser != '' ">
+				 and upate_user = #{upateUser}
+			</if>
+			<if test="updateTime != null and updateTime != '' ">
+				 and update_time = #{updateTime}
+			</if>
+			<if test="createTime != null and createTime != '' ">
+				 and create_time = #{createTime}
+			</if>
+			<if test="createUser != null and createUser != '' ">
+				 and create_user = #{createUser}
+			</if>
+
+	</where>
+	</sql>
+
+
+	<sql id="limitsql">
+			<if test="limitStart != null and pageSize != null">
+				 <![CDATA[  
+				 order by id desc limit #{limitStart} , #{pageSize} 
+				 ]]>  
+			</if>
+	</sql>	<!-- 添加 -->
+	<insert id="save" parameterType="com.szty.commos.shiros.model.SysUsers">
+		 <selectKey resultType="long" keyProperty="id">
+		 SELECT LAST_INSERT_ID()
+		 </selectKey>
+		 INSERT INTO sys_users
+ 		(user_name,user_password,user_code,user_email,user_sex,user_tel,is_enable,is_delete,upate_user,update_time,create_time,create_user) 
+		 VALUES 
+ 		(#{userName},#{userPassword},#{userCode},#{userEmail},#{userSex},#{userTel},#{isEnable},#{isDelete},#{upateUser},#{updateTime},#{createTime},#{createUser}) 
+	</insert>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="com.szty.commos.shiros.model.SysUsers">
+		 INSERT INTO sys_users
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null">
+				 id,
+			</if>
+			<if test="userName != null">
+				 user_name,
+			</if>
+			<if test="userPassword != null">
+				 user_password,
+			</if>
+			<if test="userCode != null">
+				 user_code,
+			</if>
+			<if test="userEmail != null">
+				 user_email,
+			</if>
+			<if test="userSex != null">
+				 user_sex,
+			</if>
+			<if test="userTel != null">
+				 user_tel,
+			</if>
+			<if test="isEnable != null">
+				 is_enable,
+			</if>
+			<if test="isDelete != null">
+				 is_delete,
+			</if>
+			<if test="upateUser != null">
+				 upate_user,
+			</if>
+			<if test="updateTime != null">
+				 update_time,
+			</if>
+			<if test="createTime != null">
+				 create_time,
+			</if>
+			<if test="createUser != null">
+				 create_user,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="id!=null and id!='' ">
+				 #{id},
+			</if>
+			<if test="userName!=null and userName!='' ">
+				 #{userName},
+			</if>
+			<if test="userPassword!=null and userPassword!='' ">
+				 #{userPassword},
+			</if>
+			<if test="userCode!=null and userCode!='' ">
+				 #{userCode},
+			</if>
+			<if test="userEmail!=null and userEmail!='' ">
+				 #{userEmail},
+			</if>
+			<if test="userSex!=null and userSex!='' ">
+				 #{userSex},
+			</if>
+			<if test="userTel!=null and userTel!='' ">
+				 #{userTel},
+			</if>
+			<if test="isEnable!=null and isEnable!='' ">
+				 #{isEnable},
+			</if>
+			<if test="isDelete!=null and isDelete!='' ">
+				 #{isDelete},
+			</if>
+			<if test="upateUser!=null and upateUser!='' ">
+				 #{upateUser},
+			</if>
+			<if test="updateTime!=null and updateTime!='' ">
+				 #{updateTime},
+			</if>
+			<if test="createTime!=null and createTime!='' ">
+				 #{createTime},
+			</if>
+			<if test="createUser!=null and createUser!='' ">
+				 #{createUser},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 添加 -->
+	<insert id="saveBatchSysUsers" parameterType="java.util.List">
+		 INSERT INTO sys_users
+ 		(user_name,user_password,user_code,user_email,user_sex,user_tel,is_enable,is_delete,upate_user,update_time,create_time,create_user) 
+		 VALUES 
+ 		 <foreach collection="list" item="item" index="index" separator="," >  
+ 		(#{item.userName},#{item.userPassword},#{item.userCode},#{item.userEmail},#{item.userSex},#{item.userTel},#{item.isEnable},#{item.isDelete},#{item.upateUser},#{item.updateTime},#{item.createTime},#{item.createUser}) 
+ 		 </foreach>
+	</insert>
+
+	<!-- 修 改id-->
+	<update id="updateByPrimaryKey" parameterType="com.szty.commos.shiros.model.SysUsers">
+		 UPDATE sys_users
+		 <set> 
+			<if test="userName != null">
+				 user_name = #{userName},
+			</if>
+			<if test="userPassword != null">
+				 user_password = #{userPassword},
+			</if>
+			<if test="userCode != null">
+				 user_code = #{userCode},
+			</if>
+			<if test="userEmail != null">
+				 user_email = #{userEmail},
+			</if>
+			<if test="userSex != null">
+				 user_sex = #{userSex},
+			</if>
+			<if test="userTel != null">
+				 user_tel = #{userTel},
+			</if>
+			<if test="isEnable != null">
+				 is_enable = #{isEnable},
+			</if>
+			<if test="isDelete != null">
+				 is_delete = #{isDelete},
+			</if>
+			<if test="upateUser != null">
+				 upate_user = #{upateUser},
+			</if>
+			<if test="updateTime != null">
+				 update_time = #{updateTime},
+			</if>
+			<if test="createTime != null">
+				 create_time = #{createTime},
+			</if>
+			<if test="createUser != null">
+				 create_user = #{createUser}
+			</if>
+
+		 </set> 		 WHERE id = #{id}
+	</update>
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectByPrimaryKey"  resultMap="sysUsersResultMap" parameterType="java.lang.Long">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM sys_users
+		 WHERE id = #{id}
+	</select>
+
+	<!-- 刪除 -->
+	<delete  id="delByPrimaryKey" parameterType="java.lang.Long">
+		 delete
+		 FROM sys_users
+		 WHERE id = #{id}
+	</delete>
+
+	<!-- 查询  List 查询 -->
+	<select id="queryList" resultMap="sysUsersResultMap" parameterType="com.szty.commos.shiros.model.SysUsers">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM sys_users
+		  
+		 <include refid="modelwheresql" />
+	</select>
+
+	<!-- 查询 分页总数 -->
+	<select id="queryPageCount"  resultType="java.lang.Integer"  parameterType="com.szty.commos.shiros.model.SysUsers">
+		 SELECT
+		 count(1)
+		 FROM sys_users
+		  
+		 <include refid="modelwheresql" />
+	</select>
+	<!-- 查询 分页查询 -->
+	<select id="queryPageList" resultMap="sysUsersResultMap"  parameterType="com.szty.commos.shiros.model.SysUsers">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM sys_users
+		  
+		 <include refid="modelwheresql" />
+		 <include refid="limitsql" />
+	</select>
+
+</mapper>

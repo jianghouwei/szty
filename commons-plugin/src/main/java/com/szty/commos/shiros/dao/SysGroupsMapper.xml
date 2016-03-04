@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szty.commos.shiros.dao.SysGroupsMapper">
+
+	<!--实体映射-->
+	<resultMap id="sysGroupsResultMap" type="com.szty.commos.shiros.model.SysGroups">
+		<!---->
+		<result column="id"  property="id" />
+		<!---->
+		<result column="group_name"  property="groupName" />
+		<!--组别编码-->
+		<result column="group_code"  property="groupCode" />
+		<!--是否禁用-->
+		<result column="is_enable"  property="isEnable" />
+		<!---->
+		<result column="is_delete"  property="isDelete" />
+		<!---->
+		<result column="update_time"  property="updateTime" />
+		<!---->
+		<result column="update_user"  property="updateUser" />
+		<!---->
+		<result column="create_time"  property="createTime" />
+		<!---->
+		<result column="create_user"  property="createUser" />
+	</resultMap>
+
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+	id,	group_name,	group_code,	is_enable,	is_delete,	update_time,	update_user,	create_time,	create_user
+	</sql>
+
+
+	<!-- 查询条件-->
+	<sql id="modelwheresql">
+	<where>
+
+			<if test="id != null and id != '' ">
+				 and id = #{id}
+			</if>
+			<if test="groupName != null and groupName != '' ">
+				 and group_name = #{groupName}
+			</if>
+			<if test="groupCode != null and groupCode != '' ">
+				 and group_code = #{groupCode}
+			</if>
+			<if test="isEnable != null and isEnable != '' ">
+				 and is_enable = #{isEnable}
+			</if>
+			<if test="isDelete != null and isDelete != '' ">
+				 and is_delete = #{isDelete}
+			</if>
+			<if test="updateTime != null and updateTime != '' ">
+				 and update_time = #{updateTime}
+			</if>
+			<if test="updateUser != null and updateUser != '' ">
+				 and update_user = #{updateUser}
+			</if>
+			<if test="createTime != null and createTime != '' ">
+				 and create_time = #{createTime}
+			</if>
+			<if test="createUser != null and createUser != '' ">
+				 and create_user = #{createUser}
+			</if>
+
+	</where>
+	</sql>
+
+
+	<sql id="limitsql">
+			<if test="limitStart != null and pageSize != null">
+				 <![CDATA[  
+				 order by id desc limit #{limitStart} , #{pageSize} 
+				 ]]>  
+			</if>
+	</sql>	<!-- 添加 -->
+	<insert id="save" parameterType="com.szty.commos.shiros.model.SysGroups">
+		 <selectKey resultType="long" keyProperty="id">
+		 SELECT LAST_INSERT_ID()
+		 </selectKey>
+		 INSERT INTO sys_groups
+ 		(group_name,group_code,is_enable,is_delete,update_time,update_user,create_time,create_user) 
+		 VALUES 
+ 		(#{groupName},#{groupCode},#{isEnable},#{isDelete},#{updateTime},#{updateUser},#{createTime},#{createUser}) 
+	</insert>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="com.szty.commos.shiros.model.SysGroups">
+		 INSERT INTO sys_groups
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null">
+				 id,
+			</if>
+			<if test="groupName != null">
+				 group_name,
+			</if>
+			<if test="groupCode != null">
+				 group_code,
+			</if>
+			<if test="isEnable != null">
+				 is_enable,
+			</if>
+			<if test="isDelete != null">
+				 is_delete,
+			</if>
+			<if test="updateTime != null">
+				 update_time,
+			</if>
+			<if test="updateUser != null">
+				 update_user,
+			</if>
+			<if test="createTime != null">
+				 create_time,
+			</if>
+			<if test="createUser != null">
+				 create_user,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="id!=null and id!='' ">
+				 #{id},
+			</if>
+			<if test="groupName!=null and groupName!='' ">
+				 #{groupName},
+			</if>
+			<if test="groupCode!=null and groupCode!='' ">
+				 #{groupCode},
+			</if>
+			<if test="isEnable!=null and isEnable!='' ">
+				 #{isEnable},
+			</if>
+			<if test="isDelete!=null and isDelete!='' ">
+				 #{isDelete},
+			</if>
+			<if test="updateTime!=null and updateTime!='' ">
+				 #{updateTime},
+			</if>
+			<if test="updateUser!=null and updateUser!='' ">
+				 #{updateUser},
+			</if>
+			<if test="createTime!=null and createTime!='' ">
+				 #{createTime},
+			</if>
+			<if test="createUser!=null and createUser!='' ">
+				 #{createUser},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 添加 -->
+	<insert id="saveBatchSysGroups" parameterType="java.util.List">
+		 INSERT INTO sys_groups
+ 		(group_name,group_code,is_enable,is_delete,update_time,update_user,create_time,create_user) 
+		 VALUES 
+ 		 <foreach collection="list" item="item" index="index" separator="," >  
+ 		(#{item.groupName},#{item.groupCode},#{item.isEnable},#{item.isDelete},#{item.updateTime},#{item.updateUser},#{item.createTime},#{item.createUser}) 
+ 		 </foreach>
+	</insert>
+
+	<!-- 修 改id-->
+	<update id="updateByPrimaryKey" parameterType="com.szty.commos.shiros.model.SysGroups">
+		 UPDATE sys_groups
+		 <set> 
+			<if test="groupName != null">
+				 group_name = #{groupName},
+			</if>
+			<if test="groupCode != null">
+				 group_code = #{groupCode},
+			</if>
+			<if test="isEnable != null">
+				 is_enable = #{isEnable},
+			</if>
+			<if test="isDelete != null">
+				 is_delete = #{isDelete},
+			</if>
+			<if test="updateTime != null">
+				 update_time = #{updateTime},
+			</if>
+			<if test="updateUser != null">
+				 update_user = #{updateUser},
+			</if>
+			<if test="createTime != null">
+				 create_time = #{createTime},
+			</if>
+			<if test="createUser != null">
+				 create_user = #{createUser}
+			</if>
+
+		 </set> 		 WHERE id = #{id}
+	</update>
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectByPrimaryKey"  resultMap="sysGroupsResultMap" parameterType="java.lang.Long">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM sys_groups
+		 WHERE id = #{id}
+	</select>
+
+	<!-- 刪除 -->
+	<delete  id="delByPrimaryKey" parameterType="java.lang.Long">
+		 delete
+		 FROM sys_groups
+		 WHERE id = #{id}
+	</delete>
+
+	<!-- 查询  List 查询 -->
+	<select id="queryList" resultMap="sysGroupsResultMap" parameterType="com.szty.commos.shiros.model.SysGroups">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM sys_groups
+		  
+		 <include refid="modelwheresql" />
+	</select>
+
+	<!-- 查询 分页总数 -->
+	<select id="queryPageCount"  resultType="java.lang.Integer"  parameterType="com.szty.commos.shiros.model.SysGroups">
+		 SELECT
+		 count(1)
+		 FROM sys_groups
+		  
+		 <include refid="modelwheresql" />
+	</select>
+	<!-- 查询 分页查询 -->
+	<select id="queryPageList" resultMap="sysGroupsResultMap"  parameterType="com.szty.commos.shiros.model.SysGroups">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM sys_groups
+		  
+		 <include refid="modelwheresql" />
+		 <include refid="limitsql" />
+	</select>
+
+</mapper>

@@ -21,8 +21,7 @@
 			</button>
 			<ul class="dropdown-menu">
 				<li class="divider"></li>
-				<li><c:url value="/j_spring_security_logout" var="logoutUrl" />
-					<a href="${logoutUrl}">退出</a></li>
+				<li><a href="${logoutUrl}">退出</a></li>
 			</ul>
 		</div>
 		<!-- user dropdown ends -->
@@ -60,28 +59,25 @@
 		<ul class="collapse navbar-collapse nav navbar-nav top-menu">
 			<li><a href="#">
 			<i class="glyphicon glyphicon-globe">
-			 </i>Visit Site</a></li>
+			 </i>常用网址</a></li>
 			<li class="dropdown">
 			      <a href="#" data-toggle="dropdown">
-			      <i class="glyphicon glyphicon-star"></i> Dropdown <span class="caret"></span>
-			      
+			      <i class="glyphicon glyphicon-star"></i>下拉 <span class="caret"></span>
 			      </a>
 				<ul class="dropdown-menu" role="menu">
-					<li><a href="#">Action</a></li>
-					<li><a href="#">Another action</a></li>
-					<li><a href="#">Something else here</a></li>
+					<li><a href="https://www.baidu.com/">百度</a></li>
+					<li><a href="http://fanyi.baidu.com/#auto/zh/">百度翻译</a></li>
 					<li class="divider"></li>
-					<li><a href="#">Separated link</a></li>
-					<li class="divider"></li>
-					<li><a href="#">One more separated link</a></li>
+					<li><a href="https://www.taobao.com/">淘宝</a></li>
+					<li><a href="https://www.jd.com/">京东</a></li>
 				</ul></li>
-			<li>
+			<!-- <li>
 				<form class="navbar-search pull-left">
 					<input placeholder="Search"
 						class="search-query form-control col-md-10" name="query"
 						type="text">
 				</form>
-			</li>
+			</li> -->
 		</ul>
 
 	</div>

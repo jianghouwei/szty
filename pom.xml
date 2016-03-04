@@ -10,5 +10,6 @@
   	<module>commos-deps</module>
   	<module>commons-plugin</module>
   	<module>web</module>
+  	<module>framework</module>
   </modules>
 </project>

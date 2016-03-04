@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szty.commos.shiros.dao.SysResourcesMapper">
+
+	<!--实体映射-->
+	<resultMap id="sysResourcesResultMap" type="com.szty.commos.shiros.model.SysResources">
+		<!---->
+		<result column="id"  property="id" />
+		<!---->
+		<result column="resources_path"  property="resourcesPath" />
+		<!---->
+		<result column="resources_name"  property="resourcesName" />
+		<!---->
+		<result column="resources_code"  property="resourcesCode" />
+		<!---->
+		<result column="adds"  property="adds" />
+		<!---->
+		<result column="edits"  property="edits" />
+		<!---->
+		<result column="imports"  property="imports" />
+		<!---->
+		<result column="exports"  property="exports" />
+		<!---->
+		<result column="deletes"  property="deletes" />
+		<!---->
+		<result column="views"  property="views" />
+		<!---->
+		<result column="uploads"  property="uploads" />
+		<!---->
+		<result column="is_delete"  property="isDelete" />
+		<!---->
+		<result column="is_enable"  property="isEnable" />
+		<!---->
+		<result column="update_time"  property="updateTime" />
+		<!---->
+		<result column="update_user"  property="updateUser" />
+		<!---->
+		<result column="create_user"  property="createUser" />
+		<!---->
+		<result column="create_time"  property="createTime" />
+	</resultMap>
+
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+	id,	resources_path,	resources_name,	resources_code,	adds,	edits,	imports,	exports,	deletes,	views,	uploads,	is_delete,	is_enable,	update_time,	update_user,	create_user,	create_time
+	</sql>
+
+
+	<!-- 查询条件-->
+	<sql id="modelwheresql">
+	<where>
+
+			<if test="id != null and id != '' ">
+				 and id = #{id}
+			</if>
+			<if test="resourcesPath != null and resourcesPath != '' ">
+				 and resources_path = #{resourcesPath}
+			</if>
+			<if test="resourcesName != null and resourcesName != '' ">
+				 and resources_name = #{resourcesName}
+			</if>
+			<if test="resourcesCode != null and resourcesCode != '' ">
+				 and resources_code = #{resourcesCode}
+			</if>
+			<if test="adds != null and adds != '' ">
+				 and adds = #{adds}
+			</if>
+			<if test="edits != null and edits != '' ">
+				 and edits = #{edits}
+			</if>
+			<if test="imports != null and imports != '' ">
+				 and imports = #{imports}
+			</if>
+			<if test="exports != null and exports != '' ">
+				 and exports = #{exports}
+			</if>
+			<if test="deletes != null and deletes != '' ">
+				 and deletes = #{deletes}
+			</if>
+			<if test="views != null and views != '' ">
+				 and views = #{views}
+			</if>
+			<if test="uploads != null and uploads != '' ">
+				 and uploads = #{uploads}
+			</if>
+			<if test="isDelete != null and isDelete != '' ">
+				 and is_delete = #{isDelete}
+			</if>
+			<if test="isEnable != null and isEnable != '' ">
+				 and is_enable = #{isEnable}
+			</if>
+			<if test="updateTime != null and updateTime != '' ">
+				 and update_time = #{updateTime}
+			</if>
+			<if test="updateUser != null and updateUser != '' ">
+				 and update_user = #{updateUser}
+			</if>
+			<if test="createUser != null and createUser != '' ">
+				 and create_user = #{createUser}
+			</if>
+			<if test="createTime != null and createTime != '' ">
+				 and create_time = #{createTime}
+			</if>
+
+	</where>
+	</sql>
+
+
+	<sql id="limitsql">
+			<if test="limitStart != null and pageSize != null">
+				 <![CDATA[  
+				 order by id desc limit #{limitStart} , #{pageSize} 
+				 ]]>  
+			</if>
+	</sql>	<!-- 添加 -->
+	<insert id="save" parameterType="com.szty.commos.shiros.model.SysResources">
+		 <selectKey resultType="long" keyProperty="id">
+		 SELECT LAST_INSERT_ID()
+		 </selectKey>
+		 INSERT INTO sys_resources
+ 		(resources_path,resources_name,resources_code,adds,edits,imports,exports,deletes,views,uploads,is_delete,is_enable,update_time,update_user,create_user,create_time) 
+		 VALUES 
+ 		(#{resourcesPath},#{resourcesName},#{resourcesCode},#{adds},#{edits},#{imports},#{exports},#{deletes},#{views},#{uploads},#{isDelete},#{isEnable},#{updateTime},#{updateUser},#{createUser},#{createTime}) 
+	</insert>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="com.szty.commos.shiros.model.SysResources">
+		 INSERT INTO sys_resources
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null">
+				 id,
+			</if>
+			<if test="resourcesPath != null">
+				 resources_path,
+			</if>
+			<if test="resourcesName != null">
+				 resources_name,
+			</if>
+			<if test="resourcesCode != null">
+				 resources_code,
+			</if>
+			<if test="adds != null">
+				 adds,
+			</if>
+			<if test="edits != null">
+				 edits,
+			</if>
+			<if test="imports != null">
+				 imports,
+			</if>
+			<if test="exports != null">
+				 exports,
+			</if>
+			<if test="deletes != null">
+				 deletes,
+			</if>
+			<if test="views != null">
+				 views,
+			</if>
+			<if test="uploads != null">
+				 uploads,
+			</if>
+			<if test="isDelete != null">
+				 is_delete,
+			</if>
+			<if test="isEnable != null">
+				 is_enable,
+			</if>
+			<if test="updateTime != null">
+				 update_time,
+			</if>
+			<if test="updateUser != null">
+				 update_user,
+			</if>
+			<if test="createUser != null">
+				 create_user,
+			</if>
+			<if test="createTime != null">
+				 create_time,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="id!=null and id!='' ">
+				 #{id},
+			</if>
+			<if test="resourcesPath!=null and resourcesPath!='' ">
+				 #{resourcesPath},
+			</if>
+			<if test="resourcesName!=null and resourcesName!='' ">
+				 #{resourcesName},
+			</if>
+			<if test="resourcesCode!=null and resourcesCode!='' ">
+				 #{resourcesCode},
+			</if>
+			<if test="adds!=null and adds!='' ">
+				 #{adds},
+			</if>
+			<if test="edits!=null and edits!='' ">
+				 #{edits},
+			</if>
+			<if test="imports!=null and imports!='' ">
+				 #{imports},
+			</if>
+			<if test="exports!=null and exports!='' ">
+				 #{exports},
+			</if>
+			<if test="deletes!=null and deletes!='' ">
+				 #{deletes},
+			</if>
+			<if test="views!=null and views!='' ">
+				 #{views},
+			</if>
+			<if test="uploads!=null and uploads!='' ">
+				 #{uploads},
+			</if>
+			<if test="isDelete!=null and isDelete!='' ">
+				 #{isDelete},
+			</if>
+			<if test="isEnable!=null and isEnable!='' ">
+				 #{isEnable},
+			</if>
+			<if test="updateTime!=null and updateTime!='' ">
+				 #{updateTime},
+			</if>
+			<if test="updateUser!=null and updateUser!='' ">
+				 #{updateUser},
+			</if>
+			<if test="createUser!=null and createUser!='' ">
+				 #{createUser},
+			</if>
+			<if test="createTime!=null and createTime!='' ">
+				 #{createTime},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 添加 -->
+	<insert id="saveBatchSysResources" parameterType="java.util.List">
+		 INSERT INTO sys_resources
+ 		(resources_path,resources_name,resources_code,adds,edits,imports,exports,deletes,views,uploads,is_delete,is_enable,update_time,update_user,create_user,create_time) 
+		 VALUES 
+ 		 <foreach collection="list" item="item" index="index" separator="," >  
+ 		(#{item.resourcesPath},#{item.resourcesName},#{item.resourcesCode},#{item.adds},#{item.edits},#{item.imports},#{item.exports},#{item.deletes},#{item.views},#{item.uploads},#{item.isDelete},#{item.isEnable},#{item.updateTime},#{item.updateUser},#{item.createUser},#{item.createTime}) 
+ 		 </foreach>
+	</insert>
+
+	<!-- 修 改id-->
+	<update id="updateByPrimaryKey" parameterType="com.szty.commos.shiros.model.SysResources">
+		 UPDATE sys_resources
+		 <set> 
+			<if test="resourcesPath != null">
+				 resources_path = #{resourcesPath},
+			</if>
+			<if test="resourcesName != null">
+				 resources_name = #{resourcesName},
+			</if>
+			<if test="resourcesCode != null">
+				 resources_code = #{resourcesCode},
+			</if>
+			<if test="adds != null">
+				 adds = #{adds},
+			</if>
+			<if test="edits != null">
+				 edits = #{edits},
+			</if>
+			<if test="imports != null">
+				 imports = #{imports},
+			</if>
+			<if test="exports != null">
+				 exports = #{exports},
+			</if>
+			<if test="deletes != null">
+				 deletes = #{deletes},
+			</if>
+			<if test="views != null">
+				 views = #{views},
+			</if>
+			<if test="uploads != null">
+				 uploads = #{uploads},
+			</if>
+			<if test="isDelete != null">
+				 is_delete = #{isDelete},
+			</if>
+			<if test="isEnable != null">
+				 is_enable = #{isEnable},
+			</if>
+			<if test="updateTime != null">
+				 update_time = #{updateTime},
+			</if>
+			<if test="updateUser != null">
+				 update_user = #{updateUser},
+			</if>
+			<if test="createUser != null">
+				 create_user = #{createUser},
+			</if>
+			<if test="createTime != null">
+				 create_time = #{createTime}
+			</if>
+
+		 </set> 		 WHERE id = #{id}
+	</update>
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectByPrimaryKey"  resultMap="sysResourcesResultMap" parameterType="java.lang.Long">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM sys_resources
+		 WHERE id = #{id}
+	</select>
+
+	<!-- 刪除 -->
+	<delete  id="delByPrimaryKey" parameterType="java.lang.Long">
+		 delete
+		 FROM sys_resources
+		 WHERE id = #{id}
+	</delete>
+
+	<!-- 查询  List 查询 -->
+	<select id="queryList" resultMap="sysResourcesResultMap" parameterType="com.szty.commos.shiros.model.SysResources">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM sys_resources
+		  
+		 <include refid="modelwheresql" />
+	</select>
+
+	<!-- 查询 分页总数 -->
+	<select id="queryPageCount"  resultType="java.lang.Integer"  parameterType="com.szty.commos.shiros.model.SysResources">
+		 SELECT
+		 count(1)
+		 FROM sys_resources
+		  
+		 <include refid="modelwheresql" />
+	</select>
+	<!-- 查询 分页查询 -->
+	<select id="queryPageList" resultMap="sysResourcesResultMap"  parameterType="com.szty.commos.shiros.model.SysResources">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM sys_resources
+		  
+		 <include refid="modelwheresql" />
+		 <include refid="limitsql" />
+	</select>
+
+</mapper>
