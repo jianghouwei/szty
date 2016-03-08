@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
-import com.stzy.commos.page.model.PageModel;
+import com.szty.commos.page.model.PageModel;
 import com.szty.commos.shiros.model.SysUsers;
 import com.szty.commos.shiros.service.SysUsersService;
 import com.szty.framework.base.msg.ControllerMsg;

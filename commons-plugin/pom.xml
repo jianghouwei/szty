@@ -1,27 +1,28 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>com.szty</groupId>
-    <artifactId>szty</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <groupId>com.szty.commos.plugin</groupId>
-  <artifactId>commos-plugin</artifactId>
-  <name>commos-plugin</name>
-  <description>commoss-plugin</description>
-  
-  <dependencies>
-       <dependency>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.szty</groupId>
+		<artifactId>szty</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<groupId>com.szty.commos.plugin</groupId>
+	<artifactId>commos-plugin</artifactId>
+	<name>commos-plugin</name>
+	<description>commos-plugin</description>
+
+	<dependencies>
+		<dependency>
 			<groupId>com.szty.commos.deps</groupId>
-            <artifactId>commos-deps</artifactId>
+			<artifactId>commos-deps</artifactId>
 			<version>${project.version}</version>
 			<type>pom</type>
 		</dependency>
-        <dependency>
+		<dependency>
 			<groupId>com.szty.main.framework</groupId>
-            <artifactId>framework</artifactId>
+			<artifactId>framework</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-  </dependencies>
- 
+	</dependencies>
+
 </project>

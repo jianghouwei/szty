@@ -2,7 +2,7 @@ package com.szty.commos.shiros.service;
 
 import java.util.List;
 
-import com.stzy.commos.page.model.PageModel;
+import com.szty.commos.page.model.PageModel;
 import com.szty.commos.shiros.model.SysGroups;
 
 /**

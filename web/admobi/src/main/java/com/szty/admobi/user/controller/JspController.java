@@ -92,4 +92,9 @@ public class JspController {
 		
 	}
 	
+	@RequestMapping(value = "/welcome")
+	public String welcome(HttpServletRequest request) {
+		return "login";
+	}
+	
 }

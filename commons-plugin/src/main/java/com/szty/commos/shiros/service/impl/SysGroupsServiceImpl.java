@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.stzy.commos.page.model.PageModel;
+import com.szty.commos.page.model.PageModel;
 import com.szty.commos.shiros.dao.SysGroupsMapper;
 import com.szty.commos.shiros.model.SysGroups;
 import com.szty.commos.shiros.service.SysGroupsService;

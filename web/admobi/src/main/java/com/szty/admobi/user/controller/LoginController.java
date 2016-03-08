@@ -2,6 +2,9 @@ package com.szty.admobi.user.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -35,12 +38,17 @@ public class LoginController {
 	 */
 	@RequestMapping(value = "/login")
 	public String login(HttpServletRequest request) {
+		UsernamePasswordToken token = new UsernamePasswordToken();
 		String userName = request.getParameter("userName");
 		String passWord = request.getParameter("passWord");
-		if ("admin".equals(userName) && "123456".equals(passWord)) {
-			return "index";
-		}
-		return "null";
+		// String rememberMe = request.getParameter("RememberMe");
+		//token.setRememberMe(true);
+		token.setUsername(userName);
+		token.setPassword(passWord.toCharArray());
+		Subject user = SecurityUtils.getSubject(); 
+		user.login(token);  
+		return "index";
+
 	}
 
 }

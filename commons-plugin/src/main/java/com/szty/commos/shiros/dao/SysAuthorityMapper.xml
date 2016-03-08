@@ -10,25 +10,15 @@
 		<!---->
 		<result column="resouces_id"  property="resoucesId" />
 		<!---->
-		<result column="add"  property="add" />
+		<result column="resouces_code"  property="resoucesCode" />
 		<!---->
-		<result column="edit"  property="edit" />
-		<!---->
-		<result column="imports"  property="imports" />
-		<!---->
-		<result column="exports"  property="exports" />
-		<!---->
-		<result column="delete"  property="delete" />
-		<!---->
-		<result column="view"  property="view" />
-		<!---->
-		<result column="upload"  property="upload" />
+		<result column="resouces_auth"  property="resoucesAuth" />
 	</resultMap>
 
 
 	<!-- 通用查询结果列-->
 	<sql id="Base_Column_List">
-	id,	resouces_id,	add,	edit,	imports,	exports,	delete,	view,	upload
+	id,	resouces_id,	resouces_code,	resouces_auth
 	</sql>
 
 
@@ -42,26 +32,11 @@
 			<if test="resoucesId != null and resoucesId != '' ">
 				 and resouces_id = #{resoucesId}
 			</if>
-			<if test="add != null and add != '' ">
-				 and add = #{add}
+			<if test="resoucesCode != null and resoucesCode != '' ">
+				 and resouces_code = #{resoucesCode}
 			</if>
-			<if test="edit != null and edit != '' ">
-				 and edit = #{edit}
-			</if>
-			<if test="imports != null and imports != '' ">
-				 and imports = #{imports}
-			</if>
-			<if test="exports != null and exports != '' ">
-				 and exports = #{exports}
-			</if>
-			<if test="delete != null and delete != '' ">
-				 and delete = #{delete}
-			</if>
-			<if test="view != null and view != '' ">
-				 and view = #{view}
-			</if>
-			<if test="upload != null and upload != '' ">
-				 and upload = #{upload}
+			<if test="resoucesAuth != null and resoucesAuth != '' ">
+				 and resouces_auth = #{resoucesAuth}
 			</if>
 
 	</where>
@@ -80,9 +55,9 @@
 		 SELECT LAST_INSERT_ID()
 		 </selectKey>
 		 INSERT INTO sys_authority
- 		(resouces_id,add,edit,imports,exports,delete,view,upload) 
+ 		(resouces_id,resouces_code,resouces_auth) 
 		 VALUES 
- 		(#{resoucesId},#{add},#{edit},#{imports},#{exports},#{delete},#{view},#{upload}) 
+ 		(#{resoucesId},#{resoucesCode},#{resoucesAuth}) 
 	</insert>
 
 	<!-- 添加 （匹配有值的字段）-->
@@ -95,26 +70,11 @@
 			<if test="resoucesId != null">
 				 resouces_id,
 			</if>
-			<if test="add != null">
-				 add,
+			<if test="resoucesCode != null">
+				 resouces_code,
 			</if>
-			<if test="edit != null">
-				 edit,
-			</if>
-			<if test="imports != null">
-				 imports,
-			</if>
-			<if test="exports != null">
-				 exports,
-			</if>
-			<if test="delete != null">
-				 delete,
-			</if>
-			<if test="view != null">
-				 view,
-			</if>
-			<if test="upload != null">
-				 upload,
+			<if test="resoucesAuth != null">
+				 resouces_auth,
 			</if>
 
 		 </trim>
@@ -125,26 +85,11 @@
 			<if test="resoucesId!=null and resoucesId!='' ">
 				 #{resoucesId},
 			</if>
-			<if test="add!=null and add!='' ">
-				 #{add},
+			<if test="resoucesCode!=null and resoucesCode!='' ">
+				 #{resoucesCode},
 			</if>
-			<if test="edit!=null and edit!='' ">
-				 #{edit},
-			</if>
-			<if test="imports!=null and imports!='' ">
-				 #{imports},
-			</if>
-			<if test="exports!=null and exports!='' ">
-				 #{exports},
-			</if>
-			<if test="delete!=null and delete!='' ">
-				 #{delete},
-			</if>
-			<if test="view!=null and view!='' ">
-				 #{view},
-			</if>
-			<if test="upload!=null and upload!='' ">
-				 #{upload},
+			<if test="resoucesAuth!=null and resoucesAuth!='' ">
+				 #{resoucesAuth},
 			</if>
 		 </trim>
 	</insert>
@@ -152,10 +97,10 @@
 	<!-- 添加 -->
 	<insert id="saveBatchSysAuthority" parameterType="java.util.List">
 		 INSERT INTO sys_authority
- 		(resouces_id,add,edit,imports,exports,delete,view,upload) 
+ 		(resouces_id,resouces_code,resouces_auth) 
 		 VALUES 
  		 <foreach collection="list" item="item" index="index" separator="," >  
- 		(#{item.resoucesId},#{item.add},#{item.edit},#{item.imports},#{item.exports},#{item.delete},#{item.view},#{item.upload}) 
+ 		(#{item.resoucesId},#{item.resoucesCode},#{item.resoucesAuth}) 
  		 </foreach>
 	</insert>
 
@@ -166,26 +111,11 @@
 			<if test="resoucesId != null">
 				 resouces_id = #{resoucesId},
 			</if>
-			<if test="add != null">
-				 add = #{add},
+			<if test="resoucesCode != null">
+				 resouces_code = #{resoucesCode},
 			</if>
-			<if test="edit != null">
-				 edit = #{edit},
-			</if>
-			<if test="imports != null">
-				 imports = #{imports},
-			</if>
-			<if test="exports != null">
-				 exports = #{exports},
-			</if>
-			<if test="delete != null">
-				 delete = #{delete},
-			</if>
-			<if test="view != null">
-				 view = #{view},
-			</if>
-			<if test="upload != null">
-				 upload = #{upload}
+			<if test="resoucesAuth != null">
+				 resouces_auth = #{resoucesAuth}
 			</if>
 
 		 </set> 		 WHERE id = #{id}

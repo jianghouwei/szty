@@ -1,4 +1,4 @@
-package com.stzy.commos.page.model;
+package com.szty.commos.page.model;
 
 import java.util.List;
 
