@@ -22,7 +22,7 @@ public class BaseButCode {
 	/** 新增 **/
 	public static String BUT_ADD = "add";
 	/** 新增 **/
-	public static String BUT_ADD_NAME = "add";
+	public static String BUT_ADD_NAME = "新增";
 
 	/** 删除 **/
 	public static String BUT_DELETE_NAME = "删除";

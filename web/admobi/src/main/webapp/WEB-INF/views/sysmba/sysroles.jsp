@@ -32,16 +32,16 @@
 				href="javascript:void(0)" class="easyui-linkbutton"
 				iconCls="icon-edit" plain="true" onclick="editUser()">编辑</a> <a
 				href="javascript:void(0)" class="easyui-linkbutton"
-				iconCls="icon-remove" plain="true" onclick="destroyUser()">删除</a> <a
-				href="javascript:void(0)" class="easyui-linkbutton"
-				iconCls="icon-add" plain="true" onclick="$('#w').window('open')">角色权限管理</a>
+				iconCls="icon-remove" plain="true" onclick="destroyUser()">删除</a>
+				 <a href="javascript:void(0)" class="easyui-linkbutton"
+				iconCls="icon-remove" plain="true" onclick="authRole()">角色权限</a>
 		</div>
 	</div>
 	<!-- 新增和修改 -->
 	<div id="dlg" class="easyui-dialog"
 		style="width: 400px; height: 280px; padding: 10px 20px" closed="true"
 		buttons="#dlg-buttons">
-		<div class="ftitle">User Information</div>
+		<div class="ftitle">角色维护</div>
 		<form id="fm" method="post" novalidate>
 			<div class="fitem">
 				<label>角色名称:</label> <input name="roleName" class="easyui-textbox"
@@ -55,33 +55,33 @@
 	</div>
 	<div id="dlg-buttons">
 		<a href="javascript:void(0)" class="easyui-linkbutton c6"
-			iconCls="icon-ok" onclick="saveUser()" style="width: 90px">Save</a> <a
+			iconCls="icon-ok" onclick="saveUser()" style="width: 90px">保存</a> <a
 			href="javascript:void(0)" class="easyui-linkbutton"
 			iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')"
-			style="width: 90px">Cancel</a>
+			style="width: 90px">关闭</a>
 	</div>
 
-
-	<div id="w" class="easyui-window" title="角色权限"
-		data-options="iconCls:'icon-save'"
-		style="width: 500px; height: 200px; padding: 5px;">
+	<!-- 角色权限 -->
+	<div id="dlg_AuthRole" class="easyui-dialog"
+		style="width: 700px; height: 500px; padding: 1px 2px" closed="true"
+		buttons="#dlgAuth-buttons">
 		<div class="easyui-layout" data-options="fit:true">
-			<div data-options="region:'east',split:true title='角色'"
-				style="width: 100px">
-				<ul id="ttRoles" class="easyui-tree" data-options="url:'rolesTrees',method:'get',animate:true,checkbox:true"></ul>
+			<div data-options="region:'west',split:true" style="width: 350px">
+				<ul id="ttroles" class="easyui-tree"
+					data-options="url:'rolesTrees',method:'get',animate:true,checkbox:true"></ul>
 			</div>
-			<div data-options="region:'center'split:true title='权限'"
-				style="padding: 10px;">
-				<ul id="ttAuth" class="easyui-tree" data-options="url:'authTrees',method:'get',animate:true,checkbox:true"></ul>
-			</div>
-			<div data-options="region:'south',border:false"
-				style="text-align: right; padding: 5px 0 0;">
-				<a class="easyui-linkbutton" data-options="iconCls:'icon-ok'"
-					href="javascript:void(0)" onclick="onsave()" style="width: 80px">保存</a>
-				<a class="easyui-linkbutton" data-options="iconCls:'icon-cancel'"
-					href="javascript:void(0)" onclick="$('#w').window('close')"
-					style="width: 80px">关闭</a>
+			<div data-options="region:'east',split:true" style="width: 350px">
+				<ul id="ttauth" class="easyui-tree"
+					data-options="url:'authTrees',method:'get',animate:true,checkbox:true"></ul>
 			</div>
 		</div>
+	</div>
+	<div id="dlgAuth-buttons">
+		<a id="saveAuthButtom" href="javascript:void(0)"
+			class="easyui-linkbutton c6" iconCls="icon-ok"
+			onclick="authRoleSave()" style="width: 90px">保存</a> <a
+			href="javascript:void(0)" class="easyui-linkbutton"
+			iconCls="icon-cancel" onclick="javascript:$('#dlg_AuthRole').dialog('close')"
+			style="width: 90px">关闭</a>
 	</div>
 </body>

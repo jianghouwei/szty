@@ -15,33 +15,30 @@ public class SysResourcesServiceImpl  implements SysResourcesService{
 
 	@Autowired 
 	private SysResourcesMapper SysResourcesMapper;
-	@Override
+
+	
 	public void saveSysResources(SysResources SysResources) {
 
 		SysResourcesMapper.save(SysResources);
 		
 	}
 
-	@Override
 	public void updateSysResources(SysResources SysResources) {
 
 		SysResourcesMapper.updateByPrimaryKey(SysResources);
 	}
 
-	@Override
 	public void delSysResources(Long id) {
 		
 		SysResourcesMapper.delByPrimaryKey(id);
 		
 	}
 
-	@Override
 	public List<SysResources> queryList(SysResources SysResources) {
 		
 		return SysResourcesMapper.queryList(SysResources);
 	}
 
-	@Override
 	public PageModel<SysResources, Object> queryPageSysResources(SysResources SysResources) {
 		PageModel<SysResources, Object> page = new PageModel<SysResources, Object>();
 		List<SysResources> rows = SysResourcesMapper.queryPageList(SysResources);

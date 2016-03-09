@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
 	String path = request.getContextPath();
@@ -12,16 +13,18 @@
 			data-options="selected:true,iconCls:'icon-large-picture'"
 			style="padding: 10px;">
 			<p>
-				<a href="#" class="easyui-linkbutton"
-					data-options="iconCls:'icon-large-picture'"
-					onclick="addTab('sysmba/sysuser', '用户管理')">用户管理</a>
+				<shiro:hasPermission name="user:*">
+					<a href="#" class="easyui-linkbutton"
+						data-options="iconCls:'icon-large-picture'"
+						onclick="addTab('sysmba/sysuser', '用户管理')">用户管理</a>
+				</shiro:hasPermission>
 			</p>
 			<p>
 				<a href="#" class="easyui-linkbutton"
 					data-options="iconCls:'icon-large-clipart',size:'large',"
 					onclick="addTab('sysmba/sysroles', '角色管理')">角色管理</a>
 			</p>
-			
+
 			<p>
 				<a href="#" class="easyui-linkbutton"
 					data-options="iconCls:'icon-large-shapes',size:'large',iconAlign:'top'"
@@ -44,7 +47,7 @@
 
 </div>
 <script type="text/javascript">
-	function addTab(url,title) {
+	function addTab(url, title) {
 		if ($('#tabs').tabs('exists', title)) {
 			$('#tabs').tabs('select', title);
 		} else {

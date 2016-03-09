@@ -18,7 +18,7 @@ public interface SysAuthorityMapper{
 	 * 添加
 	 * 
 	 **/
-	 public void save( SysAuthority sysAuthority);
+	 public int save( SysAuthority sysAuthority);
 
 	/**
 	 * 

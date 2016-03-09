@@ -33,7 +33,10 @@ public class PermissionsServiceImpl  implements PermissionsService{
 		}else{
 			List<String> auths = permissionsMapper.queryPerssListByUserName(userName);
 			for(String auth : auths){
-				list.addAll(Arrays.asList(auth.split(","))) ;
+				if(auth != null){
+					list.addAll(Arrays.asList(auth.split(","))) ;
+				}
+				
 			}
 			String authstr = JSON.toJSONString(list);
 			cacheManager.getCache("sys-authCache").put("auths." + userName, authstr);

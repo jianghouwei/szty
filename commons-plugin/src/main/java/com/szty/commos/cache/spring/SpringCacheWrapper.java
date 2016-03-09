@@ -42,13 +42,11 @@ public class SpringCacheWrapper implements Cache<Object, Object> {
 	 * @author mao.ru 
 	 * date: 2016年3月7日 上午11:17:25 <br/>
 	 */
-	@Override
 	public void clear() throws CacheException {
 
 		springCache.clear();
 	}
 
-	@Override
 	public Object get(Object key) throws CacheException {
 		Object value = springCache.get(key);
 		if (value instanceof SimpleValueWrapper) {
@@ -64,7 +62,6 @@ public class SpringCacheWrapper implements Cache<Object, Object> {
 	 * @see org.apache.shiro.cache.Cache#keys()
 	 * @author mao.ru date: 2016年3月7日 上午11:11:15 <br/>
 	 */
-	@Override
 	public Set<Object> keys() {
 		Set<Object> set = new HashSet<Object>();
 		if (springCache.getNativeCache() instanceof Ehcache) {
@@ -81,13 +78,11 @@ public class SpringCacheWrapper implements Cache<Object, Object> {
 	
 	
 
-	@Override
 	public Object put(Object key, Object value) throws CacheException {
 		springCache.put(key, value);
 		return null;
 	}
 
-	@Override
 	public Object remove(Object key) throws CacheException {
 		springCache.evict(key);
 		return null;
@@ -100,7 +95,6 @@ public class SpringCacheWrapper implements Cache<Object, Object> {
 	 * @author mao.ru 
 	 * date: 2016年3月7日 上午11:15:50 <br/>
 	 */
-	@Override
 	public int size() {
 		if (springCache.getNativeCache() instanceof Ehcache) {
 			Ehcache ehcache = (Ehcache) springCache.getNativeCache();
@@ -116,7 +110,6 @@ public class SpringCacheWrapper implements Cache<Object, Object> {
 	 * @author mao.ru 
 	 * date: 2016年3月7日 上午11:16:15 <br/>
 	 */
-	@Override
 	public Collection<Object> values() {
 		if (springCache.getNativeCache() instanceof Ehcache) {
 			Ehcache ehcache = (Ehcache) springCache.getNativeCache();

@@ -66,3 +66,46 @@ function destroyUser() {
 				});
 	}
 }
+
+
+/**
+ * 分配角色
+ */
+function authRole() {
+	$('#dlg_AuthRole').dialog('open').dialog('center').dialog('setTitle',
+			'权限分配');
+	
+}
+/**
+ * 分配角色
+ */
+function authRoleSave() {
+	
+	var roleIds = getChecked("ttroles");
+	var auths = getChecked("ttauth");
+	$.ajax({
+		type : "GET",
+		url :"authResources",
+		async : false,
+		data : {
+			roleIds:roleIds,
+			auths:auths
+		},
+		success : function(data) {
+		}
+	});
+}
+
+/**
+ * 获取选择节点Id
+ */
+function getChecked(treeId){
+	var nodes = $('#'+treeId).tree('getChecked');
+	var s = '';
+	for(var i=0; i<nodes.length; i++){
+		if (s != '') s += ',';
+		s += nodes[i].id;
+	}
+	alert(s);
+	return s;
+}

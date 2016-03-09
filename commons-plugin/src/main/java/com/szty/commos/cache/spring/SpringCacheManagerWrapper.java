@@ -29,7 +29,6 @@ public class SpringCacheManagerWrapper implements CacheManager {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
 	public <K, V> Cache<K, V> getCache(String name) throws CacheException {
 		org.springframework.cache.Cache springCache = cacheManager.getCache(name);
 		return (Cache<K, V>) new SpringCacheWrapper(springCache);

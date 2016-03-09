@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.szty.commos.cache.spring.SpringCacheManagerWrapper;
-import com.szty.commos.cache.spring.SpringCacheWrapper;
 import com.szty.commos.page.model.PageModel;
 import com.szty.commos.shiros.dao.SysUsersMapper;
 import com.szty.commos.shiros.model.SysUsers;
@@ -30,30 +29,25 @@ public class SysUsersServiceImpl implements SysUsersService {
 	@Autowired
 	private  SpringCacheManagerWrapper cacheManager;
 	
-	@Override
 	public void saveSysUser(SysUsers sysUsers) {
 		sysUsersMapper.save(sysUsers);
 
 	}
 
-	@Override
 	public void updateSysUser(SysUsers sysUsers) {
 		sysUsersMapper.updateByPrimaryKey(sysUsers);
 
 	}
 
-	@Override
 	public void delSysUser(Long id) {
 		sysUsersMapper.delByPrimaryKey(id);
 
 	}
 
-	@Override
 	public List<SysUsers> queryList(SysUsers sysUsers) {
 		return sysUsersMapper.queryList(sysUsers);
 	}
 
-	@Override
 	public PageModel<SysUsers, Object> queryPageSysUser(SysUsers sysUsers) {
 		PageModel<SysUsers, Object> page = new PageModel<SysUsers, Object>();
 		List<SysUsers> rows = sysUsersMapper.queryPageList(sysUsers);
@@ -63,7 +57,6 @@ public class SysUsersServiceImpl implements SysUsersService {
 		return page;
 	}
 
-	@Override
 	public SysUsers queryByUserName(String userName) {
 		
 		SysUsers sysUsers = (SysUsers) cacheManager.getCache("sys-userCache").get(userName);

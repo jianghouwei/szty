@@ -79,49 +79,6 @@
 
 
 	<!-- 角色分配  -->
-	<div id="dlg_assignRole1" class="easyui-dialog"
-		style="width: 700px; height: 480px; padding: 1px 2px" closed="true"
-		buttons="#dlgRole-buttons">
-		<div class="easyui-layout" data-options="fit:true">
-			<div data-options="region:'west',split:true" style="width: 350px">
-				<table table id="ttuser" class="easyui-datagrid" url="usersList"
-					title="用户列表" iconCls="icon-save" rownumbers="true" fit="true"
-					fitColumns="true" singleSelect="true">
-					<thead>
-						<tr>
-							<th data-options="field:'ck',checkbox:true"></th>
-							<th data-options="field:'userName'">姓名</th>
-							<th data-options="field:'userCode'">编码</th>
-						</tr>
-					</thead>
-				</table>
-			</div>
-			<div data-options="region:'east',split:true" style="width: 350px">
-				<table table id="ttrole" class="easyui-datagrid" url="rolesList"
-					iconCls="icon-save" rownumbers="true" fit="true" title="角色列表"
-					fitColumns="true">
-					<thead>
-						<tr>
-							<th data-options="field:'ck',checkbox:true"></th>
-							<th data-options="field:'roleName'">角色名称</th>
-							<th data-options="field:'roleCode'">角色编码</th>
-						</tr>
-					</thead>
-				</table>
-			</div>
-		</div>
-	</div>
-	<div id="dlgRole-buttons">
-		<a id="saveRoleButtom" href="javascript:void(0)"
-			class="easyui-linkbutton c6" iconCls="icon-ok"
-			onclick="assignRoleSave()" style="width: 90px">保存</a> <a
-			href="javascript:void(0)" class="easyui-linkbutton"
-			iconCls="icon-cancel"
-			onclick="javascript:$('#dlg_assignRole').dialog('close')"
-			style="width: 90px">取消</a>
-	</div>
-
-	<!-- 角色分配  -->
 	<div id="dlg_assignRole" class="easyui-dialog"
 		style="width: 700px; height: 480px; padding: 1px 2px" closed="true"
 		buttons="#dlgRole-buttons">
@@ -135,5 +92,14 @@
 					data-options="url:'rolesCheckTrees',method:'get',animate:true,checkbox:true"></ul>
 			</div>
 		</div>
+	</div>
+	<div id="dlgRole-buttons">
+		<a id="saveRoleButtom" href="javascript:void(0)"
+			class="easyui-linkbutton c6" iconCls="icon-ok"
+			onclick="assignRoleSave()" style="width: 90px">保存</a> <a
+			href="javascript:void(0)" class="easyui-linkbutton"
+			iconCls="icon-cancel"
+			onclick="javascript:$('#dlg_assignRole').dialog('close')"
+			style="width: 90px">取消</a>
 	</div>
 </body>

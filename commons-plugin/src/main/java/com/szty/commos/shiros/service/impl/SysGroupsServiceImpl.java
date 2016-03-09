@@ -27,28 +27,23 @@ public class SysGroupsServiceImpl implements SysGroupsService {
 	@Autowired
 	private  SysGroupsMapper sysGroupsMapper;
 	
-	@Override
 	public void saveSysGroups(SysGroups sysGroups) {
 		
 		sysGroupsMapper.save(sysGroups);
 	}
 
-	@Override
 	public void updateSysGroups(SysGroups sysGroups) {
 		sysGroupsMapper.updateByPrimaryKey(sysGroups);
 	}
 
-	@Override
 	public void delSysGroups(Long id) {
 		sysGroupsMapper.delByPrimaryKey(id);
 	}
 
-	@Override
 	public List<SysGroups> queryList(SysGroups sysGroups) {
 		return sysGroupsMapper.queryList(sysGroups);
 	}
 
-	@Override
 	public PageModel<SysGroups, Object> queryPageSysGroups(SysGroups sysGroups) {
 		PageModel<SysGroups, Object> page = new PageModel<SysGroups, Object>();
 		List<SysGroups> rows = sysGroupsMapper.queryPageList(sysGroups);

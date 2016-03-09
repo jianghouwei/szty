@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.szty.commos.page.model.PageModel;
+import com.szty.commos.shiro.utils.EndecryptUtils;
 import com.szty.commos.shiros.model.SysUsers;
 import com.szty.commos.shiros.service.SysUsersService;
 import com.szty.framework.base.msg.ControllerMsg;
@@ -65,7 +66,7 @@ public class SysUsersController {
 	 */
 	@RequestMapping(value = "/usersAdd")
 	public @ResponseBody String setUsersAdd(HttpServletRequest request , SysUsers sysUsers, String logo){
-		sysUsers.setUserPassword("1123123");
+		sysUsers.setUserPassword(EndecryptUtils.md5Password("123456"));
 		sysUsersService.saveSysUser(sysUsers);
 		return JSON.toJSONString(new ControllerMsg("ok","成功")); 
 	}

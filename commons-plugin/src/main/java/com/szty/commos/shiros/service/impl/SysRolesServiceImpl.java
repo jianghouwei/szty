@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import com.alibaba.druid.util.StringUtils;
 import com.alibaba.fastjson.JSON;
 import com.szty.commos.cache.spring.SpringCacheManagerWrapper;
-import com.szty.commos.cache.spring.SpringCacheWrapper;
 import com.szty.commos.page.model.PageModel;
 import com.szty.commos.shiros.dao.RolesMapper;
 import com.szty.commos.shiros.dao.SysRolesMapper;
@@ -43,31 +42,26 @@ public class SysRolesServiceImpl implements SysRolesService{
 	private  SpringCacheManagerWrapper cacheManager;
 	
 	
-	@Override
 	public void saveSysRoles(SysRoles sysRoles) {
 		sysRolesMapper.save(sysRoles);
 		
 	}
 
-	@Override
 	public void updateSysRoles(SysRoles sysRoles) {
 
 		sysRolesMapper.updateByPrimaryKey(sysRoles);
 	}
 
-	@Override
 	public void delSysRoles(Long id) {
 
 		sysRolesMapper.delByPrimaryKey(id);
 		
 	}
 
-	@Override
 	public List<SysRoles> queryList(SysRoles sysRoles) {
  		return sysRolesMapper.queryList(sysRoles);
 	}
 
-	@Override
 	public PageModel<SysRoles, Object> queryPageSysRoles(SysRoles sysRoles) {
 		PageModel<SysRoles, Object> page = new PageModel<SysRoles, Object>();
 		List<SysRoles> rows = sysRolesMapper.queryPageList(sysRoles);
@@ -77,7 +71,6 @@ public class SysRolesServiceImpl implements SysRolesService{
 		return page;
 	}
 
-	@Override
 	public Set<String> queryRolesListByUserName(String userName) {
 		List<String> list = null;
 		String str =  (String) cacheManager.getCache("sys-RolesCache").get("roles." + userName);
@@ -89,7 +82,7 @@ public class SysRolesServiceImpl implements SysRolesService{
 			String roles = JSON.toJSONString(list);
 			cacheManager.getCache("sys-RolesCache").put("roles." + userName, roles);
 		}
-		return new HashSet<>(list);
+		return new HashSet<String>(list);
 	}
 
 }

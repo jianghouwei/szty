@@ -21,7 +21,6 @@ public class UserRolesServiceImpl implements UserRolesService {
 	@Autowired
 	private RolesMapper rolesMapper;
 
-	@Override
 	public void saveUserRole(List<Long> userIds, List<Long> roleIds) {
 
 		List<SysUsersRoles> list = new ArrayList<SysUsersRoles>();
@@ -37,7 +36,6 @@ public class UserRolesServiceImpl implements UserRolesService {
 
 	}
 
-	@Override
 	public List<RolesUsersModel> queryRolesListByuserId() {
 		
 		return rolesMapper.queryRolesListByuserId();

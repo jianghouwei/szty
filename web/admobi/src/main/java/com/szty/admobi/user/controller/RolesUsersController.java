@@ -168,7 +168,6 @@ public class RolesUsersController {
 		for(String str : strs){
 			list.add(Long.valueOf(str));
 		}
-		
 		return list;
 		
 	}
