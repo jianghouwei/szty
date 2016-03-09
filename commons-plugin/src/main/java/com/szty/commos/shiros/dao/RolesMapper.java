@@ -2,6 +2,7 @@ package com.szty.commos.shiros.dao;
 
 import java.util.List;
 
+import com.szty.commos.shiros.model.dto.RolesUsersModel;
 
 /**
  * 
@@ -9,16 +10,20 @@ import java.util.List;
  * 
  */
 
-public interface RolesMapper{
-
-
+public interface RolesMapper {
 
 	/**
 	 * 
 	 * 依据用户名查询当前用户所有角色
 	 * 
 	 **/
-	 public List<String>  queryRolesListByUserName (String userName);
+	public List<String> queryRolesListByUserName(String userName);
 
+	/**
+	 * 
+	 * 依据用户名查询当前用户所有角色
+	 * 
+	 **/
+	public List<RolesUsersModel> queryRolesListByuserId();
 
 }

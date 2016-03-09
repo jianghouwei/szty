@@ -47,6 +47,7 @@ public class LoginController {
 		token.setPassword(passWord.toCharArray());
 		Subject user = SecurityUtils.getSubject(); 
 		user.login(token);  
+		request.getSession().setAttribute("user", user);
 		return "index";
 
 	}

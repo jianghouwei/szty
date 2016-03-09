@@ -2,7 +2,6 @@ package com.szty.commos.shiro.creadentials;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.ExcessiveAttemptsException;
@@ -48,7 +47,7 @@ public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher
 			retryCount = new AtomicInteger(0);
 			passwordRetryCache.put(username, retryCount);
 		}
-		if (retryCount.incrementAndGet() > 5) {
+		if (retryCount.incrementAndGet() > 50) {
 			// if retry count > 5 throw
 			throw new ExcessiveAttemptsException();
 		}

@@ -4,7 +4,7 @@
 <div id="main" data-options="region:'center'">
 	<div id="tabs" class="easyui-tabs" fit="true" border="false" data-options="closable:true">
 		<!--欢迎标签 START-->
-		<div title="欢迎使用">
+		<div title="欢迎使用" data-options="closable:true">
 			<h1 style="font-size: 24px;">asdfasd</h1>
 			<h1 style="font-size: 24px;"></h1>
 		</div>

@@ -12,7 +12,6 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.szty.commos.shiro.utils.EndecryptUtils;
 import com.szty.commos.shiros.model.SysUsers;
 import com.szty.commos.shiros.service.PermissionsService;
 import com.szty.commos.shiros.service.SysRolesService;
@@ -83,7 +82,6 @@ public class ShiroRealm extends AuthorizingRealm {
 			throw new AuthenticationException();// 没找到帐号
 		}
 		SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user.getUserName(), user.getUserPassword(), getName());
-
 		return authenticationInfo;
 	}
 

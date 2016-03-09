@@ -77,7 +77,7 @@
 	<mvc:resources location="/charisma/" mapping="/charisma/**" />
 	<mvc:resources location="/easyui/" mapping="/easyui/**" />
 	<mvc:resources location="/admjs/" mapping="/admjs/**" />
-	<mvc:view-controller path="/" view-name="/welcome" />
+	<!-- <mvc:view-controller path="/" view-name="/welcome" /> -->
 	<!-- 静态资源 -->
 	<mvc:default-servlet-handler />
 	<bean
