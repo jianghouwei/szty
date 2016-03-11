@@ -12,6 +12,7 @@
   <description>web</description>
   <modules>
   	<module>admobi</module>
+  	<module>ota</module>
   </modules>
   
   <dependencies>
