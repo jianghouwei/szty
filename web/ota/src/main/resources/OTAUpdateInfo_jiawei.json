@@ -1,0 +1,19 @@
+{
+    "compatibility": "1",
+    "valid": true,
+    "app": "jiawei",
+    "enabled": true,
+    "diff_from": "",
+    "upload_status": "",
+    "counter": 12,
+    "changelog": "1.0.2 更新日志：\r\n1.OTA模块功能升级，此次升级之后，今后的升级将会更加人性化；\r\n2.新增iOS连接功能，可以测试配对苹果手机啦；\r\n3.语音搜索新增保留最近三次历史Query，今后再也不用重复对手表说同样的话了；\r\n4.Applist图标UI以及点击效果优化；\r\n5.系统初次加载速度优化，再也不用像原生系统那样漫长的等待了；\r\n6.语音搜索卡片新增动态背景，现在查美女帅哥可以直接在手表上看图片了；\r\n7.修复自动灭屏还微亮bug；\r\n8.修复屏幕常亮模式下抬手不亮屏bug；\r\n9.修复部分机型表盘中心crash的bug；\r\n10.修复语音设置闹钟crash的bug；\r\n11.修复自动暗屏会先亮一下再灭屏的bug；\r\n12.更新部分表盘app；\r\n13.其他一些功能和体验的bug；",
+    "number": 2,
+    "url": "http://oat.lianluo.com/jiawei-main-1.0.2.zip",
+    "version": "1.0.2",
+    "size": 245207997,
+    "force_update": false,
+    "description": "1.0.2 one test",
+    "md5": "ca9981c29c284175e6a1ffc44b7ee497",
+    "created_at": "2016-03-09",
+    "channel": "jiawei"
+}

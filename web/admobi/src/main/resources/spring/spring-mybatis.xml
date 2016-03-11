@@ -78,7 +78,5 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-	<!-- <import resource="spring-config-cache.xml" />
-	<import resource="spring-config-shiro.xml" /> -->
 
 </beans>

@@ -9,4 +9,15 @@
   <artifactId>framework</artifactId>
   <name>framework</name>
   <description>framework</description>
+  
+  
+  <dependencies>
+		<dependency>
+			<groupId>com.szty.commos.deps</groupId>
+			<artifactId>commos-deps</artifactId>
+			<version>${project.version}</version>
+			<type>pom</type>
+		</dependency>
+	</dependencies>
+  
 </project>

@@ -11,7 +11,9 @@
        http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-	<context:component-scan base-package="com.szty.commos.**.service" />
+
+		
+	<context:property-placeholder location="classpath:jdbc.properties" />
 
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		init-method="init" destroy-method="close">
@@ -78,7 +80,5 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-	<!-- <import resource="spring-config-cache.xml" />
-	<import resource="spring-config-shiro.xml" /> -->
 
 </beans>
