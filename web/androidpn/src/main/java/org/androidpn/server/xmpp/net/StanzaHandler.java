@@ -41,7 +41,7 @@ import org.xmpp.packet.StreamError;
 
 /** 
  * This class is to handle incoming XML stanzas.
- *
+ * 处理传入的XML节
  * @author Sehwan Noh (devnoh@gmail.com)
  */
 public class StanzaHandler {
@@ -137,6 +137,11 @@ public class StanzaHandler {
 
     }
 
+    /**
+     * 型是<message>打头的，
+     * 表示消息是message类型
+     * @param doc
+     */
     private void processMessage(Element doc) {
         log.debug("processMessage()...");
         Message packet;
@@ -154,10 +159,16 @@ public class StanzaHandler {
         }
 
         packet.setFrom(session.getAddress());
-        router.route(packet);
+        router.route(packet);//
         session.incrementClientPacketCount();
     }
 
+    /**
+     * Presence --消息请求头
+     * 
+     * 消息请求用户的状态
+     * @param doc
+     */
     private void processPresence(Element doc) {
         log.debug("processPresence()...");
         Presence packet;
@@ -185,6 +196,11 @@ public class StanzaHandler {
         session.incrementClientPacketCount();
     }
 
+    /**
+     * 请求消息开头信息 IQ
+     * 客户端对server端的一个请求
+     * @param doc
+     */
     private void processIQ(Element doc) {
         log.debug("processIQ()...");
         IQ packet;

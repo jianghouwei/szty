@@ -38,7 +38,7 @@ import org.xmpp.packet.PacketError;
 
 /** 
  * This class is to route IQ packets to their corresponding handler.
- *
+ *  这个类是 IQ 客户端对server端的一个请求
  * @author Sehwan Noh (devnoh@gmail.com)
  */
 public class IQRouter {

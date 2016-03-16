@@ -50,7 +50,7 @@ public class PresenceManager {
 
     /**
      * Returns the current presence of the user.
-     * 
+     * 获取session user
      * @param user the user
      * @return the current presence of the user.
      */

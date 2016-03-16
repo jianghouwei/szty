@@ -37,7 +37,7 @@ import org.xmpp.packet.PacketError;
 
 /** 
  * This class is to handle the TYPE_IQ jabber:iq:register protocol.
- *
+ * 注册
  * @author Sehwan Noh (devnoh@gmail.com)
  */
 public class IQRegisterHandler extends IQHandler {

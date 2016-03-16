@@ -29,7 +29,7 @@ import org.xmpp.packet.PacketError;
 import org.xmpp.packet.Presence;
 
 /** 
- * This class is to handle the presence protocol.
+ * 处理存在协议
  *
  * @author Sehwan Noh (devnoh@gmail.com)
  */

@@ -15,33 +15,33 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
-package org.androidpn.server.xmpp.router;
+package org.androidpn.server.dao;
 
-import org.xmpp.packet.Message;
+import java.util.Date;
+import java.util.List;
 
-/**
- * This class is to route Message packets to their corresponding handler.
+import org.androidpn.server.model.User;
+import org.androidpn.server.service.UserNotFoundException;
+
+/** 
+ * User DAO (Data Access Object) interface. 
  *
- * 这个类是消息数据包路由到相应的处理程序。
- * 
  * @author Sehwan Noh (devnoh@gmail.com)
  */
-public class MessageRouter {
+public interface UserDao {
 
-	/**
-	 * Constucts a packet router.
-	 */
-	public MessageRouter() {
-	}
+    public User getUser(Long id);
 
-	/**
-	 * Routes the Message packet.
-	 * 
-	 * @param packet
-	 *            the packet to route
-	 */
-	public void route(Message packet) {
-		throw new RuntimeException("Please implement this!");
-	}
+    public User saveUser(User user);
+
+    public void removeUser(Long id);
+
+    public boolean exists(Long id);
+    
+    public List<User> getUsers();
+    
+    public List<User> getUsersFromCreatedDate(Date createDate);
+
+    public User getUserByUsername(String username) throws UserNotFoundException;
 
 }
