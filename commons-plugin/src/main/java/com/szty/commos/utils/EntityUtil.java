@@ -76,7 +76,7 @@ public class EntityUtil {
 																		// 包名
 
 	private final String driverName = "com.mysql.jdbc.Driver";
-	private final String dataName = "szty_system"; // 数据库名称
+	private final String dataName = "andriodpn"; // 数据库名称
 	private final String user = "root";
 	private final String password = "root";
 	private final String url = "jdbc:mysql://localhost:3306/" + dataName

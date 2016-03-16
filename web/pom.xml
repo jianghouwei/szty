@@ -13,6 +13,7 @@
   <modules>
   	<module>admobi</module>
   	<module>ota</module>
+  	<module>androidpn</module>
   </modules>
   
   <dependencies>
