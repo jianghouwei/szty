@@ -21,6 +21,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.net.URLDecoder;
 import java.security.KeyStore;
 
 import javax.net.ssl.KeyManagerFactory;
@@ -61,7 +62,8 @@ public class SSLConfig {
     }
 
     static {
-        storeType = Config.getString("xmpp.ssl.storeType", "JKS");
+    	classPath = SSLConfig.class.getResource("/");
+    	storeType = Config.getString("xmpp.ssl.storeType", "JKS");
         keyStoreLocation = Config.getString("xmpp.ssl.keystore", "conf"
                 + File.separator + "security" + File.separator + "keystore");
         keyStoreLocation = classPath.getPath() + File.separator
@@ -73,7 +75,7 @@ public class SSLConfig {
                 + File.separator + trustStoreLocation;
         trustPass = Config.getString("xmpp.ssl.trustpass", "changeit");
         
-        classPath = SSLConfig.class.getResource("/");
+        
 
         log.debug("keyStoreLocation=" + keyStoreLocation);
         log.debug("trustStoreLocation=" + trustStoreLocation);
@@ -81,6 +83,7 @@ public class SSLConfig {
         // Load keystore
         try {
             keyStore = KeyStore.getInstance(storeType);
+            //keyStore.load(new FileInputStream(URLDecoder.decode(keyStoreLocation)), keyPass.toCharArray());  
             keyStore.load(new FileInputStream(keyStoreLocation), keyPass
                     .toCharArray());
         } catch (Exception e) {

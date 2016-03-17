@@ -46,10 +46,6 @@ public class ServiceLocator implements ApplicationContextAware {
 		return context;
 	}
 
-	public static void setContext(ApplicationContext context) {
-		ServiceLocator.context = context;
-	}
-
 	public static ServiceLocator getInstance() {
 		if (servlocator == null)
 			servlocator = (ServiceLocator) context.getBean("serviceLocator");
@@ -82,10 +78,8 @@ public class ServiceLocator implements ApplicationContextAware {
 		return (UserService) context.getBean(USER_SERVICE);
 	}
 
-	@Override
-	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-		// TODO Auto-generated method stub
-		
+	public void setApplicationContext(ApplicationContext context) throws BeansException {
+		ServiceLocator.context = context;
 	}
 
 

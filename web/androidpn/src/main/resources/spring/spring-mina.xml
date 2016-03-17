@@ -10,12 +10,14 @@
        http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-
+	<bean id="userService" class="org.androidpn.server.service.impl.UserServiceImpl" />
+	
+	<bean id="serviceLocator" class="org.androidpn.server.service.ServiceLocator"
+		scope="singleton" />
 	<!-- =============================================================== -->
 	<!-- MINA -->
 	<!-- =============================================================== -->
-	<bean id="serviceLocator" class="org.androidpn.server.service.ServiceLocator"
-		scope="singleton" />
+
 
 	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
 		<property name="customEditors">

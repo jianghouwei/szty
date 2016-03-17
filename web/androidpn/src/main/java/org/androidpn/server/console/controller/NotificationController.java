@@ -62,7 +62,7 @@ public class NotificationController {
 	 * @throws Exception
 	 */
 	
-	
+	@RequestMapping(value = "/send.do")
 	public ModelAndView send(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String broadcast = ServletRequestUtils.getStringParameter(request, "broadcast", "Y");
 		String username = ServletRequestUtils.getStringParameter(request, "username");

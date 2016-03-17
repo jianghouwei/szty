@@ -36,27 +36,11 @@ import org.springframework.stereotype.Service;
  *
  * @author Sehwan Noh (devnoh@gmail.com)
  */
-@Service(value="userService")
+@Service
 public class UserServiceImpl implements UserService {
 
-	private static UserServiceImpl userServiceImpl = null;
-	
-	private UserServiceImpl(){
-		
-	}
-	public static  UserService getInstance(){
-		if(userServiceImpl == null){
-			userServiceImpl = new UserServiceImpl();
-		}
-		return userServiceImpl;
-	}
 	private final Log log = LogFactory.getLog(getClass());
 
-	// private UserDao userDao;
-	//
-	// public void setUserDao(UserDao userDao) {
-	// this.userDao = userDao;
-	// }
 	@Autowired
 	private ApnUserMapper apnUserMapper;
 
@@ -67,8 +51,7 @@ public class UserServiceImpl implements UserService {
 
 	public List<User> getUsers() {
 		User user = new User();
-		return apnUserMapper.queryList(user);
-		// return userDao.getUsers();
+		return apnUserMapper.queryList(null);
 	}
 
 	public List<User> getUsersFromCreatedDate(Date createDate) {

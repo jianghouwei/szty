@@ -56,8 +56,8 @@ public class IQRegisterHandler extends IQHandler {
      * Constructor.
      */
     public IQRegisterHandler() {
-    	userService = UserServiceImpl.getInstance();
-       // userService = ServiceLocator.getUserService();
+    	//userService = UserServiceImpl.getInstance();
+       userService = ServiceLocator.getUserService();
         probeResponse = DocumentHelper.createElement(QName.get("query",
                 NAMESPACE));
         probeResponse.addElement("username");

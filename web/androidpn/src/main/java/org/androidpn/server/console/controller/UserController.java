@@ -29,6 +29,7 @@ import org.androidpn.server.service.UserService;
 import org.androidpn.server.xmpp.presence.PresenceManager;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -43,7 +44,7 @@ public class UserController {
 
 	protected final Log log = LogFactory.getLog(getClass());
 	
-	@Resource(name = "userService")
+	@Autowired
 	private UserService userService;
 
 	// public UserController() {
@@ -68,5 +69,12 @@ public class UserController {
 		mav.setViewName("user/list");
 		return mav;
 	}
-
+	
+//	@RequestMapping(value="/index.do")
+//	public ModelAndView defaultjsp(HttpServletRequest request, HttpServletResponse response) throws Exception {
+//		ModelAndView mav = new ModelAndView();
+//		mav.setViewName("decorators/default");
+//		return mav;
+//	}
+	
 }
