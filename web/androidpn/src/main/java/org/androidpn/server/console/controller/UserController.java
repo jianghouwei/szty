@@ -19,6 +19,7 @@ package org.androidpn.server.console.controller;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -29,6 +30,7 @@ import org.androidpn.server.xmpp.presence.PresenceManager;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -40,13 +42,15 @@ import org.springframework.web.servlet.ModelAndView;
 public class UserController {
 
 	protected final Log log = LogFactory.getLog(getClass());
-
+	
+	@Resource(name = "userService")
 	private UserService userService;
 
-	public UserController() {
-		userService = ServiceLocator.getUserService();
-	}
+	// public UserController() {
+	// userService = ServiceLocator.getUserService();
+	// }
 
+	@RequestMapping(value="/user.do")
 	public ModelAndView list(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		PresenceManager presenceManager = new PresenceManager();
 		List<User> userList = userService.getUsers();

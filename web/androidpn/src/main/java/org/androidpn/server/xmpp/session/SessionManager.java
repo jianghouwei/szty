@@ -25,7 +25,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.androidpn.server.xmpp.XmppServer;
+import org.androidpn.server.util.ConProper;
 import org.androidpn.server.xmpp.net.Connection;
 import org.androidpn.server.xmpp.net.ConnectionCloseListener;
 import org.apache.commons.logging.Log;
@@ -56,7 +56,7 @@ public class SessionManager {
     private ClientSessionListener clientSessionListener = new ClientSessionListener();
 
     private SessionManager() {
-        serverName = XmppServer.getInstance().getServerName();
+        serverName = ConProper.domain;
     }
 
     /**

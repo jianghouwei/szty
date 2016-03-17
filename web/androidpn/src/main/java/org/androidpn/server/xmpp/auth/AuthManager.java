@@ -22,8 +22,9 @@ import java.security.NoSuchAlgorithmException;
 
 import org.androidpn.server.service.ServiceLocator;
 import org.androidpn.server.service.UserNotFoundException;
+import org.androidpn.server.util.ConProper;
+import org.androidpn.server.util.Config;
 import org.androidpn.server.xmpp.UnauthenticatedException;
-import org.androidpn.server.xmpp.XmppServer;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -39,6 +40,8 @@ public class AuthManager {
 
     private static final Object DIGEST_LOCK = new Object();
 
+    private static final String serverName = ConProper.domain;
+    
     private static MessageDigest digest;
 
     static {
@@ -80,7 +83,7 @@ public class AuthManager {
         if (username.contains("@")) {
             int index = username.indexOf("@");
             String domain = username.substring(index + 1);
-            if (domain.equals(XmppServer.getInstance().getServerName())) {
+            if (domain.equals(serverName)) {
                 username = username.substring(0, index);
             } else {
                 throw new UnauthenticatedException();
@@ -115,7 +118,7 @@ public class AuthManager {
         if (username.contains("@")) {
             int index = username.indexOf("@");
             String domain = username.substring(index + 1);
-            if (domain.equals(XmppServer.getInstance().getServerName())) {
+            if (domain.equals(serverName)) {
                 username = username.substring(0, index);
             } else {
                 throw new UnauthenticatedException();

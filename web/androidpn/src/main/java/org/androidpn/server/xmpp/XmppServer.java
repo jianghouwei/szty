@@ -19,10 +19,6 @@ package org.androidpn.server.xmpp;
 
 import org.androidpn.server.util.Config;
 import org.androidpn.server.xmpp.session.SessionManager;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /** 
  * This class starts the server as a standalone application using Spring configuration.
@@ -31,17 +27,14 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class XmppServer {
 
-    private static final Log log = LogFactory.getLog(XmppServer.class);
 
     private static XmppServer instance;
 
-    private ApplicationContext context;
+   // private ApplicationContext context;
 
     private String version = "0.5.0";
 
     private String serverName;
-
-    private String serverHomeDir;
 
     private boolean shuttingDown;
 
@@ -83,8 +76,8 @@ public class XmppServer {
           //  locateServer();
             serverName = Config.getString("xmpp.domain", "127.0.0.1")
                     .toLowerCase();
-            context = new ClassPathXmlApplicationContext("spring-config.xml");
-            log.info("Spring Configuration loaded.");
+       //     context = new ClassPathXmlApplicationContext("spring-config.xml");
+           // log.info("Spring Configuration loaded.");
 
 //            AdminConsole adminConsole = new AdminConsole(serverHomeDir);
 //            adminConsole.startup();
@@ -93,8 +86,8 @@ public class XmppServer {
 //                        + adminConsole.getAdminHost() + ":"
 //                        + adminConsole.getAdminPort());
 //            }
-            log.info("XmppServer started: " + serverName);
-            log.info("Androidpn Server v" + version);
+//            log.info("XmppServer started: " + serverName);
+//            log.info("Androidpn Server v" + version);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -118,9 +111,9 @@ public class XmppServer {
      * @param beanName
      * @return a Srping bean 
      */
-    public Object getBean(String beanName) {
-        return context.getBean(beanName);
-    }
+//    public Object getBean(String beanName) {
+//        return context.getBean(beanName);
+//    }
 
     /**
      * Returns the server name.
@@ -188,13 +181,13 @@ public class XmppServer {
         shuttingDown = true;
         // Close all connections
         SessionManager.getInstance().closeAllSessions();
-        log.info("XmppServer stopped");
+       // log.info("XmppServer stopped");
     }
 
     private class ShutdownHookThread extends Thread {
         public void run() {
             shutdownServer();
-            log.info("Server halted");
+       //     log.info("Server halted");
             System.err.println("Server halted");
         }
     }

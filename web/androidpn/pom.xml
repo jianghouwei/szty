@@ -39,12 +39,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.apache.mina</groupId>
-			<artifactId>mina-integration-spring</artifactId>
-			<version>1.1.7</version>
-		</dependency>
-
-		<dependency>
 			<groupId>commons-configuration</groupId>
 			<artifactId>commons-configuration</artifactId>
 			<version>1.6</version>
@@ -62,7 +56,11 @@
 			<artifactId>tinder</artifactId>
 			<version>1.2.3</version>
 		</dependency>
+		
+		<!-- <dependency>
+			<groupId>org.apache.mina</groupId>
+			<artifactId>mina-integration-spring</artifactId>
+			<version>1.1.7</version>
+		</dependency> -->
 	</dependencies>
-
-
 </project>

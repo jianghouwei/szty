@@ -13,29 +13,32 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.androidpn.server.model.User;
-import org.androidpn.server.service.ServiceLocator;
 import org.androidpn.server.service.UserService;
 import org.androidpn.server.xmpp.presence.PresenceManager;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.ServletRequestUtils;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class UserApiController {
 
 	protected final Log log = LogFactory.getLog(getClass());
 
+	@Resource(name = "userService")
 	private UserService userService;
 
-	public UserApiController() {
-		userService = ServiceLocator.getUserService();
-	}
+//	public UserApiController() {
+//		userService = ServiceLocator.getUserService();
+//	}
 
+	@RequestMapping(value = "/user_api.do")
 	public void list(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		PresenceManager presenceManager = new PresenceManager();

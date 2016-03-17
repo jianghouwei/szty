@@ -29,8 +29,9 @@ import org.androidpn.server.xmpp.session.Session;
 import org.androidpn.server.xmpp.session.SessionManager;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 import org.xmpp.packet.Presence;
 
 /**
@@ -38,10 +39,11 @@ import org.xmpp.packet.Presence;
  *
  * @author Sehwan Noh (devnoh@gmail.com)
  */
+@Controller
 public class SessionController {
 	protected final Log log = LogFactory.getLog(getClass());
 
-	
+	@RequestMapping(value = "/session.do")
 	public ModelAndView list(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ClientSession[] sessions = new ClientSession[0];
 		sessions = SessionManager.getInstance().getSessions().toArray(sessions);

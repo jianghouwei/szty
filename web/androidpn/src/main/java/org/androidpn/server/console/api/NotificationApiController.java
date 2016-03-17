@@ -16,6 +16,7 @@ import org.androidpn.server.xmpp.push.NotificationManager;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.web.bind.ServletRequestUtils;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 public class NotificationApiController {
@@ -28,6 +29,7 @@ public class NotificationApiController {
 		notificationManager = new NotificationManager();
 	}
 
+	@RequestMapping(value = "/notification_api.do")
 	public ModelAndView list(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		// mav.addObject("list", null);
@@ -35,6 +37,7 @@ public class NotificationApiController {
 		return mav;
 	}
 
+	
 	public void send(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String broadcast = ServletRequestUtils.getStringParameter(request, "broadcast", "Y");
 		String username = ServletRequestUtils.getStringParameter(request, "username");

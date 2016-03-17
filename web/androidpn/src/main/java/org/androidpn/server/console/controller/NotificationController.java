@@ -26,10 +26,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.ServletRequestUtils;
-import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
 /**
  * A controller class to process the notification related requests.
@@ -47,7 +45,7 @@ public class NotificationController {
 		notificationManager = new NotificationManager();
 	}
 
-	@RequestMapping(value = "/authTrees")
+	@RequestMapping(value = "/notification.do")
 	public ModelAndView list(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		// mav.addObject("list", null);
@@ -63,6 +61,8 @@ public class NotificationController {
 	 * @return
 	 * @throws Exception
 	 */
+	
+	
 	public ModelAndView send(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String broadcast = ServletRequestUtils.getStringParameter(request, "broadcast", "Y");
 		String username = ServletRequestUtils.getStringParameter(request, "username");

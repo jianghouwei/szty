@@ -17,8 +17,6 @@
  */
 package org.androidpn.server.service;
 
-import org.androidpn.server.xmpp.XmppServer;
-
 /** 
  * Class desciption here.
  *
@@ -29,11 +27,11 @@ public class ServiceManager {
     public static String USER_SERVICE = "userService";
 
     public static Object getService(String name) {
-        return XmppServer.getInstance().getBean(name);
+        return  ServiceLocator.getInstance().getBean(name);
     }
 
     public static UserService getUserService() {
-        return (UserService) XmppServer.getInstance().getBean(USER_SERVICE);
+        return (UserService)  ServiceLocator.getInstance().getBean(USER_SERVICE);
     }
 
 }

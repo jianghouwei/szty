@@ -17,34 +17,76 @@
  */
 package org.androidpn.server.service;
 
-import org.androidpn.server.xmpp.XmppServer;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 
-/** 
+/**
  * This is a helper class to look up service objects.
  *
  * @author Sehwan Noh (devnoh@gmail.com)
  */
-public class ServiceLocator {
+/**
+ * ClassName: ServiceLocator <br/>
+ * Function: TODO ADD FUNCTION. <br/>
+ * Reason: TODO ADD REASON(可选). <br/>
+ * date: 2016年3月17日 上午11:19:35 <br/>
+ *
+ * @author mao.ru
+ * @version
+ * @since JDK 1.7
+ */
+public class ServiceLocator implements ApplicationContextAware {
 
-    public static String USER_SERVICE = "userService";
+	private static ApplicationContext context = null;
 
-    /**
-     * Generic method to obtain a service object for a given name. 
-     * 
-     * @param name the service bean name
-     * @return
-     */
-    public static Object getService(String name) {
-        return XmppServer.getInstance().getBean(name);
-    }
+	private static ServiceLocator servlocator = null;
 
-    /**
-     * Obtains the user service.
-     * 
-     * @return the user service
-     */
-    public static UserService getUserService() {
-        return (UserService) XmppServer.getInstance().getBean(USER_SERVICE);
-    }
+	public static ApplicationContext getContext() {
+		return context;
+	}
+
+	public static void setContext(ApplicationContext context) {
+		ServiceLocator.context = context;
+	}
+
+	public static ServiceLocator getInstance() {
+		if (servlocator == null)
+			servlocator = (ServiceLocator) context.getBean("serviceLocator");
+		return servlocator;
+	}
+
+    public Object getBean(String name) {  
+        return context.getBean(name);  
+    }  
+    
+	public static String USER_SERVICE = "userService";
+
+	/**
+	 * Generic method to obtain a service object for a given name.
+	 * 
+	 * @param name
+	 *            the service bean name
+	 * @return
+	 */
+	public static Object getService(String name) {
+		return context.getBean(name);
+	}
+
+	/**
+	 * Obtains the user service.
+	 * 
+	 * @return the user service
+	 */
+	public static UserService getUserService() {
+		return (UserService) context.getBean(USER_SERVICE);
+	}
+
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

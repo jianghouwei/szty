@@ -25,12 +25,15 @@ import org.androidpn.server.service.ServiceLocator;
 import org.androidpn.server.service.UserExistsException;
 import org.androidpn.server.service.UserNotFoundException;
 import org.androidpn.server.service.UserService;
+import org.androidpn.server.service.impl.UserServiceImpl;
 import org.androidpn.server.xmpp.UnauthorizedException;
 import org.androidpn.server.xmpp.session.ClientSession;
 import org.androidpn.server.xmpp.session.Session;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import org.dom4j.QName;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.xmpp.packet.IQ;
 import org.xmpp.packet.JID;
 import org.xmpp.packet.PacketError;
@@ -44,6 +47,7 @@ public class IQRegisterHandler extends IQHandler {
 
     private static final String NAMESPACE = "jabber:iq:register";
 
+    @Autowired
     private UserService userService;
 
     private Element probeResponse;
@@ -52,7 +56,8 @@ public class IQRegisterHandler extends IQHandler {
      * Constructor.
      */
     public IQRegisterHandler() {
-        userService = ServiceLocator.getUserService();
+    	userService = UserServiceImpl.getInstance();
+       // userService = ServiceLocator.getUserService();
         probeResponse = DocumentHelper.createElement(QName.get("query",
                 NAMESPACE));
         probeResponse.addElement("username");

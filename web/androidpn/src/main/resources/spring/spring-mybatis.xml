@@ -10,14 +10,12 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<context:property-placeholder location="classpath:jdbc.properties" />
-
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		init-method="init" destroy-method="close">
-		<property name="driverClassName" value="${jdbc.driverClass}" />
-		<property name="url" value="${jdbc.url}" />
-		<property name="username" value="${jdbc.user}" />
-		<property name="password" value="${jdbc.password}" />
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/andriodpn" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
 
 		<property name="filters" value="stat" />
 
@@ -38,12 +36,12 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="mapperLocations"
-			value="classpath*:com/szty/commos/shiros/dao/*Mapper.xml" />
-		<property name="typeAliasesPackage" value="com.szty.commos.shiros.model" />
+			value="classpath*:org/androidpn/server/dao/*Mapper.xml" />
+		<property name="typeAliasesPackage" value="org.androidpn.server.model" />
 	</bean>
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.szty.commos.shiros.dao" />
+		<property name="basePackage" value="org.androidpn.server.dao" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 
@@ -55,7 +53,7 @@
 	<aop:aspectj-autoproxy />
 
 	<aop:config>
-		<aop:pointcut id="appService" expression="execution(* com.szty..*Service*.*(..))" />
+		<aop:pointcut id="appService" expression="execution(* org.androidpn..*Service*.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="appService" />
 	</aop:config>
 
