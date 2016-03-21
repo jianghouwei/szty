@@ -10,8 +10,10 @@
        http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
+	<!--  user service  业务层代码 -->
 	<bean id="userService" class="org.androidpn.server.service.impl.UserServiceImpl" />
 	
+	<!--  user service  注入bean -->
 	<bean id="serviceLocator" class="org.androidpn.server.service.ServiceLocator"
 		scope="singleton" />
 	<!-- =============================================================== -->
@@ -45,8 +47,7 @@
 						</constructor-arg>
 					</bean>
 				</entry>
-				<!-- <entry key="logging"> <bean class="org.apache.mina.filter.logging.LoggingFilter" 
-					/> </entry> -->
+				<entry key="logging"> <bean class="org.apache.mina.filter.logging.LoggingFilter"/> </entry> 
 			</map>
 		</property>
 	</bean>

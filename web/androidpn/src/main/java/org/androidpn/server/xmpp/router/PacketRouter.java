@@ -17,83 +17,82 @@
  */
 package org.androidpn.server.xmpp.router;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.xmpp.packet.IQ;
 import org.xmpp.packet.Message;
 import org.xmpp.packet.Packet;
 import org.xmpp.packet.Presence;
 
-/**
- * This class is to handle incoming packets and route them to their
- * corresponding handler.
- * 
- * 这个类是处理传入的数据包,并将其发送到相应的处理程序。
- * 
+/** 
+ * This class is to handle incoming packets and route them to their corresponding handler.
+ *
  * @author Sehwan Noh (devnoh@gmail.com)
  */
 public class PacketRouter {
 
-	private MessageRouter messageRouter;
+	private final Log log = LogFactory.getLog(PacketRouter.class);
+	
+    private MessageRouter messageRouter;
 
-	private PresenceRouter presenceRouter;
+    private PresenceRouter presenceRouter;
 
-	private IQRouter iqRouter;
+    private IQRouter iqRouter;
 
-	/**
-	 * Constructor.
-	 */
-	public PacketRouter() {
-		messageRouter = new MessageRouter();
-		presenceRouter = new PresenceRouter();
-		iqRouter = new IQRouter();
-	}
+    /**
+     * Constructor. 
+     */
+    public PacketRouter() {
+        messageRouter = new MessageRouter();
+        presenceRouter = new PresenceRouter();
+        iqRouter = new IQRouter();
+    }
 
-	/**
-	 * Routes the packet based on its type.
-	 *  判断请求信息的类型 
-	 *  Message，Presence，IQ
-	 * @param packet
-	 *            the packet to route
-	 */
-	public void route(Packet packet) {
-		if (packet instanceof Message) {
-			route((Message) packet);
-		} else if (packet instanceof Presence) {
-			route((Presence) packet);
-		} else if (packet instanceof IQ) {
-			route((IQ) packet);
-		} else {
-			throw new IllegalArgumentException();
-		}
-	}
+    /**
+     * Routes the packet based on its type.
+     * 判断入参类型
+     * @param packet the packet to route
+     */
+    public void route(Packet packet) {
+        if (packet instanceof Message) {
+        	log.info("路由类型1：》》》》》》》》》》》》》》》》》》》》》" + "Message" +":["+ packet.toString() +"]");
+            route((Message) packet);
+        } else if (packet instanceof Presence) {
+        	log.info("路由类型2：》》》》》》》》》》》》》》》》》》》》》" + "Presence" +":["+ packet.toString() +"]");
+            route((Presence) packet);
+        } else if (packet instanceof IQ) {
+        	log.info("路由类型3：》》》》》》》》》》》》》》》》》》》》》" + "IQ" +":["+ packet.toString() +"]");
+            route((IQ) packet);
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
 
-	/**
-	 * Routes the IQ packet.
-	 *  iq 客户端对server端的一个请求
-	 * @param packet
-	 *            the packet to route
-	 */
-	public void route(IQ packet) {
-		iqRouter.route(packet);
-	}
+    /**
+     * Routes the IQ packet.
+     * 
+     * @param packet the packet to route
+     */
+    public void route(IQ packet) {
+        iqRouter.route(packet);
+    }
 
-	/**
-	 * Routes the Message packet.
-	 *  未实现--消息路由包
-	 * @param packet
-	 *            the packet to route
-	 */
-	public void route(Message packet) {
-		messageRouter.route(packet);
-	}
+    /**
+     * Routes the Message packet.
+     * 
+     * @param packet the packet to route
+     */
+    public void route(Message packet) {
+        messageRouter.route(packet);
+    }
 
-	/**
-	 * Routes the Presence packet.
-	 * 
-	 * @param packet
-	 *            the packet to route
-	 */
-	public void route(Presence packet) {
-		presenceRouter.route(packet);
-	}
+    /**
+     * Routes the Presence packet.
+     * 
+     * @param packet the packet to route
+     */
+    public void route(Presence packet) {
+        presenceRouter.route(packet);
+    }
 
 }

@@ -36,7 +36,6 @@ import org.springframework.stereotype.Service;
  *
  * @author Sehwan Noh (devnoh@gmail.com)
  */
-@Service
 public class UserServiceImpl implements UserService {
 
 	private final Log log = LogFactory.getLog(getClass());
@@ -50,7 +49,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public List<User> getUsers() {
-		User user = new User();
 		return apnUserMapper.queryList(null);
 	}
 
@@ -79,13 +77,14 @@ public class UserServiceImpl implements UserService {
 
 	public User getUserByUsername(String username) throws UserNotFoundException {
 		User user = new User();
-		user.setName(username);
+		user.setUsername(username);
+		user.setUpdatedDate(null);
+		user.setCreatedDate(null);
 		List<User> list = apnUserMapper.queryList(user);
 		if (!list.isEmpty()) {
 			return list.get(0);
 		}
 		return null;
-		// return (User) userDao.getUserByUsername(username);
 	}
 
 	public void removeUser(Long userId) {

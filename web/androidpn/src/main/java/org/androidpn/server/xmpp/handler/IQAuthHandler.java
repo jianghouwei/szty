@@ -35,7 +35,7 @@ import org.xmpp.packet.PacketError;
 
 /** 
  * This class is to handle the TYPE_IQ jabber:iq:auth protocol.
- *  认证
+ *
  * @author Sehwan Noh (devnoh@gmail.com)
  */
 public class IQAuthHandler extends IQHandler {
@@ -62,14 +62,14 @@ public class IQAuthHandler extends IQHandler {
 
     /**
      * Handles the received IQ packet.
-     *  
+     * 
      * @param packet the packet
      * @return the response to send back
      * @throws UnauthorizedException if the user is not authorized
      */
     public IQ handleIQ(IQ packet) throws UnauthorizedException {
+    	log.info("路由类型3：认证》》》》》》》》》》》》》》》》》》》》》" + "IQ-->IQAuthHandler " +":["+ packet.toString() +"]");
         IQ reply = null;
-
         ClientSession session = sessionManager.getSession(packet.getFrom());
         if (session == null) {
             log.error("Session not found for key " + packet.getFrom());
@@ -83,18 +83,45 @@ public class IQAuthHandler extends IQHandler {
             Element iq = packet.getElement();
             Element query = iq.element("query");
             Element queryResponse = probeResponse.createCopy();
-
+            log.info("路由类型3：认证》》》》》》》》》》》》》》》》》》》》》" + "IQ-->Type ===" +":["+ packet.getType() +"]");
             if (IQ.Type.get == packet.getType()) { // get query
+            	log.info("路由类型3：认证》》》》》》》》》》》》》》》》》》》》》" + "IQ.Type.get ===get" +":["+ packet.getType() +"]");
                 String username = query.elementText("username");
+               
                 if (username != null) {
                     queryResponse.element("username").setText(username);
                 }
+                /********************新增session 写入  start ******************************/
+//                String resource = query.elementText("resource");
+//                String password = query.elementText("password");
+//                String digest = null;
+//                if (query.element("digest") != null) {
+//                    digest = query.elementText("digest").toLowerCase();
+//                }
+//                username = username.toLowerCase();
+//                AuthToken token = null;
+//                if (password != null && AuthManager.isPlainSupported()) {
+//                    token = AuthManager.authenticate(username, password);
+//                } else if (digest != null && AuthManager.isDigestSupported()) {
+//                    token = AuthManager.authenticate(username, session
+//                            .getStreamID().toString(), digest);
+//                }else{
+//                	 token = AuthManager.authenticate(username);
+//                }
+//                if (token == null) {
+//                    throw new UnauthenticatedException();
+//                }
+//                log.info("session  更新成功");
+//                session.setAuthToken(token, resource);
+                /********************新增session写入  ---end ******************************/
+                
                 reply = IQ.createResultIQ(packet);
                 reply.setChildElement(queryResponse);
                 if (session.getStatus() != Session.STATUS_AUTHENTICATED) {
                     reply.setTo((JID) null);
                 }
             } else { // set query
+            	log.info("路由类型3：认证》》》》》》》》》》》》》》》》》》》》》" + "IQ.Type.set ===set" +":["+ packet.getType() +"]");
                 String resource = query.elementText("resource");
                 String username = query.elementText("username");
                 String password = query.elementText("password");
@@ -142,7 +169,8 @@ public class IQAuthHandler extends IQHandler {
                     throw new UnauthenticatedException();
                 }
 
-                // Set the session authenticated successfully
+                // Set the session authenticated successfully  /
+                log.info("session  更新成功");
                 session.setAuthToken(token, resource);
                 packet.setFrom(session.getAddress());
                 reply = IQ.createResultIQ(packet);

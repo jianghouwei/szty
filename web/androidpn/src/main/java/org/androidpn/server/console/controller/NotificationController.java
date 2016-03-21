@@ -64,6 +64,7 @@ public class NotificationController {
 	
 	@RequestMapping(value = "/send.do")
 	public ModelAndView send(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		//是否全部发送
 		String broadcast = ServletRequestUtils.getStringParameter(request, "broadcast", "Y");
 		String username = ServletRequestUtils.getStringParameter(request, "username");
 		String title = ServletRequestUtils.getStringParameter(request, "title");

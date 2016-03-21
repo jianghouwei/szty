@@ -1,0 +1,177 @@
+[DEBUG][2016-03-18 16:07:53,199][org.apache.http.impl.conn.BasicClientConnectionManager]Get connection for route {}->http://api.diditaxi.com.cn:80
+[DEBUG][2016-03-18 16:07:53,219][org.apache.http.impl.conn.DefaultClientConnectionOperator]Connecting to api.diditaxi.com.cn:80
+[DEBUG][2016-03-18 16:07:53,270][org.apache.http.client.protocol.RequestAddCookies]CookieSpec selected: default
+[DEBUG][2016-03-18 16:07:53,271][org.apache.http.client.protocol.RequestAuthCache]Auth cache not set in the context
+[DEBUG][2016-03-18 16:07:53,272][org.apache.http.client.protocol.RequestTargetAuthentication]Target auth state: UNCHALLENGED
+[DEBUG][2016-03-18 16:07:53,272][org.apache.http.client.protocol.RequestProxyAuthentication]Proxy auth state: UNCHALLENGED
+[DEBUG][2016-03-18 16:07:53,272][org.apache.http.impl.client.DefaultHttpClient]Attempt 1 to execute request
+[DEBUG][2016-03-18 16:07:53,272][org.apache.http.impl.conn.DefaultClientConnection]Sending request: POST /api/v2/openApi/submitReq HTTP/1.1
+[DEBUG][2016-03-18 16:07:53,273][org.apache.http.wire] >> "POST /api/v2/openApi/submitReq HTTP/1.1[\r][\n]"
+[DEBUG][2016-03-18 16:07:53,274][org.apache.http.wire] >> "Content-Length: 223[\r][\n]"
+[DEBUG][2016-03-18 16:07:53,274][org.apache.http.wire] >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+[DEBUG][2016-03-18 16:07:53,274][org.apache.http.wire] >> "Host: api.diditaxi.com.cn[\r][\n]"
+[DEBUG][2016-03-18 16:07:53,274][org.apache.http.wire] >> "Connection: Keep-Alive[\r][\n]"
+[DEBUG][2016-03-18 16:07:53,274][org.apache.http.wire] >> "User-Agent: Apache-HttpClient/4.5.1 (Java/1.7.0_79)[\r][\n]"
+[DEBUG][2016-03-18 16:07:53,274][org.apache.http.wire] >> "[\r][\n]"
+[DEBUG][2016-03-18 16:07:53,274][org.apache.http.headers]>> POST /api/v2/openApi/submitReq HTTP/1.1
+[DEBUG][2016-03-18 16:07:53,274][org.apache.http.headers]>> Content-Length: 223
+[DEBUG][2016-03-18 16:07:53,274][org.apache.http.headers]>> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+[DEBUG][2016-03-18 16:07:53,274][org.apache.http.headers]>> Host: api.diditaxi.com.cn
+[DEBUG][2016-03-18 16:07:53,274][org.apache.http.headers]>> Connection: Keep-Alive
+[DEBUG][2016-03-18 16:07:53,274][org.apache.http.headers]>> User-Agent: Apache-HttpClient/4.5.1 (Java/1.7.0_79)
+[DEBUG][2016-03-18 16:07:53,275][org.apache.http.wire] >> "lng=128.23&lat=365.89&nonce=160318160752&timestamp=1458288472&token=7661bae04caf57e51216a9a7c1aad184&order_id=923455809b1a34c5a319f00b67edf764&input_type=1&route_start=&route_end=&phone=12345678912&add_price=0&channel=70651"
+[DEBUG][2016-03-18 16:07:53,321][org.apache.http.wire] << "HTTP/1.1 200 OK[\r][\n]"
+[DEBUG][2016-03-18 16:07:53,323][org.apache.http.wire] << "Date: Fri, 18 Mar 2016 08:07:56 GMT[\r][\n]"
+[DEBUG][2016-03-18 16:07:53,323][org.apache.http.wire] << "Content-Type: text/html; charset=utf-8[\r][\n]"
+[DEBUG][2016-03-18 16:07:53,323][org.apache.http.wire] << "Transfer-Encoding: chunked[\r][\n]"
+[DEBUG][2016-03-18 16:07:53,323][org.apache.http.wire] << "Connection: keep-alive[\r][\n]"
+[DEBUG][2016-03-18 16:07:53,323][org.apache.http.wire] << "Vary: Accept-Encoding[\r][\n]"
+[DEBUG][2016-03-18 16:07:53,323][org.apache.http.wire] << "[\r][\n]"
+[DEBUG][2016-03-18 16:07:53,324][org.apache.http.impl.conn.DefaultClientConnection]Receiving response: HTTP/1.1 200 OK
+[DEBUG][2016-03-18 16:07:53,324][org.apache.http.headers]<< HTTP/1.1 200 OK
+[DEBUG][2016-03-18 16:07:53,324][org.apache.http.headers]<< Date: Fri, 18 Mar 2016 08:07:56 GMT
+[DEBUG][2016-03-18 16:07:53,324][org.apache.http.headers]<< Content-Type: text/html; charset=utf-8
+[DEBUG][2016-03-18 16:07:53,324][org.apache.http.headers]<< Transfer-Encoding: chunked
+[DEBUG][2016-03-18 16:07:53,324][org.apache.http.headers]<< Connection: keep-alive
+[DEBUG][2016-03-18 16:07:53,324][org.apache.http.headers]<< Vary: Accept-Encoding
+[DEBUG][2016-03-18 16:07:53,329][org.apache.http.impl.client.DefaultHttpClient]Connection can be kept alive indefinitely
+[DEBUG][2016-03-18 16:07:53,339][org.apache.http.wire] << "60[\r][\n]"
+[DEBUG][2016-03-18 16:07:53,339][org.apache.http.wire] << "{"errno":1008,"errmsg":"\u51fa\u53d1\u5730\u76ee\u7684\u5730\u4e0d\u80fd\u4e3a\u7a7a","info":[]}"
+[DEBUG][2016-03-18 16:07:53,339][org.apache.http.wire] << "[\r][\n]"
+[DEBUG][2016-03-18 16:07:53,339][org.apache.http.wire] << "0[\r][\n]"
+[DEBUG][2016-03-18 16:07:53,339][org.apache.http.wire] << "[\r][\n]"
+[DEBUG][2016-03-18 16:07:53,339][org.apache.http.impl.conn.BasicClientConnectionManager]Releasing connection org.apache.http.impl.conn.ManagedClientConnectionImpl@1b49bc5a
+[DEBUG][2016-03-18 16:07:53,339][org.apache.http.impl.conn.BasicClientConnectionManager]Connection can be kept alive indefinitely
+[DEBUG][2016-03-18 16:09:05,056][org.apache.http.impl.conn.BasicClientConnectionManager]Get connection for route {}->http://api.diditaxi.com.cn:80
+[DEBUG][2016-03-18 16:09:05,073][org.apache.http.impl.conn.DefaultClientConnectionOperator]Connecting to api.diditaxi.com.cn:80
+[DEBUG][2016-03-18 16:09:05,128][org.apache.http.client.protocol.RequestAddCookies]CookieSpec selected: default
+[DEBUG][2016-03-18 16:09:05,129][org.apache.http.client.protocol.RequestAuthCache]Auth cache not set in the context
+[DEBUG][2016-03-18 16:09:05,129][org.apache.http.client.protocol.RequestTargetAuthentication]Target auth state: UNCHALLENGED
+[DEBUG][2016-03-18 16:09:05,130][org.apache.http.client.protocol.RequestProxyAuthentication]Proxy auth state: UNCHALLENGED
+[DEBUG][2016-03-18 16:09:05,130][org.apache.http.impl.client.DefaultHttpClient]Attempt 1 to execute request
+[DEBUG][2016-03-18 16:09:05,130][org.apache.http.impl.conn.DefaultClientConnection]Sending request: POST /api/v2/openApi/submitReq HTTP/1.1
+[DEBUG][2016-03-18 16:09:05,130][org.apache.http.wire] >> "POST /api/v2/openApi/submitReq HTTP/1.1[\r][\n]"
+[DEBUG][2016-03-18 16:09:05,131][org.apache.http.wire] >> "Content-Length: 223[\r][\n]"
+[DEBUG][2016-03-18 16:09:05,131][org.apache.http.wire] >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+[DEBUG][2016-03-18 16:09:05,131][org.apache.http.wire] >> "Host: api.diditaxi.com.cn[\r][\n]"
+[DEBUG][2016-03-18 16:09:05,131][org.apache.http.wire] >> "Connection: Keep-Alive[\r][\n]"
+[DEBUG][2016-03-18 16:09:05,131][org.apache.http.wire] >> "User-Agent: Apache-HttpClient/4.5.1 (Java/1.7.0_79)[\r][\n]"
+[DEBUG][2016-03-18 16:09:05,131][org.apache.http.wire] >> "[\r][\n]"
+[DEBUG][2016-03-18 16:09:05,131][org.apache.http.headers]>> POST /api/v2/openApi/submitReq HTTP/1.1
+[DEBUG][2016-03-18 16:09:05,132][org.apache.http.headers]>> Content-Length: 223
+[DEBUG][2016-03-18 16:09:05,132][org.apache.http.headers]>> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+[DEBUG][2016-03-18 16:09:05,132][org.apache.http.headers]>> Host: api.diditaxi.com.cn
+[DEBUG][2016-03-18 16:09:05,132][org.apache.http.headers]>> Connection: Keep-Alive
+[DEBUG][2016-03-18 16:09:05,132][org.apache.http.headers]>> User-Agent: Apache-HttpClient/4.5.1 (Java/1.7.0_79)
+[DEBUG][2016-03-18 16:09:05,132][org.apache.http.wire] >> "lng=128.23&lat=365.89&nonce=160318160904&timestamp=1458288544&token=0159f1387a3c905af36cad1bd5da09d8&order_id=20160318257812313212312222222222&input_type=1&route_start=&route_end=&phone=18818200818&add_price=0&channel=70651"
+[DEBUG][2016-03-18 16:09:05,182][org.apache.http.wire] << "HTTP/1.1 200 OK[\r][\n]"
+[DEBUG][2016-03-18 16:09:05,185][org.apache.http.wire] << "Date: Fri, 18 Mar 2016 08:09:08 GMT[\r][\n]"
+[DEBUG][2016-03-18 16:09:05,185][org.apache.http.wire] << "Content-Type: text/html; charset=utf-8[\r][\n]"
+[DEBUG][2016-03-18 16:09:05,185][org.apache.http.wire] << "Transfer-Encoding: chunked[\r][\n]"
+[DEBUG][2016-03-18 16:09:05,185][org.apache.http.wire] << "Connection: keep-alive[\r][\n]"
+[DEBUG][2016-03-18 16:09:05,185][org.apache.http.wire] << "Vary: Accept-Encoding[\r][\n]"
+[DEBUG][2016-03-18 16:09:05,185][org.apache.http.wire] << "[\r][\n]"
+[DEBUG][2016-03-18 16:09:05,186][org.apache.http.impl.conn.DefaultClientConnection]Receiving response: HTTP/1.1 200 OK
+[DEBUG][2016-03-18 16:09:05,186][org.apache.http.headers]<< HTTP/1.1 200 OK
+[DEBUG][2016-03-18 16:09:05,186][org.apache.http.headers]<< Date: Fri, 18 Mar 2016 08:09:08 GMT
+[DEBUG][2016-03-18 16:09:05,186][org.apache.http.headers]<< Content-Type: text/html; charset=utf-8
+[DEBUG][2016-03-18 16:09:05,186][org.apache.http.headers]<< Transfer-Encoding: chunked
+[DEBUG][2016-03-18 16:09:05,186][org.apache.http.headers]<< Connection: keep-alive
+[DEBUG][2016-03-18 16:09:05,186][org.apache.http.headers]<< Vary: Accept-Encoding
+[DEBUG][2016-03-18 16:09:05,191][org.apache.http.impl.client.DefaultHttpClient]Connection can be kept alive indefinitely
+[DEBUG][2016-03-18 16:09:05,201][org.apache.http.wire] << "60[\r][\n]"
+[DEBUG][2016-03-18 16:09:05,201][org.apache.http.wire] << "{"errno":1008,"errmsg":"\u51fa\u53d1\u5730\u76ee\u7684\u5730\u4e0d\u80fd\u4e3a\u7a7a","info":[]}"
+[DEBUG][2016-03-18 16:09:05,201][org.apache.http.wire] << "[\r][\n]"
+[DEBUG][2016-03-18 16:09:05,201][org.apache.http.wire] << "0[\r][\n]"
+[DEBUG][2016-03-18 16:09:05,201][org.apache.http.wire] << "[\r][\n]"
+[DEBUG][2016-03-18 16:09:05,201][org.apache.http.impl.conn.BasicClientConnectionManager]Releasing connection org.apache.http.impl.conn.ManagedClientConnectionImpl@37b634e1
+[DEBUG][2016-03-18 16:09:05,201][org.apache.http.impl.conn.BasicClientConnectionManager]Connection can be kept alive indefinitely
+[DEBUG][2016-03-18 16:09:38,955][org.apache.http.impl.conn.BasicClientConnectionManager]Get connection for route {}->http://api.diditaxi.com.cn:80
+[DEBUG][2016-03-18 16:09:38,976][org.apache.http.impl.conn.DefaultClientConnectionOperator]Connecting to api.diditaxi.com.cn:80
+[DEBUG][2016-03-18 16:09:39,029][org.apache.http.client.protocol.RequestAddCookies]CookieSpec selected: default
+[DEBUG][2016-03-18 16:09:39,030][org.apache.http.client.protocol.RequestAuthCache]Auth cache not set in the context
+[DEBUG][2016-03-18 16:09:39,030][org.apache.http.client.protocol.RequestTargetAuthentication]Target auth state: UNCHALLENGED
+[DEBUG][2016-03-18 16:09:39,031][org.apache.http.client.protocol.RequestProxyAuthentication]Proxy auth state: UNCHALLENGED
+[DEBUG][2016-03-18 16:09:39,031][org.apache.http.impl.client.DefaultHttpClient]Attempt 1 to execute request
+[DEBUG][2016-03-18 16:09:39,031][org.apache.http.impl.conn.DefaultClientConnection]Sending request: POST /api/v2/openApi/submitReq HTTP/1.1
+[DEBUG][2016-03-18 16:09:39,031][org.apache.http.wire] >> "POST /api/v2/openApi/submitReq HTTP/1.1[\r][\n]"
+[DEBUG][2016-03-18 16:09:39,032][org.apache.http.wire] >> "Content-Length: 223[\r][\n]"
+[DEBUG][2016-03-18 16:09:39,032][org.apache.http.wire] >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+[DEBUG][2016-03-18 16:09:39,032][org.apache.http.wire] >> "Host: api.diditaxi.com.cn[\r][\n]"
+[DEBUG][2016-03-18 16:09:39,032][org.apache.http.wire] >> "Connection: Keep-Alive[\r][\n]"
+[DEBUG][2016-03-18 16:09:39,033][org.apache.http.wire] >> "User-Agent: Apache-HttpClient/4.5.1 (Java/1.7.0_79)[\r][\n]"
+[DEBUG][2016-03-18 16:09:39,033][org.apache.http.wire] >> "[\r][\n]"
+[DEBUG][2016-03-18 16:09:39,033][org.apache.http.headers]>> POST /api/v2/openApi/submitReq HTTP/1.1
+[DEBUG][2016-03-18 16:09:39,033][org.apache.http.headers]>> Content-Length: 223
+[DEBUG][2016-03-18 16:09:39,033][org.apache.http.headers]>> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+[DEBUG][2016-03-18 16:09:39,033][org.apache.http.headers]>> Host: api.diditaxi.com.cn
+[DEBUG][2016-03-18 16:09:39,033][org.apache.http.headers]>> Connection: Keep-Alive
+[DEBUG][2016-03-18 16:09:39,033][org.apache.http.headers]>> User-Agent: Apache-HttpClient/4.5.1 (Java/1.7.0_79)
+[DEBUG][2016-03-18 16:09:39,033][org.apache.http.wire] >> "lng=128.23&lat=365.89&nonce=160318160938&timestamp=1458288578&token=33c67250789c9345b19b8a509efc08da&order_id=20160318257812313212312222222222&input_type=1&route_start=&route_end=&phone=18818200818&add_price=0&channel=70651"
+[DEBUG][2016-03-18 16:09:39,082][org.apache.http.wire] << "HTTP/1.1 200 OK[\r][\n]"
+[DEBUG][2016-03-18 16:09:39,084][org.apache.http.wire] << "Date: Fri, 18 Mar 2016 08:09:42 GMT[\r][\n]"
+[DEBUG][2016-03-18 16:09:39,084][org.apache.http.wire] << "Content-Type: text/html; charset=utf-8[\r][\n]"
+[DEBUG][2016-03-18 16:09:39,084][org.apache.http.wire] << "Transfer-Encoding: chunked[\r][\n]"
+[DEBUG][2016-03-18 16:09:39,084][org.apache.http.wire] << "Connection: keep-alive[\r][\n]"
+[DEBUG][2016-03-18 16:09:39,085][org.apache.http.wire] << "Vary: Accept-Encoding[\r][\n]"
+[DEBUG][2016-03-18 16:09:39,085][org.apache.http.wire] << "[\r][\n]"
+[DEBUG][2016-03-18 16:09:39,085][org.apache.http.impl.conn.DefaultClientConnection]Receiving response: HTTP/1.1 200 OK
+[DEBUG][2016-03-18 16:09:39,085][org.apache.http.headers]<< HTTP/1.1 200 OK
+[DEBUG][2016-03-18 16:09:39,085][org.apache.http.headers]<< Date: Fri, 18 Mar 2016 08:09:42 GMT
+[DEBUG][2016-03-18 16:09:39,086][org.apache.http.headers]<< Content-Type: text/html; charset=utf-8
+[DEBUG][2016-03-18 16:09:39,086][org.apache.http.headers]<< Transfer-Encoding: chunked
+[DEBUG][2016-03-18 16:09:39,086][org.apache.http.headers]<< Connection: keep-alive
+[DEBUG][2016-03-18 16:09:39,086][org.apache.http.headers]<< Vary: Accept-Encoding
+[DEBUG][2016-03-18 16:09:39,091][org.apache.http.impl.client.DefaultHttpClient]Connection can be kept alive indefinitely
+[DEBUG][2016-03-18 16:09:39,103][org.apache.http.wire] << "60[\r][\n]"
+[DEBUG][2016-03-18 16:09:39,103][org.apache.http.wire] << "{"errno":1008,"errmsg":"\u51fa\u53d1\u5730\u76ee\u7684\u5730\u4e0d\u80fd\u4e3a\u7a7a","info":[]}"
+[DEBUG][2016-03-18 16:09:39,103][org.apache.http.wire] << "[\r][\n]"
+[DEBUG][2016-03-18 16:09:39,103][org.apache.http.wire] << "0[\r][\n]"
+[DEBUG][2016-03-18 16:09:39,103][org.apache.http.wire] << "[\r][\n]"
+[DEBUG][2016-03-18 16:09:39,103][org.apache.http.impl.conn.BasicClientConnectionManager]Releasing connection org.apache.http.impl.conn.ManagedClientConnectionImpl@1b49bc5a
+[DEBUG][2016-03-18 16:09:39,103][org.apache.http.impl.conn.BasicClientConnectionManager]Connection can be kept alive indefinitely
+[DEBUG][2016-03-18 16:12:55,151][org.apache.http.impl.conn.BasicClientConnectionManager]Get connection for route {}->http://api.diditaxi.com.cn:80
+[DEBUG][2016-03-18 16:12:55,167][org.apache.http.impl.conn.DefaultClientConnectionOperator]Connecting to api.diditaxi.com.cn:80
+[DEBUG][2016-03-18 16:12:55,221][org.apache.http.client.protocol.RequestAddCookies]CookieSpec selected: default
+[DEBUG][2016-03-18 16:12:55,222][org.apache.http.client.protocol.RequestAuthCache]Auth cache not set in the context
+[DEBUG][2016-03-18 16:12:55,222][org.apache.http.client.protocol.RequestTargetAuthentication]Target auth state: UNCHALLENGED
+[DEBUG][2016-03-18 16:12:55,223][org.apache.http.client.protocol.RequestProxyAuthentication]Proxy auth state: UNCHALLENGED
+[DEBUG][2016-03-18 16:12:55,223][org.apache.http.impl.client.DefaultHttpClient]Attempt 1 to execute request
+[DEBUG][2016-03-18 16:12:55,223][org.apache.http.impl.conn.DefaultClientConnection]Sending request: POST /api/v2/openApi/submitReq HTTP/1.1
+[DEBUG][2016-03-18 16:12:55,223][org.apache.http.wire] >> "POST /api/v2/openApi/submitReq HTTP/1.1[\r][\n]"
+[DEBUG][2016-03-18 16:12:55,224][org.apache.http.wire] >> "Content-Length: 322[\r][\n]"
+[DEBUG][2016-03-18 16:12:55,224][org.apache.http.wire] >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+[DEBUG][2016-03-18 16:12:55,224][org.apache.http.wire] >> "Host: api.diditaxi.com.cn[\r][\n]"
+[DEBUG][2016-03-18 16:12:55,224][org.apache.http.wire] >> "Connection: Keep-Alive[\r][\n]"
+[DEBUG][2016-03-18 16:12:55,225][org.apache.http.wire] >> "User-Agent: Apache-HttpClient/4.5.1 (Java/1.7.0_79)[\r][\n]"
+[DEBUG][2016-03-18 16:12:55,225][org.apache.http.wire] >> "[\r][\n]"
+[DEBUG][2016-03-18 16:12:55,225][org.apache.http.headers]>> POST /api/v2/openApi/submitReq HTTP/1.1
+[DEBUG][2016-03-18 16:12:55,225][org.apache.http.headers]>> Content-Length: 322
+[DEBUG][2016-03-18 16:12:55,225][org.apache.http.headers]>> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+[DEBUG][2016-03-18 16:12:55,225][org.apache.http.headers]>> Host: api.diditaxi.com.cn
+[DEBUG][2016-03-18 16:12:55,225][org.apache.http.headers]>> Connection: Keep-Alive
+[DEBUG][2016-03-18 16:12:55,225][org.apache.http.headers]>> User-Agent: Apache-HttpClient/4.5.1 (Java/1.7.0_79)
+[DEBUG][2016-03-18 16:12:55,225][org.apache.http.wire] >> "lng=128.23&lat=365.89&nonce=160318161254&timestamp=1458288774&token=c36e4837bb3070a345070114257c4172&order_id=20160318257812313212312222222222&input_type=1&route_start=%E4%B8%8A%E6%B5%B7%E8%99%B9%E6%A1%A5%E7%81%AB%E8%BD%A6%E7%AB%99&route_end=%E4%B8%8A%E6%B5%B7%E5%8D%97%E7%AB%99&phone=18818200818&add_price=0&channel=70651"
+[DEBUG][2016-03-18 16:12:55,451][org.apache.http.wire] << "HTTP/1.1 200 OK[\r][\n]"
+[DEBUG][2016-03-18 16:12:55,458][org.apache.http.wire] << "Date: Fri, 18 Mar 2016 08:12:58 GMT[\r][\n]"
+[DEBUG][2016-03-18 16:12:55,458][org.apache.http.wire] << "Content-Type: text/html; charset=utf-8[\r][\n]"
+[DEBUG][2016-03-18 16:12:55,459][org.apache.http.wire] << "Transfer-Encoding: chunked[\r][\n]"
+[DEBUG][2016-03-18 16:12:55,459][org.apache.http.wire] << "Connection: keep-alive[\r][\n]"
+[DEBUG][2016-03-18 16:12:55,459][org.apache.http.wire] << "Vary: Accept-Encoding[\r][\n]"
+[DEBUG][2016-03-18 16:12:55,459][org.apache.http.wire] << "[\r][\n]"
+[DEBUG][2016-03-18 16:12:55,462][org.apache.http.impl.conn.DefaultClientConnection]Receiving response: HTTP/1.1 200 OK
+[DEBUG][2016-03-18 16:12:55,462][org.apache.http.headers]<< HTTP/1.1 200 OK
+[DEBUG][2016-03-18 16:12:55,462][org.apache.http.headers]<< Date: Fri, 18 Mar 2016 08:12:58 GMT
+[DEBUG][2016-03-18 16:12:55,462][org.apache.http.headers]<< Content-Type: text/html; charset=utf-8
+[DEBUG][2016-03-18 16:12:55,463][org.apache.http.headers]<< Transfer-Encoding: chunked
+[DEBUG][2016-03-18 16:12:55,463][org.apache.http.headers]<< Connection: keep-alive
+[DEBUG][2016-03-18 16:12:55,463][org.apache.http.headers]<< Vary: Accept-Encoding
+[DEBUG][2016-03-18 16:12:55,483][org.apache.http.impl.client.DefaultHttpClient]Connection can be kept alive indefinitely
+[DEBUG][2016-03-18 16:12:55,500][org.apache.http.wire] << "a5[\r][\n]"
+[DEBUG][2016-03-18 16:12:55,500][org.apache.http.wire] << "[\n]"
+[DEBUG][2016-03-18 16:12:55,500][org.apache.http.wire] << "{"errno":0,"errmsg":"\u8fd4\u56de\u6210\u529f","info":{"success_num":100,"third_order_id":"TVRrM05qUTBNVGMxTXc9PQ==","order_id":"20160318257812313212312222222222"}}"
+[DEBUG][2016-03-18 16:12:55,500][org.apache.http.wire] << "[\r][\n]"
+[DEBUG][2016-03-18 16:12:55,501][org.apache.http.wire] << "0[\r][\n]"
+[DEBUG][2016-03-18 16:12:55,501][org.apache.http.wire] << "[\r][\n]"
+[DEBUG][2016-03-18 16:12:55,501][org.apache.http.impl.conn.BasicClientConnectionManager]Releasing connection org.apache.http.impl.conn.ManagedClientConnectionImpl@5ecc6b5
+[DEBUG][2016-03-18 16:12:55,501][org.apache.http.impl.conn.BasicClientConnectionManager]Connection can be kept alive indefinitely

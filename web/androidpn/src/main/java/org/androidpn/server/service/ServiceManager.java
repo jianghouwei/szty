@@ -17,21 +17,23 @@
  */
 package org.androidpn.server.service;
 
-/** 
+/**
  * Class desciption here.
  *
  * @author Sehwan Noh (devnoh@gmail.com)
  */
 public class ServiceManager {
 
-    public static String USER_SERVICE = "userService";
+	public static String USER_SERVICE = "userService";
 
-    public static Object getService(String name) {
-        return  ServiceLocator.getInstance().getBean(name);
-    }
+	public static Object getService(String name) {
+		// add
+		return ServiceLocator.getInstance().getBean(name);
+	}
 
-    public static UserService getUserService() {
-        return (UserService)  ServiceLocator.getInstance().getBean(USER_SERVICE);
-    }
+	public static UserService getUserService() {
+		// add 
+		return (UserService) ServiceLocator.getInstance().getBean(USER_SERVICE);
+	}
 
 }

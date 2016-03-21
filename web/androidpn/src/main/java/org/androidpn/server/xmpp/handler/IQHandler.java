@@ -52,7 +52,9 @@ public abstract class IQHandler {
     public void process(Packet packet) {
         IQ iq = (IQ) packet;
         try {
+        	log.info("路由类型3：》》》》》》》》》》》》》》》》》》》》》" + "IQ-->IQ reply = handleIQ(iq) " +":["+ packet +"]");
             IQ reply = handleIQ(iq);
+            
             if (reply != null) {
                 PacketDeliverer.deliver(reply);
             }

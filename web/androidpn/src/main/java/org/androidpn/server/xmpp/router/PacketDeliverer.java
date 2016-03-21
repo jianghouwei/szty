@@ -48,8 +48,7 @@ public class PacketDeliverer {
         try {
             JID recipient = packet.getTo();
             if (recipient != null) {
-                ClientSession clientSession = SessionManager.getInstance()
-                        .getSession(recipient);
+                ClientSession clientSession = SessionManager.getInstance().getSession(recipient);
                 if (clientSession != null) {
                     clientSession.deliver(packet);
                 }

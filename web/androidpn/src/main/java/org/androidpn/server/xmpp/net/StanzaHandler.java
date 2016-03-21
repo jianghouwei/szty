@@ -41,7 +41,7 @@ import org.xmpp.packet.StreamError;
 
 /** 
  * This class is to handle incoming XML stanzas.
- * 处理传入的XML节
+ *
  * @author Sehwan Noh (devnoh@gmail.com)
  */
 public class StanzaHandler {
@@ -69,6 +69,7 @@ public class StanzaHandler {
     public StanzaHandler(String serverName, Connection connection) {
         this.serverName = serverName;
         this.connection = connection;
+        //初始化路由
         this.router = new PacketRouter();
     }
 
@@ -90,6 +91,7 @@ public class StanzaHandler {
                 sessionCreated = true;
                 MXParser parser = reader.getXPPParser();
                 parser.setInput(new StringReader(stanza));
+                //写入session
                 createSession(parser);
             } else if (startedTLS) {
                 startedTLS = false;
@@ -137,11 +139,6 @@ public class StanzaHandler {
 
     }
 
-    /**
-     * 型是<message>打头的，
-     * 表示消息是message类型
-     * @param doc
-     */
     private void processMessage(Element doc) {
         log.debug("processMessage()...");
         Message packet;
@@ -159,16 +156,10 @@ public class StanzaHandler {
         }
 
         packet.setFrom(session.getAddress());
-        router.route(packet);//
+        router.route(packet);
         session.incrementClientPacketCount();
     }
 
-    /**
-     * Presence --消息请求头
-     * 
-     * 消息请求用户的状态
-     * @param doc
-     */
     private void processPresence(Element doc) {
         log.debug("processPresence()...");
         Presence packet;
@@ -196,11 +187,6 @@ public class StanzaHandler {
         session.incrementClientPacketCount();
     }
 
-    /**
-     * 请求消息开头信息 IQ
-     * 客户端对server端的一个请求
-     * @param doc
-     */
     private void processIQ(Element doc) {
         log.debug("processIQ()...");
         IQ packet;
@@ -224,15 +210,6 @@ public class StanzaHandler {
             return;
         }
 
-        //        if (packet.getID() == null) {
-        //            // IQ packets MUST have an 'id' attribute
-        //            StreamError error = new StreamError(
-        //                    StreamError.Condition.invalid_xml);
-        //            session.deliverRawText(error.toXML());
-        //            session.close();
-        //            return;
-        //        }
-
         packet.setFrom(session.getAddress());
         router.route(packet);
         session.incrementClientPacketCount();
@@ -247,6 +224,20 @@ public class StanzaHandler {
         }
     }
 
+    /**
+     * 初始化session
+     * createSession:(这里用一句话描述这个方法的作用). <br/>
+     * TODO(这里描述这个方法适用条件 – 可选).<br/>
+     * TODO(这里描述这个方法的执行流程 – 可选).<br/>
+     * TODO(这里描述这个方法的使用方法 – 可选).<br/>
+     * TODO(这里描述这个方法的注意事项 – 可选).<br/>
+     *
+     * @author mao.ru
+     * @param xpp
+     * @throws XmlPullParserException
+     * @throws IOException
+     * @since JDK 1.7
+     */
     private void createSession(XmlPullParser xpp)
             throws XmlPullParserException, IOException {
         for (int eventType = xpp.getEventType(); eventType != XmlPullParser.START_TAG;) {
@@ -272,8 +263,7 @@ public class StanzaHandler {
                 sb.append(error.toXML());
                 connection.deliverRawText(sb.toString());
                 connection.close();
-                log
-                        .warn("Closing session due to bad_namespace_prefix in stream header: "
+                log.warn("Closing session due to bad_namespace_prefix in stream header: "
                                 + namespace);
             }
         }

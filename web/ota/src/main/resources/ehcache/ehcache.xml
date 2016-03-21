@@ -11,7 +11,7 @@
             overflowToDisk="false">
     </defaultCache>
            
-     <!-- ota  文件管理缓存  缓存时间1天 -->
+    <!-- ota  文件管理缓存  缓存时间1天 -->
     <cache name="OtaJsonFileCache"
     	   maxElementsInMemory="5"
            maxEntriesLocalHeap="2000"
@@ -22,5 +22,15 @@
            statistics="true">
     </cache>
 
+	 <!-- ota  文件管理缓存  缓存时间1天 -->
+    <cache name="SMSCache"
+    	   maxElementsInMemory="10000"
+           maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToIdleSeconds="86400"
+           timeToLiveSeconds="0"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
 
 </ehcache>

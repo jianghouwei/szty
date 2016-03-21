@@ -38,25 +38,11 @@ import org.springframework.context.ApplicationContextAware;
  */
 public class ServiceLocator implements ApplicationContextAware {
 
+	public static String USER_SERVICE = "userService";
+
 	private static ApplicationContext context = null;
 
 	private static ServiceLocator servlocator = null;
-
-	public static ApplicationContext getContext() {
-		return context;
-	}
-
-	public static ServiceLocator getInstance() {
-		if (servlocator == null)
-			servlocator = (ServiceLocator) context.getBean("serviceLocator");
-		return servlocator;
-	}
-
-    public Object getBean(String name) {  
-        return context.getBean(name);  
-    }  
-    
-	public static String USER_SERVICE = "userService";
 
 	/**
 	 * Generic method to obtain a service object for a given name.
@@ -67,6 +53,7 @@ public class ServiceLocator implements ApplicationContextAware {
 	 */
 	public static Object getService(String name) {
 		return context.getBean(name);
+		// return XmppServer.getInstance().getBean(name);
 	}
 
 	/**
@@ -75,12 +62,31 @@ public class ServiceLocator implements ApplicationContextAware {
 	 * @return the user service
 	 */
 	public static UserService getUserService() {
+        //TODO  集成spring。 web。xml启动     
 		return (UserService) context.getBean(USER_SERVICE);
+		// return (UserService) XmppServer.getInstance().getBean(USER_SERVICE);
 	}
 
-	public void setApplicationContext(ApplicationContext context) throws BeansException {
-		ServiceLocator.context = context;
+	// add fun
+	public static ServiceLocator getInstance() {
+		if (servlocator == null)
+			servlocator = (ServiceLocator) context.getBean("serviceLocator");
+		return servlocator;
+	}
+	// add fun
+	public Object getBean(String name) {  
+	    return context.getBean(name);  
+	}
+	
+	// add fun
+	@Override
+	public void setApplicationContext(ApplicationContext arg0) throws BeansException {
+		context = arg0;
 	}
 
+	// add fun
+	public ApplicationContext getApplicationContext() {
+		return ServiceLocator.context;
+	}
 
 }
