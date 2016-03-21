@@ -1,4 +1,5 @@
 package com.szty.commos.utils;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -49,9 +50,9 @@ public class EntityUtil {
 	// 主键列名
 	private final String primary_key = "id";
 
-	//private final String moduleName = "wxyd";
+	private final String moduleName = "wxyd";
 	private final String bean_path = "D:/entity_bean/bean";
-	//private final String model_path = "D:/entity_bean/model";
+	private final String model_path = "D:/entity_bean/model";
 	private final String mapper_path = "D:/entity_bean/mapper";
 	private final String xml_path = "d:/entity_bean/xml";
 	private final String service_path = "d:/entity_bean/service";
@@ -60,23 +61,24 @@ public class EntityUtil {
 	private final String jsp_path = "d:/entity_bean/jsp";
 	private final String js_path = "d:/entity_bean/js";
 	private final String action_path = "d:/entity_bean/action";
-	private final String bean_package = "com.szty.commos.shiros.model";// Java 实体类
-	private final String model_package = "com.szty.commos.shiros.model";// Java
-																	// 实体扩展类 包名
-	private final String mapper_package = "com.szty.commos.shiros.dao";// Javamapper 包名
-	private final String service_package = "com.szty.commos.shiros.service";// Javamapper
+	private final String bean_package = "com.szty.wxyd.data.model";// Java 实体类
 																	// 包名
-	private final String serviceimp_package = "com.szty.commos.shiros.service.impl";// Javamapper
+	private final String model_package = "com.szty.wxyd.data.model";// Java
+																	// 实体扩展类 包名
+	private final String mapper_package = "com.szty.wxyd.dao";// Javamapper 包名
+	private final String service_package = "com.szty.wxyd.service";// Javamapper
+																	// 包名
+	private final String serviceimp_package = "com.szty.wxyd.service.impl";// Javamapper
 																			// 包名
-	private final String testcase_package = "com.szty.commos.shiros.test";// Javamapper
+	private final String testcase_package = "com.szty.wxyd.test";// Javamapper
 																	// 包名
 
 	private final String js_package = "/js/memberRank/";// js路径
-	private final String action_package = "com.szty.commos.sys.controller";// action
+	private final String action_package = "com.szty.wxyd.controller";// action
 																		// 包名
 
 	private final String driverName = "com.mysql.jdbc.Driver";
-	private final String dataName = "andriodpn"; // 数据库名称
+	private final String dataName = "wxyd"; // 数据库名称
 	private final String user = "root";
 	private final String password = "root";
 	private final String url = "jdbc:mysql://localhost:3306/" + dataName
@@ -264,7 +266,7 @@ public class EntityUtil {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(beanFile)));
         bw.write("package " + bean_package + ";");
         bw.newLine();
-        bw.write("import com.szty.framework.base.model.BaseModel;");
+        bw.write("import com.szty.wxyd.data.model.BaseModel;");
         bw.newLine();
         bw.newLine();
         bw = buildClassComment(bw, tableComment);
@@ -278,6 +280,13 @@ public class EntityUtil {
                 bw.newLine();
                 bw.write("\t private " + processType(types.get(i)) + " " + processField(columns.get(i)) + ";");
                 bw.newLine();
+                if(columns.get(i).endsWith("time")){
+                	 bw.write("\t private " + processType(types.get(i)) + " " + processField(columns.get(i)) + "Begin;");
+                     bw.newLine();
+                     bw.write("\t private " + processType(types.get(i)) + " " + processField(columns.get(i)) + "End;");
+                     bw.newLine();
+                     bw.newLine();
+                }
                
         }
         bw.newLine();
@@ -304,6 +313,35 @@ public class EntityUtil {
 	            bw.write("\t}");
 	            bw.newLine();
 	            bw.newLine();
+	            if(columns.get(i).endsWith("time")){
+	            	bw.write("\t public void set" + tempField + "Begin (" + tempType + " " + _tempField + "Begin){");
+	 	            bw.newLine();
+	 	            bw.write("\t\t this." + _tempField + "Begin = " + _tempField + "Begin ;");
+	 	            bw.newLine();
+	 	            bw.write("\t}");
+	 	            bw.newLine();
+	 	            bw.newLine();
+	 	            bw.write("\t public " + tempType + " get" + tempField + "Begin (){");
+	 	            bw.newLine();
+	 	            bw.write("\t\treturn this." + _tempField + "Begin;");
+	 	            bw.newLine();
+	 	            bw.write("\t}");
+	 	            bw.newLine();
+	 	            bw.newLine();
+	 	            bw.write("\t public void set" + tempField + "End (" + tempType + " " + _tempField + "End){");
+	 	            bw.newLine();
+	 	            bw.write("\t\t this." + _tempField + "End = " + _tempField + "End ;");
+	 	            bw.newLine();
+	 	            bw.write("\t}");
+	 	            bw.newLine();
+	 	            bw.newLine();
+	 	            bw.write("\t public " + tempType + " get" + tempField + "End (){");
+	 	            bw.newLine();
+	 	            bw.write("\t\treturn this." + _tempField + "End;");
+	 	            bw.newLine();
+	 	            bw.write("\t}");
+	 	            bw.newLine();
+	            }
 	           
         }
         bw.newLine();
@@ -357,17 +395,16 @@ public class EntityUtil {
 		bw.write("\t public " + "void saveBatch" + modelName + "(List<"
 				+ modelName + "> list);");
 		bw.newLine();
-		
+		bw = buildMethodComment(bw, "修改 （匹配有值的字段）");
+		bw.newLine();
+		bw.write("\t public " + "int updateBySelective( " + modelName + " "
+				+ record + ");");
+		bw.newLine();
 		bw = buildMethodComment(bw, "主键ID修改 ");
 		bw.newLine();
-		bw.write("\t public " + "int updateByPrimaryKey ( "+ modelName + " "+ record + " );");
+		bw.write("\t public " + "int updateByPrimaryKey( " + modelName + " "
+				+ record + ");");
 		bw.newLine();
-		
-		bw = buildMethodComment(bw, "删除 ");
-		bw.newLine();
-		bw.write("\t public " + "void delByPrimaryKey (Long id );");
-		bw.newLine();
-		
 		bw.newLine();
 		bw = buildMethodComment(bw, "查询（根据主键ID查询）");
 		bw.newLine();
@@ -428,7 +465,7 @@ public class EntityUtil {
 		// 实体map映射
 		bw.write("\t<!--实体映射-->");
 		bw.newLine();
-		bw.write("\t<resultMap id=\"" + mapname + "\" type=\"" + model_package + "." + modelName
+		bw.write("\t<resultMap id=\"" + mapname + "\" type=\"" + modelName
 				+ "\">");
 		bw.newLine();
 		int size = columns.size();
@@ -481,6 +518,33 @@ public class EntityUtil {
 			bw.newLine();
 			bw.write("\t\t\t</if>");
 			bw.newLine();
+			if(columns.get(i).endsWith("time")){
+				bw.write("\t\t\t<if test=\"" + tepfile + "End != null and "
+						+ tepfile + "End != '' \">");
+				bw.newLine();
+				bw.write("\t\t\t\t <![CDATA[  ");
+				bw.newLine();
+				bw.write("\t\t\t\t and " + columns.get(i) + " <= #{" + tepfile
+						+ "End}");
+				bw.newLine();
+				bw.write("\t\t\t\t ]]>  ");
+				bw.newLine();
+				bw.write("\t\t\t</if>");
+				bw.newLine();
+			}
+			bw.write("\t\t\t<if test=\"" + tepfile + "Begin != null and "
+					+ tepfile + "Begin != '' \">");
+			bw.newLine();
+			bw.write("\t\t\t\t <![CDATA[  ");
+			bw.newLine();
+			bw.write("\t\t\t\t and " + columns.get(i) + " >= #{" + tepfile
+					+ "Begin}");
+			bw.newLine();
+			bw.write("\t\t\t\t ]]>  ");
+			bw.newLine();
+			bw.write("\t\t\t</if>");
+			bw.newLine();
+
 		}
 		bw.newLine();
 		bw.write("\t</where>");
@@ -519,7 +583,7 @@ public class EntityUtil {
 		// 添加insert方法
 		bw.write("\t<!-- 添加 -->");
 		bw.newLine();
-		bw.write("\t<insert id=\"save\" parameterType=\"" + model_package + "." + modelName + "\">");
+		bw.write("\t<insert id=\"save\" parameterType=\"" + modelName + "\">");
 		bw.newLine();
 		bw.write("\t\t <selectKey resultType=\"long\" keyProperty=\"id\">");
 		bw.newLine();
@@ -559,8 +623,8 @@ public class EntityUtil {
 		// 添加insert完
 		bw.write("\t<!-- 添加 （匹配有值的字段）-->");
 		bw.newLine();
-		bw.write("\t<insert id=\"insertSelective\" parameterType=\""+
-				 model_package + "." + modelName+ "\">");
+		bw.write("\t<insert id=\"insertSelective\" parameterType=\""
+				+ processResultMapId(beanName) + "\">");
 		bw.newLine();
 		bw.write("\t\t INSERT INTO " + tableName);
 		bw.newLine();
@@ -591,7 +655,7 @@ public class EntityUtil {
 			bw.write("\t\t\t<if test=\"" + tempField + "!=null and "
 					+ tempField + "!='' \">");
 			bw.newLine();
-				bw.write("\t\t\t\t #{" + processField(columns.get(i)) + "},");
+			bw.write("\t\t\t\t #{" + tempField + "},");
 			bw.newLine();
 			bw.write("\t\t\t</if>");
 			bw.newLine();
@@ -607,7 +671,7 @@ public class EntityUtil {
 		// 添加insert方法
 		bw.write("\t<!-- 添加 -->");
 		bw.newLine();
-		bw.write("\t<insert id=\"saveBatch"+ modelName
+		bw.write("\t<insert id=\"saveBatch" + modelName
 				+ "\" parameterType=\"java.util.List\">");
 		bw.newLine();
 		bw.write("\t\t INSERT INTO " + tableName);
@@ -645,35 +709,64 @@ public class EntityUtil {
 		bw.newLine();
 		// 添加insert完
 		// --------------- 完毕
-				
-				// ----- 修改（匹配有值的字段）
-				bw.write("\t<!-- 修 改id-->");
+		// 修改update方法
+				bw.write("\t<!-- 修 改-->");
 				bw.newLine();
-				bw.write("\t<update id=\"updateByPrimaryKey\" parameterType=\""+model_package + "." + modelName+ "\">");
+				bw.write("\t<update id=\"updateByPrimaryKeySelective\" parameterType=\""
+						+ processResultMapId(modelName) + "\">");
 				bw.newLine();
 				bw.write("\t\t UPDATE " + tableName);
 				bw.newLine();
-				bw.write("\t\t <set> ");
+				bw.write(" \t\t <set> ");
 				bw.newLine();
+
 				tempField = null;
-				for (int i = 1; i < size; i++) {
+				for (int i = 0; i < size; i++) {
 					tempField = processField(columns.get(i));
-					bw.write("\t\t\t<if test=\"" + tempField + " != null\">");
+					bw.write("\t\t\t<if test=\"" + tempField + "!=null and "
+							+ tempField + "!='' \">");
 					bw.newLine();
-					if(i == size -1){
-						bw.write("\t\t\t\t " + columns.get(i) + " = #{" + tempField + "}");
-					}else{
-						bw.write("\t\t\t\t " + columns.get(i) + " = #{" + tempField + "},");
-					}
+					bw.write("\t\t\t\t #{" + tempField + "},");
 					bw.newLine();
 					bw.write("\t\t\t</if>");
 					bw.newLine();
 				}
 
 				bw.newLine();
-				bw.write("\t\t </set> ");
-				
-				bw.write("\t\t WHERE " + columns.get(0) + " = #{"+ processField(columns.get(0)) + "}");
+				bw.write(" \t\t </set>");
+				bw.newLine();
+				bw.write("\t\t WHERE " + columns.get(0) + " = #{"
+						+ processField(columns.get(0)) + "}");
+				bw.newLine();
+				bw.write("\t</update>");
+				bw.newLine();
+				bw.newLine();
+				// update方法完毕
+
+				// ----- 修改（匹配有值的字段）
+				bw.write("\t<!-- 修 改-->");
+				bw.newLine();
+				bw.write("\t<update id=\"updateByPrimaryKey\" parameterType=\""
+						+ processResultMapId(beanName) + "\">");
+				bw.newLine();
+				bw.write("\t\t UPDATE " + tableName);
+				bw.newLine();
+				bw.write("\t\t SET ");
+
+				bw.newLine();
+				tempField = null;
+				for (int i = 1; i < size; i++) {
+					tempField = processField(columns.get(i));
+					bw.write("\t\t\t<if test=\"" + tempField + " != null\">");
+					bw.newLine();
+					bw.write("\t\t\t\t " + columns.get(i) + " = #{" + tempField + "},");
+					bw.newLine();
+					bw.write("\t\t\t</if>");
+					bw.newLine();
+				}
+
+				bw.write("\t\t WHERE " + columns.get(0) + " = #{"
+						+ processField(columns.get(0)) + "}");
 				bw.newLine();
 				bw.write("\t</update>");
 				bw.newLine();
@@ -699,29 +792,12 @@ public class EntityUtil {
 		bw.write("\t</select>");
 		bw.newLine();
 		bw.newLine();
-		
-		//  delByPrimaryKey
-		bw.write("\t<!-- 刪除 -->");
-		bw.newLine();
-		bw.write("\t<delete  id=\"delByPrimaryKey\" parameterType=\"java.lang." + processType(types.get(0))+ "\">");
-		bw.newLine();
-		bw.write("\t\t delete");
-		bw.newLine();
-		bw.write("\t\t FROM " + tableName);
-		bw.newLine();
-		bw.write("\t\t WHERE " + columns.get(0) + " = #{"
-				+ processField(columns.get(0)) + "}");
-		bw.newLine();
-		bw.write("\t</delete>");
-		bw.newLine();
-		bw.newLine();
-		
 
 		// 查询list
 		bw.write("\t<!-- 查询  List 查询 -->");
 		bw.newLine();
 		bw.write("\t<select id=\"queryList\" resultMap=\"" + mapname
-				+ "\" parameterType=\"" + model_package + "." + modelName + "\">");
+				+ "\" parameterType=\"" + modelName + "\">");
 		bw.newLine();
 		bw.write("\t\t SELECT");
 		bw.newLine();
@@ -740,8 +816,8 @@ public class EntityUtil {
 		// 统计
 		 bw.write("\t<!-- 查询 分页总数 -->");
 		 bw.newLine();
-		 bw.write("\t<select id=\"queryPageCount\"  resultType=\"java.lang.Integer\"  parameterType=\""
-		 + model_package + "." + modelName + "\">");
+		 bw.write("\t<select id=\"queryCount\"  resultType=\"java.lang.Integer\"  parameterType=\""
+		 + modelName + "\">");
 		 bw.newLine();
 		 bw.write("\t\t SELECT");
 		 bw.newLine();
@@ -761,7 +837,7 @@ public class EntityUtil {
 		 bw.write("\t<!-- 查询 分页查询 -->");
 		 bw.newLine();
 		 bw.write("\t<select id=\"queryPageList\" resultMap=\""+ mapname +
-		 "\"  parameterType=\""+ model_package + "." + modelName + "\">");
+		 "\"  parameterType=\""+ modelName + "\">");
 		 bw.newLine();
 		 bw.write("\t\t SELECT");
 		 bw.newLine();
@@ -868,6 +944,7 @@ public class EntityUtil {
 	 *
 	 * @throws IOException
 	 */
+	@SuppressWarnings("unused")
 	private void buildBaseServiceImp() throws IOException {
 		File folder = new File(serviceimp_path);
 		if (!folder.exists()) {
@@ -1579,6 +1656,7 @@ public class EntityUtil {
 	 *
 	 * @throws IOException
 	 */
+	@SuppressWarnings("unused")
 	private void buildHessionXml() throws IOException {
 		File folder = new File(testcase_path);
 		if (!folder.exists()) {
@@ -1950,6 +2028,7 @@ public class EntityUtil {
 	 *
 	 * @throws IOException
 	 */
+	@SuppressWarnings("unused")
 	private void buildJSP(List<String> columns, List<String> types,
 			List<String> comments) throws IOException {
 		File folder = new File(jsp_path);
@@ -2034,6 +2113,7 @@ public class EntityUtil {
 	 *
 	 * @throws IOException
 	 */
+	@SuppressWarnings("unused")
 	private void buildJS(List<String> columns, List<String> types,
 			List<String> comments) throws IOException {
 		File folder = new File(js_path);
@@ -2455,7 +2535,7 @@ public class EntityUtil {
 			List<String> types, List<String> comments) throws IOException {
 		int size = columns.size();
 		for (int i = 0; i < size; i++) {
-			//String tempType = processType(types.get(i));
+			String tempType = processType(types.get(i));
 			String _tempField = processField(columns.get(i));
 			String tempField = _tempField.substring(0, 1).toUpperCase()
 					+ _tempField.substring(1);
