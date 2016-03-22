@@ -1686,3 +1686,144 @@
 [DEBUG][2016-03-22 15:41:47,238][org.apache.http.wire]http-outgoing-0 << "[\r][\n]"
 [DEBUG][2016-03-22 15:41:47,238][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection [id: 0][route: {}->http://121.42.47.224:80] can be kept alive indefinitely
 [DEBUG][2016-03-22 15:41:47,238][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection released: [id: 0][route: {}->http://121.42.47.224:80][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]
+[DEBUG][2016-03-22 16:10:31,029][org.apache.http.client.protocol.RequestAddCookies]CookieSpec selected: default
+[DEBUG][2016-03-22 16:10:31,042][org.apache.http.client.protocol.RequestAuthCache]Auth cache not set in the context
+[DEBUG][2016-03-22 16:10:31,043][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection request: [route: {}->http://121.42.47.224:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+[DEBUG][2016-03-22 16:10:31,058][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection leased: [id: 0][route: {}->http://121.42.47.224:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+[DEBUG][2016-03-22 16:10:31,059][org.apache.http.impl.execchain.MainClientExec]Opening connection {}->http://121.42.47.224:80
+[DEBUG][2016-03-22 16:10:31,062][org.apache.http.impl.conn.DefaultHttpClientConnectionOperator]Connecting to /121.42.47.224:80
+[DEBUG][2016-03-22 16:10:31,087][org.apache.http.impl.conn.DefaultHttpClientConnectionOperator]Connection established 192.168.3.120:52021<->121.42.47.224:80
+[DEBUG][2016-03-22 16:10:31,087][org.apache.http.impl.conn.DefaultManagedHttpClientConnection]http-outgoing-0: set socket timeout to 7000
+[DEBUG][2016-03-22 16:10:31,087][org.apache.http.impl.execchain.MainClientExec]Executing request POST /ota/pushReply HTTP/1.1
+[DEBUG][2016-03-22 16:10:31,087][org.apache.http.impl.execchain.MainClientExec]Target auth state: UNCHALLENGED
+[DEBUG][2016-03-22 16:10:31,088][org.apache.http.impl.execchain.MainClientExec]Proxy auth state: UNCHALLENGED
+[DEBUG][2016-03-22 16:10:31,089][org.apache.http.headers]http-outgoing-0 >> POST /ota/pushReply HTTP/1.1
+[DEBUG][2016-03-22 16:10:31,089][org.apache.http.headers]http-outgoing-0 >> Content-Length: 207
+[DEBUG][2016-03-22 16:10:31,089][org.apache.http.headers]http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+[DEBUG][2016-03-22 16:10:31,089][org.apache.http.headers]http-outgoing-0 >> Host: 121.42.47.224
+[DEBUG][2016-03-22 16:10:31,090][org.apache.http.headers]http-outgoing-0 >> Connection: Keep-Alive
+[DEBUG][2016-03-22 16:10:31,090][org.apache.http.headers]http-outgoing-0 >> User-Agent: Apache-HttpClient/4.5.1 (Java/1.7.0_79)
+[DEBUG][2016-03-22 16:10:31,090][org.apache.http.headers]http-outgoing-0 >> Accept-Encoding: gzip,deflate
+[DEBUG][2016-03-22 16:10:31,090][org.apache.http.wire]http-outgoing-0 >> "POST /ota/pushReply HTTP/1.1[\r][\n]"
+[DEBUG][2016-03-22 16:10:31,090][org.apache.http.wire]http-outgoing-0 >> "Content-Length: 207[\r][\n]"
+[DEBUG][2016-03-22 16:10:31,090][org.apache.http.wire]http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+[DEBUG][2016-03-22 16:10:31,090][org.apache.http.wire]http-outgoing-0 >> "Host: 121.42.47.224[\r][\n]"
+[DEBUG][2016-03-22 16:10:31,090][org.apache.http.wire]http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+[DEBUG][2016-03-22 16:10:31,090][org.apache.http.wire]http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.5.1 (Java/1.7.0_79)[\r][\n]"
+[DEBUG][2016-03-22 16:10:31,090][org.apache.http.wire]http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+[DEBUG][2016-03-22 16:10:31,090][org.apache.http.wire]http-outgoing-0 >> "[\r][\n]"
+[DEBUG][2016-03-22 16:10:31,090][org.apache.http.wire]http-outgoing-0 >> "phone=18818200818&src_type=dd&nonce=1232&driver_name=%E9%99%88%E5%B8%88%E5%82%85&photo_url=http&lng=19.602&third_order_id=dd123123213213&order_id=f70f4c04f3e04067bad662784db34940&lat=19.602&taxi_no=wan.A9768"
+[DEBUG][2016-03-22 16:10:31,142][org.apache.http.wire]http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+[DEBUG][2016-03-22 16:10:31,143][org.apache.http.wire]http-outgoing-0 << "Server: Apache-Coyote/1.1[\r][\n]"
+[DEBUG][2016-03-22 16:10:31,143][org.apache.http.wire]http-outgoing-0 << "Cache-Control: no-cache[\r][\n]"
+[DEBUG][2016-03-22 16:10:31,143][org.apache.http.wire]http-outgoing-0 << "Content-Type: application/json;charset=UTF-8[\r][\n]"
+[DEBUG][2016-03-22 16:10:31,143][org.apache.http.wire]http-outgoing-0 << "Transfer-Encoding: chunked[\r][\n]"
+[DEBUG][2016-03-22 16:10:31,143][org.apache.http.wire]http-outgoing-0 << "Date: Tue, 22 Mar 2016 08:10:31 GMT[\r][\n]"
+[DEBUG][2016-03-22 16:10:31,143][org.apache.http.wire]http-outgoing-0 << "[\r][\n]"
+[DEBUG][2016-03-22 16:10:31,143][org.apache.http.wire]http-outgoing-0 << "1b[\r][\n]"
+[DEBUG][2016-03-22 16:10:31,143][org.apache.http.wire]http-outgoing-0 << "{"errmsg":"ok","errno":"0"}[\r][\n]"
+[DEBUG][2016-03-22 16:10:31,143][org.apache.http.wire]http-outgoing-0 << "0[\r][\n]"
+[DEBUG][2016-03-22 16:10:31,143][org.apache.http.wire]http-outgoing-0 << "[\r][\n]"
+[DEBUG][2016-03-22 16:10:31,147][org.apache.http.headers]http-outgoing-0 << HTTP/1.1 200 OK
+[DEBUG][2016-03-22 16:10:31,147][org.apache.http.headers]http-outgoing-0 << Server: Apache-Coyote/1.1
+[DEBUG][2016-03-22 16:10:31,147][org.apache.http.headers]http-outgoing-0 << Cache-Control: no-cache
+[DEBUG][2016-03-22 16:10:31,147][org.apache.http.headers]http-outgoing-0 << Content-Type: application/json;charset=UTF-8
+[DEBUG][2016-03-22 16:10:31,147][org.apache.http.headers]http-outgoing-0 << Transfer-Encoding: chunked
+[DEBUG][2016-03-22 16:10:31,147][org.apache.http.headers]http-outgoing-0 << Date: Tue, 22 Mar 2016 08:10:31 GMT
+[DEBUG][2016-03-22 16:10:31,152][org.apache.http.impl.execchain.MainClientExec]Connection can be kept alive indefinitely
+[DEBUG][2016-03-22 16:10:31,156][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection [id: 0][route: {}->http://121.42.47.224:80] can be kept alive indefinitely
+[DEBUG][2016-03-22 16:10:31,156][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection released: [id: 0][route: {}->http://121.42.47.224:80][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]
+[DEBUG][2016-03-22 16:10:57,120][org.apache.http.client.protocol.RequestAddCookies]CookieSpec selected: default
+[DEBUG][2016-03-22 16:10:57,132][org.apache.http.client.protocol.RequestAuthCache]Auth cache not set in the context
+[DEBUG][2016-03-22 16:10:57,134][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection request: [route: {}->http://121.42.47.224:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+[DEBUG][2016-03-22 16:10:57,149][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection leased: [id: 0][route: {}->http://121.42.47.224:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+[DEBUG][2016-03-22 16:10:57,150][org.apache.http.impl.execchain.MainClientExec]Opening connection {}->http://121.42.47.224:80
+[DEBUG][2016-03-22 16:10:57,153][org.apache.http.impl.conn.DefaultHttpClientConnectionOperator]Connecting to /121.42.47.224:80
+[DEBUG][2016-03-22 16:10:57,177][org.apache.http.impl.conn.DefaultHttpClientConnectionOperator]Connection established 192.168.3.120:52268<->121.42.47.224:80
+[DEBUG][2016-03-22 16:10:57,177][org.apache.http.impl.conn.DefaultManagedHttpClientConnection]http-outgoing-0: set socket timeout to 7000
+[DEBUG][2016-03-22 16:10:57,177][org.apache.http.impl.execchain.MainClientExec]Executing request POST /ota/pushReply HTTP/1.1
+[DEBUG][2016-03-22 16:10:57,177][org.apache.http.impl.execchain.MainClientExec]Target auth state: UNCHALLENGED
+[DEBUG][2016-03-22 16:10:57,178][org.apache.http.impl.execchain.MainClientExec]Proxy auth state: UNCHALLENGED
+[DEBUG][2016-03-22 16:10:57,179][org.apache.http.headers]http-outgoing-0 >> POST /ota/pushReply HTTP/1.1
+[DEBUG][2016-03-22 16:10:57,179][org.apache.http.headers]http-outgoing-0 >> Content-Length: 207
+[DEBUG][2016-03-22 16:10:57,179][org.apache.http.headers]http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+[DEBUG][2016-03-22 16:10:57,180][org.apache.http.headers]http-outgoing-0 >> Host: 121.42.47.224
+[DEBUG][2016-03-22 16:10:57,180][org.apache.http.headers]http-outgoing-0 >> Connection: Keep-Alive
+[DEBUG][2016-03-22 16:10:57,180][org.apache.http.headers]http-outgoing-0 >> User-Agent: Apache-HttpClient/4.5.1 (Java/1.7.0_79)
+[DEBUG][2016-03-22 16:10:57,180][org.apache.http.headers]http-outgoing-0 >> Accept-Encoding: gzip,deflate
+[DEBUG][2016-03-22 16:10:57,180][org.apache.http.wire]http-outgoing-0 >> "POST /ota/pushReply HTTP/1.1[\r][\n]"
+[DEBUG][2016-03-22 16:10:57,180][org.apache.http.wire]http-outgoing-0 >> "Content-Length: 207[\r][\n]"
+[DEBUG][2016-03-22 16:10:57,180][org.apache.http.wire]http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+[DEBUG][2016-03-22 16:10:57,180][org.apache.http.wire]http-outgoing-0 >> "Host: 121.42.47.224[\r][\n]"
+[DEBUG][2016-03-22 16:10:57,180][org.apache.http.wire]http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+[DEBUG][2016-03-22 16:10:57,180][org.apache.http.wire]http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.5.1 (Java/1.7.0_79)[\r][\n]"
+[DEBUG][2016-03-22 16:10:57,180][org.apache.http.wire]http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+[DEBUG][2016-03-22 16:10:57,180][org.apache.http.wire]http-outgoing-0 >> "[\r][\n]"
+[DEBUG][2016-03-22 16:10:57,180][org.apache.http.wire]http-outgoing-0 >> "phone=18818200818&src_type=dd&nonce=1232&driver_name=%E9%99%88%E5%B8%88%E5%82%85&photo_url=http&lng=19.602&third_order_id=dd123123213213&order_id=f70f4c04f3e04067bad662784db34940&lat=19.602&taxi_no=wan.A9768"
+[DEBUG][2016-03-22 16:10:57,232][org.apache.http.wire]http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+[DEBUG][2016-03-22 16:10:57,232][org.apache.http.wire]http-outgoing-0 << "Server: Apache-Coyote/1.1[\r][\n]"
+[DEBUG][2016-03-22 16:10:57,232][org.apache.http.wire]http-outgoing-0 << "Cache-Control: no-cache[\r][\n]"
+[DEBUG][2016-03-22 16:10:57,232][org.apache.http.wire]http-outgoing-0 << "Content-Type: application/json;charset=UTF-8[\r][\n]"
+[DEBUG][2016-03-22 16:10:57,232][org.apache.http.wire]http-outgoing-0 << "Transfer-Encoding: chunked[\r][\n]"
+[DEBUG][2016-03-22 16:10:57,232][org.apache.http.wire]http-outgoing-0 << "Date: Tue, 22 Mar 2016 08:10:57 GMT[\r][\n]"
+[DEBUG][2016-03-22 16:10:57,232][org.apache.http.wire]http-outgoing-0 << "[\r][\n]"
+[DEBUG][2016-03-22 16:10:57,232][org.apache.http.wire]http-outgoing-0 << "1b[\r][\n]"
+[DEBUG][2016-03-22 16:10:57,232][org.apache.http.wire]http-outgoing-0 << "{"errmsg":"ok","errno":"0"}[\r][\n]"
+[DEBUG][2016-03-22 16:10:57,232][org.apache.http.wire]http-outgoing-0 << "0[\r][\n]"
+[DEBUG][2016-03-22 16:10:57,233][org.apache.http.wire]http-outgoing-0 << "[\r][\n]"
+[DEBUG][2016-03-22 16:10:57,235][org.apache.http.headers]http-outgoing-0 << HTTP/1.1 200 OK
+[DEBUG][2016-03-22 16:10:57,235][org.apache.http.headers]http-outgoing-0 << Server: Apache-Coyote/1.1
+[DEBUG][2016-03-22 16:10:57,235][org.apache.http.headers]http-outgoing-0 << Cache-Control: no-cache
+[DEBUG][2016-03-22 16:10:57,236][org.apache.http.headers]http-outgoing-0 << Content-Type: application/json;charset=UTF-8
+[DEBUG][2016-03-22 16:10:57,236][org.apache.http.headers]http-outgoing-0 << Transfer-Encoding: chunked
+[DEBUG][2016-03-22 16:10:57,236][org.apache.http.headers]http-outgoing-0 << Date: Tue, 22 Mar 2016 08:10:57 GMT
+[DEBUG][2016-03-22 16:10:57,240][org.apache.http.impl.execchain.MainClientExec]Connection can be kept alive indefinitely
+[DEBUG][2016-03-22 16:10:57,243][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection [id: 0][route: {}->http://121.42.47.224:80] can be kept alive indefinitely
+[DEBUG][2016-03-22 16:10:57,243][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection released: [id: 0][route: {}->http://121.42.47.224:80][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]
+[DEBUG][2016-03-22 16:12:08,226][org.apache.http.client.protocol.RequestAddCookies]CookieSpec selected: default
+[DEBUG][2016-03-22 16:12:08,238][org.apache.http.client.protocol.RequestAuthCache]Auth cache not set in the context
+[DEBUG][2016-03-22 16:12:08,240][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection request: [route: {}->http://121.42.47.224:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+[DEBUG][2016-03-22 16:12:08,255][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection leased: [id: 0][route: {}->http://121.42.47.224:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+[DEBUG][2016-03-22 16:12:08,256][org.apache.http.impl.execchain.MainClientExec]Opening connection {}->http://121.42.47.224:80
+[DEBUG][2016-03-22 16:12:08,259][org.apache.http.impl.conn.DefaultHttpClientConnectionOperator]Connecting to /121.42.47.224:80
+[DEBUG][2016-03-22 16:12:08,281][org.apache.http.impl.conn.DefaultHttpClientConnectionOperator]Connection established 192.168.3.120:52932<->121.42.47.224:80
+[DEBUG][2016-03-22 16:12:08,281][org.apache.http.impl.conn.DefaultManagedHttpClientConnection]http-outgoing-0: set socket timeout to 7000
+[DEBUG][2016-03-22 16:12:08,281][org.apache.http.impl.execchain.MainClientExec]Executing request POST /ota/pushReply HTTP/1.1
+[DEBUG][2016-03-22 16:12:08,281][org.apache.http.impl.execchain.MainClientExec]Target auth state: UNCHALLENGED
+[DEBUG][2016-03-22 16:12:08,282][org.apache.http.impl.execchain.MainClientExec]Proxy auth state: UNCHALLENGED
+[DEBUG][2016-03-22 16:12:08,284][org.apache.http.headers]http-outgoing-0 >> POST /ota/pushReply HTTP/1.1
+[DEBUG][2016-03-22 16:12:08,284][org.apache.http.headers]http-outgoing-0 >> Content-Length: 207
+[DEBUG][2016-03-22 16:12:08,284][org.apache.http.headers]http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+[DEBUG][2016-03-22 16:12:08,284][org.apache.http.headers]http-outgoing-0 >> Host: 121.42.47.224
+[DEBUG][2016-03-22 16:12:08,284][org.apache.http.headers]http-outgoing-0 >> Connection: Keep-Alive
+[DEBUG][2016-03-22 16:12:08,284][org.apache.http.headers]http-outgoing-0 >> User-Agent: Apache-HttpClient/4.5.1 (Java/1.7.0_79)
+[DEBUG][2016-03-22 16:12:08,284][org.apache.http.headers]http-outgoing-0 >> Accept-Encoding: gzip,deflate
+[DEBUG][2016-03-22 16:12:08,284][org.apache.http.wire]http-outgoing-0 >> "POST /ota/pushReply HTTP/1.1[\r][\n]"
+[DEBUG][2016-03-22 16:12:08,284][org.apache.http.wire]http-outgoing-0 >> "Content-Length: 207[\r][\n]"
+[DEBUG][2016-03-22 16:12:08,284][org.apache.http.wire]http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+[DEBUG][2016-03-22 16:12:08,284][org.apache.http.wire]http-outgoing-0 >> "Host: 121.42.47.224[\r][\n]"
+[DEBUG][2016-03-22 16:12:08,284][org.apache.http.wire]http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+[DEBUG][2016-03-22 16:12:08,284][org.apache.http.wire]http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.5.1 (Java/1.7.0_79)[\r][\n]"
+[DEBUG][2016-03-22 16:12:08,285][org.apache.http.wire]http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+[DEBUG][2016-03-22 16:12:08,285][org.apache.http.wire]http-outgoing-0 >> "[\r][\n]"
+[DEBUG][2016-03-22 16:12:08,285][org.apache.http.wire]http-outgoing-0 >> "phone=18818200818&src_type=dd&nonce=1232&driver_name=%E9%99%88%E5%B8%88%E5%82%85&photo_url=http&lng=19.602&third_order_id=dd123123213213&order_id=f70f4c04f3e04067bad662784db34940&lat=19.602&taxi_no=wan.A9768"
+[DEBUG][2016-03-22 16:12:08,334][org.apache.http.wire]http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+[DEBUG][2016-03-22 16:12:08,334][org.apache.http.wire]http-outgoing-0 << "Server: Apache-Coyote/1.1[\r][\n]"
+[DEBUG][2016-03-22 16:12:08,334][org.apache.http.wire]http-outgoing-0 << "Cache-Control: no-cache[\r][\n]"
+[DEBUG][2016-03-22 16:12:08,334][org.apache.http.wire]http-outgoing-0 << "Content-Type: application/json;charset=UTF-8[\r][\n]"
+[DEBUG][2016-03-22 16:12:08,335][org.apache.http.wire]http-outgoing-0 << "Transfer-Encoding: chunked[\r][\n]"
+[DEBUG][2016-03-22 16:12:08,335][org.apache.http.wire]http-outgoing-0 << "Date: Tue, 22 Mar 2016 08:12:08 GMT[\r][\n]"
+[DEBUG][2016-03-22 16:12:08,335][org.apache.http.wire]http-outgoing-0 << "[\r][\n]"
+[DEBUG][2016-03-22 16:12:08,335][org.apache.http.wire]http-outgoing-0 << "1b[\r][\n]"
+[DEBUG][2016-03-22 16:12:08,335][org.apache.http.wire]http-outgoing-0 << "{"errmsg":"ok","errno":"0"}[\r][\n]"
+[DEBUG][2016-03-22 16:12:08,335][org.apache.http.wire]http-outgoing-0 << "0[\r][\n]"
+[DEBUG][2016-03-22 16:12:08,335][org.apache.http.wire]http-outgoing-0 << "[\r][\n]"
+[DEBUG][2016-03-22 16:12:08,339][org.apache.http.headers]http-outgoing-0 << HTTP/1.1 200 OK
+[DEBUG][2016-03-22 16:12:08,339][org.apache.http.headers]http-outgoing-0 << Server: Apache-Coyote/1.1
+[DEBUG][2016-03-22 16:12:08,339][org.apache.http.headers]http-outgoing-0 << Cache-Control: no-cache
+[DEBUG][2016-03-22 16:12:08,339][org.apache.http.headers]http-outgoing-0 << Content-Type: application/json;charset=UTF-8
+[DEBUG][2016-03-22 16:12:08,339][org.apache.http.headers]http-outgoing-0 << Transfer-Encoding: chunked
+[DEBUG][2016-03-22 16:12:08,339][org.apache.http.headers]http-outgoing-0 << Date: Tue, 22 Mar 2016 08:12:08 GMT
+[DEBUG][2016-03-22 16:12:08,345][org.apache.http.impl.execchain.MainClientExec]Connection can be kept alive indefinitely
+[DEBUG][2016-03-22 16:12:08,349][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection [id: 0][route: {}->http://121.42.47.224:80] can be kept alive indefinitely
+[DEBUG][2016-03-22 16:12:08,350][org.apache.http.impl.conn.PoolingHttpClientConnectionManager]Connection released: [id: 0][route: {}->http://121.42.47.224:80][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]

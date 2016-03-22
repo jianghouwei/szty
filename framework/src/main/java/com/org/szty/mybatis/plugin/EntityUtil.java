@@ -1,4 +1,4 @@
-package com.szty.commos.utils;
+package com.org.szty.mybatis.plugin;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -2461,7 +2461,7 @@ public class EntityUtil {
 		return maps;
 	}
 
-	public void generate() throws ClassNotFoundException, SQLException,
+	public  void generate() throws ClassNotFoundException, SQLException,
 			IOException {
 		init();
 		String prefix = "show full fields from ";
