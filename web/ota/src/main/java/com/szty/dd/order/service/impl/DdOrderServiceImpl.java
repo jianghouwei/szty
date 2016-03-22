@@ -26,12 +26,15 @@ public class DdOrderServiceImpl implements DdOrderService{
 	@Override
 	public String upOrder(DdOrder ddOrder) {
 		DdOrder  dd = ddOrderMapper.selectByPrimaryKey(ddOrder.getOrder_id());
+		if(dd == null){
+			return "noorder";
+		}
 		ddOrderMapper.upOrderByOrderIdAndPhone(ddOrder);
 		//通知手机
 		String msg = JSON.toJSONString(ddOrder);
-		//DOrderUtils.sendAndroidPn(dd.getBef_phone(), msg);
+		DOrderUtils.sendAndroidPn(dd.getBef_phone(), msg);
 		DOrderUtils.sendAndroidPn("18818200818", msg);
-		return null;
+		return "ok";
 	}
 
 	@Override

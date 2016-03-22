@@ -73,8 +73,12 @@ public class DdOrderController {
 		System.out.println("请求一次。。。。");
 		String order_id = request.getParameter("order_id");
 		log.info("滴滴回掉接口订单号【【【【【【" + order_id + "】】】】】】】】】】】】】】】】】】");
-		ddOrderService.upOrder(ddorder);
-		ResponseUtil.outJson(response, DdMsg.JsonMsg("0", "ok"));
+		String str = ddOrderService.upOrder(ddorder);
+		if("ok".equals(str)){
+			ResponseUtil.outJson(response, DdMsg.JsonMsg("0", "ok"));
+		}else{
+			ResponseUtil.outJson(response, DdMsg.JsonMsg("1", "订单不存在"));
+		}
 		return null;
 	}
 }
