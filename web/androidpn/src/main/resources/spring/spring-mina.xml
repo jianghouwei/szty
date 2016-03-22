@@ -16,6 +16,7 @@
 	<!--  user service  注入bean -->
 	<bean id="serviceLocator" class="org.androidpn.server.service.ServiceLocator"
 		scope="singleton" />
+		
 	<!-- =============================================================== -->
 	<!-- MINA -->
 	<!-- =============================================================== -->

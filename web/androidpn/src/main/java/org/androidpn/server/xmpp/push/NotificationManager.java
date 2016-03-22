@@ -78,15 +78,23 @@ public class NotificationManager {
      */
     public void sendNotifcationToUser(String apiKey, String username,
             String title, String message, String uri) {
-        log.debug("sendNotifcationToUser()...");
+    	log.info("sendNotifcationToUser()>>>>>>>>>>>>>>>=贮备发送");
         IQ notificationIQ = createNotificationIQ(apiKey, title, message, uri);
+        log.info("sendNotifcationToUser()>>>>>>>>>>>>>>>发送xml"+ notificationIQ.toString());
+        log.info("sendNotifcationToUser()>>>>>>>>>>>>>>>发送xml"+ notificationIQ.toXML());
         ClientSession session = sessionManager.getSession(username);
+        
         if (session != null) {
+        	log.info("sendNotifcationToUser()>>>>>>>>>>>>>>>+session= "+session.getAddress());
             if (session.getPresence().isAvailable()) {
                 notificationIQ.setTo(session.getAddress());
                 session.deliver(notificationIQ);
+                log.info("发送完成>>>>>>>>>>>>>>>+session= "+session.getAddress());
             }
+        }else{
+        	log.info("sendNotifcationToUser()>>>>>>>>>>>>>>>+session == null");
         }
+        
     }
 
     /**
@@ -94,6 +102,7 @@ public class NotificationManager {
      */
     private IQ createNotificationIQ(String apiKey, String title,
             String message, String uri) {
+    	log.info("sendNotifcationToUser()>>>>>>>>>>>>>>>+session == 凭借参数");
         Random random = new Random();
         String id = Integer.toHexString(random.nextInt());
         // String id = String.valueOf(System.currentTimeMillis());
@@ -102,10 +111,10 @@ public class NotificationManager {
                 "notification", NOTIFICATION_NAMESPACE));
         notification.addElement("id").setText(id);
         notification.addElement("apiKey").setText(apiKey);
-        notification.addElement("title").setText(title);
+       // notification.addElement("title").setText(title);
         notification.addElement("message").setText(message);
-        notification.addElement("uri").setText(uri);
-
+        //notification.addElement("uri").setText(uri);
+        
         IQ iq = new IQ();
         iq.setType(IQ.Type.set);
         iq.setChildElement(notification);

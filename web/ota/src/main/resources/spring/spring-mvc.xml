@@ -13,7 +13,8 @@
 
 	<mvc:annotation-driven />
 	<!-- 注解扫描包 -->
-	<context:component-scan base-package="com.szty.web.ota.controller,com.szty.sms.controller" />
+	<context:component-scan base-package="com.szty.web.ota.controller,
+	com.szty.sms.controller,com.szty.dd.order.controller" />
 	<mvc:annotation-driven>
 		<mvc:message-converters register-defaults="true">
 			<!-- StringHttpMessageConverter编码为UTF-8，防止乱码 -->

@@ -78,11 +78,10 @@ public class EntityUtil {
 																		// 包名
 
 	private final String driverName = "com.mysql.jdbc.Driver";
-	private final String dataName = "wxyd"; // 数据库名称
+	private final String dataName = "grouporder"; // 数据库名称
 	private final String user = "root";
 	private final String password = "root";
-	private final String url = "jdbc:mysql://localhost:3306/" + dataName
-			+ "?characterEncoding=utf8";
+	private final String url = "jdbc:mysql://localhost:3306/" + dataName + "?characterEncoding=utf8";
 	private String tableName = null;
 	private String beanName = null;
 	private String modelName = null;
@@ -473,7 +472,7 @@ public class EntityUtil {
 			bw.write("\t\t<!--" + comments.get(i) + "-->");
 			bw.newLine();
 			bw.write("\t\t<result column=\"" + columns.get(i)
-					+ "\"  property=\"" + this.processField(columns.get(i))
+					+ "\"  property=\"" + columns.get(i) //this.processField(columns.get(i))
 					+ "\" />");
 			bw.newLine();
 		}
@@ -510,7 +509,8 @@ public class EntityUtil {
 		bw.newLine();
 		String tepfile = null;
 		for (int i = 0; i < wheresize; i++) {
-			tepfile = processField(columns.get(i));
+			//tepfile = processField(columns.get(i));
+			tepfile = columns.get(i);
 			bw.write("\t\t\t<if test=\"" + tepfile + " != null and " + tepfile
 					+ " != '' \">");
 			bw.newLine();
@@ -518,33 +518,6 @@ public class EntityUtil {
 			bw.newLine();
 			bw.write("\t\t\t</if>");
 			bw.newLine();
-			if(columns.get(i).endsWith("time")){
-				bw.write("\t\t\t<if test=\"" + tepfile + "End != null and "
-						+ tepfile + "End != '' \">");
-				bw.newLine();
-				bw.write("\t\t\t\t <![CDATA[  ");
-				bw.newLine();
-				bw.write("\t\t\t\t and " + columns.get(i) + " <= #{" + tepfile
-						+ "End}");
-				bw.newLine();
-				bw.write("\t\t\t\t ]]>  ");
-				bw.newLine();
-				bw.write("\t\t\t</if>");
-				bw.newLine();
-			}
-			bw.write("\t\t\t<if test=\"" + tepfile + "Begin != null and "
-					+ tepfile + "Begin != '' \">");
-			bw.newLine();
-			bw.write("\t\t\t\t <![CDATA[  ");
-			bw.newLine();
-			bw.write("\t\t\t\t and " + columns.get(i) + " >= #{" + tepfile
-					+ "Begin}");
-			bw.newLine();
-			bw.write("\t\t\t\t ]]>  ");
-			bw.newLine();
-			bw.write("\t\t\t</if>");
-			bw.newLine();
-
 		}
 		bw.newLine();
 		bw.write("\t</where>");
@@ -608,8 +581,10 @@ public class EntityUtil {
 		bw.newLine();
 		bw.write(" \t\t(");
 		for (int i = 0; i < size; i++) {
+			
+			String tepfile = columns.get(i);//processField(columns.get(i));
 			if (!columns.get(i).equalsIgnoreCase(primary_key)) {
-				bw.write("#{" + processField(columns.get(i)) + "}");
+				bw.write("#{" + tepfile + "}");
 				if (i != size - 1) {
 					bw.write(",");
 				}
@@ -633,7 +608,7 @@ public class EntityUtil {
 
 		String tempField = null;
 		for (int i = 0; i < size; i++) {
-			tempField = processField(columns.get(i));
+			tempField =columns.get(i) ;// processField(columns.get(i));
 			bw.write("\t\t\t<if test=\"" + tempField + " != null\">");
 			bw.newLine();
 			bw.write("\t\t\t\t " + columns.get(i) + ",");
@@ -651,7 +626,7 @@ public class EntityUtil {
 
 		tempField = null;
 		for (int i = 0; i < size; i++) {
-			tempField = processField(columns.get(i));
+			tempField = columns.get(i); //processField(columns.get(i));
 			bw.write("\t\t\t<if test=\"" + tempField + "!=null and "
 					+ tempField + "!='' \">");
 			bw.newLine();
@@ -722,7 +697,7 @@ public class EntityUtil {
 
 				tempField = null;
 				for (int i = 0; i < size; i++) {
-					tempField = processField(columns.get(i));
+					tempField = columns.get(i);//processField(columns.get(i));
 					bw.write("\t\t\t<if test=\"" + tempField + "!=null and "
 							+ tempField + "!='' \">");
 					bw.newLine();
@@ -736,7 +711,8 @@ public class EntityUtil {
 				bw.write(" \t\t </set>");
 				bw.newLine();
 				bw.write("\t\t WHERE " + columns.get(0) + " = #{"
-						+ processField(columns.get(0)) + "}");
+						+ columns.get(0) //processField(columns.get(0))
+						+ "}");
 				bw.newLine();
 				bw.write("\t</update>");
 				bw.newLine();
@@ -756,7 +732,7 @@ public class EntityUtil {
 				bw.newLine();
 				tempField = null;
 				for (int i = 1; i < size; i++) {
-					tempField = processField(columns.get(i));
+					tempField = columns.get(i) ;//processField(columns.get(i));
 					bw.write("\t\t\t<if test=\"" + tempField + " != null\">");
 					bw.newLine();
 					bw.write("\t\t\t\t " + columns.get(i) + " = #{" + tempField + "},");
@@ -766,7 +742,9 @@ public class EntityUtil {
 				}
 
 				bw.write("\t\t WHERE " + columns.get(0) + " = #{"
-						+ processField(columns.get(0)) + "}");
+						+ columns.get(0)
+						// processField(columns.get(0))
+						+ "}");
 				bw.newLine();
 				bw.write("\t</update>");
 				bw.newLine();

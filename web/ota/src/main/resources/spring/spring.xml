@@ -11,10 +11,13 @@
 	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
-	<context:component-scan base-package="com.szty.web.ota.service.impl,com.szty.web.ota.utils,com.szty.sms.service.impl" />
+	<context:component-scan 
+	base-package="com.szty.web.ota.service.impl,
+	com.szty.web.ota.utils,
+	com.szty.sms.service.impl,com.szty.dd.order.service.impl" />
 
-	<context:property-placeholder location="classpath:log4j.properties" />
-
+	<context:property-placeholder location="classpath:*.properties" />
+	
 	<util:properties id="fileProties" location="classpath:file.properties" />
 
 	<import resource="classpath:spring/spring-config-cache.xml" />

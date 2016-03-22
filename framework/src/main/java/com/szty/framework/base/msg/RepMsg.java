@@ -7,12 +7,14 @@ public class RepMsg {
 	private String result;
 
 	private String msg;
+	
 
 	public RepMsg(String code, String msg) {
 		super();
 		this.result = code;
 		this.msg = msg;
 	}
+	
 
 	public static String JsonMsg(String result, String msg) {
 		
@@ -35,5 +37,6 @@ public class RepMsg {
 	public void setMsg(String msg) {
 		this.msg = msg;
 	}
+
 
 }

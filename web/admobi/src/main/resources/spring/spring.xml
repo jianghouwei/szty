@@ -13,8 +13,8 @@
 
 	<!-- <context:component-scan base-package="com.szty..*" /> -->
 
-	<context:property-placeholder location="classpath:jdbc.properties" />
-	<context:property-placeholder location="classpath:log4j.properties" />
+	<context:property-placeholder location="classpath:*.properties" />
+	<!-- <context:property-placeholder location="classpath:log4j.properties" /> -->
 	<!-- <util:properties id="wxconfing" location="classpath:weixin.properties" 
 		/> -->
 	<import resource="classpath:spring/spring-mvc-shiro.xml" />

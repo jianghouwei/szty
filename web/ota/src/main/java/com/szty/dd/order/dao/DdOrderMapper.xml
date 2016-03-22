@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szty.dd.order.dao.DdOrderMapper">
+
+	<!--实体映射 -->
+	<resultMap id="ddOrderResultMap" type="com.szty.dd.order.model.DdOrder">
+		<!---->
+		<result column="id" property="id" />
+		<!---->
+		<result column="src_type" property="src_type" />
+		<!---->
+		<result column="order_id" property="order_id" />
+		<!---->
+		<result column="third_order_id" property="third_order_id" />
+		<!---->
+		<result column="bef_lng" property="bef_lng" />
+		<!---->
+		<result column="bef_lat" property="bef_lat" />
+		<!---->
+		<result column="bef_phone" property="bef_phone" />
+		<!---->
+		<result column="lng" property="lng" />
+		<!---->
+		<result column="lat" property="lat" />
+		<!---->
+		<result column="driver_name" property="driver_name" />
+		<!---->
+		<result column="taxi_no" property="taxi_no" />
+		<!---->
+		<result column="taxi_company" property="taxi_company" />
+		<!---->
+		<result column="phone" property="phone" />
+		<!---->
+		<result column="photo_url" property="photo_url" />
+		<!---->
+		<result column="nonce" property="nonce" />
+		<!---->
+		<result column="timestamp" property="timestamp" />
+		<!---->
+		<result column="token" property="token" />
+		<!---->
+		<result column="order_num" property="order_num" />
+		<!---->
+		<result column="praise_num" property="praise_num" />
+		<!---->
+		<result column="channel" property="channel" />
+		<!---->
+		<result column="errno" property="errno" />
+		<!---->
+		<result column="nerrmsg" property="nerrmsg" />
+	</resultMap>
+
+
+	<!-- 通用查询结果列 -->
+	<sql id="Base_Column_List">
+		id, src_type, order_id, third_order_id, bef_lng, bef_lat, bef_phone, lng,
+		lat, driver_name, taxi_no, taxi_company, phone, photo_url, nonce,
+		timestamp, token, order_num, praise_num, channel, errno, nerrmsg
+	</sql>
+
+
+	<!-- 查询条件 -->
+	<sql id="modelwheresql">
+		<where>
+
+			<if test="id != null and id != '' ">
+				and id = #{id}
+			</if>
+			<if test="src_type != null and src_type != '' ">
+				and src_type = #{src_type}
+			</if>
+			<if test="order_id != null and order_id != '' ">
+				and order_id = #{order_id}
+			</if>
+			<if test="third_order_id != null and third_order_id != '' ">
+				and third_order_id = #{third_order_id}
+			</if>
+			<if test="bef_lng != null and bef_lng != '' ">
+				and bef_lng = #{bef_lng}
+			</if>
+			<if test="bef_lat != null and bef_lat != '' ">
+				and bef_lat = #{bef_lat}
+			</if>
+			<if test="bef_phone != null and bef_phone != '' ">
+				and bef_phone = #{bef_phone}
+			</if>
+			<if test="lng != null and lng != '' ">
+				and lng = #{lng}
+			</if>
+			<if test="lat != null and lat != '' ">
+				and lat = #{lat}
+			</if>
+			<if test="driver_name != null and driver_name != '' ">
+				and driver_name = #{driver_name}
+			</if>
+			<if test="taxi_no != null and taxi_no != '' ">
+				and taxi_no = #{taxi_no}
+			</if>
+			<if test="taxi_company != null and taxi_company != '' ">
+				and taxi_company = #{taxi_company}
+			</if>
+			<if test="phone != null and phone != '' ">
+				and phone = #{phone}
+			</if>
+			<if test="photo_url != null and photo_url != '' ">
+				and photo_url = #{photo_url}
+			</if>
+			<if test="nonce != null and nonce != '' ">
+				and nonce = #{nonce}
+			</if>
+			<if test="timestamp != null and timestamp != '' ">
+				and timestamp = #{timestamp}
+			</if>
+			<if test="token != null and token != '' ">
+				and token = #{token}
+			</if>
+			<if test="order_num != null and order_num != '' ">
+				and order_num = #{order_num}
+			</if>
+			<if test="praise_num != null and praise_num != '' ">
+				and praise_num = #{praise_num}
+			</if>
+			<if test="channel != null and channel != '' ">
+				and channel = #{channel}
+			</if>
+			<if test="errno != null and errno != '' ">
+				and errno = #{errno}
+			</if>
+			<if test="nerrmsg != null and nerrmsg != '' ">
+				and nerrmsg = #{nerrmsg}
+			</if>
+
+		</where>
+	</sql>
+
+
+	<sql id="limitsql">
+		<if test="limitStart != null and pageSize != null">
+				 <![CDATA[  
+				 order by id desc limit #{limitStart} , #{pageSize} 
+				 ]]>
+		</if>
+	</sql>	<!-- 添加 -->
+	<insert id="save" parameterType="com.szty.dd.order.model.DdOrder">
+		<selectKey resultType="long" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO dd_order
+		(src_type,order_id,third_order_id,bef_lng,bef_lat,bef_phone,lng,lat,driver_name,taxi_no,taxi_company,phone,photo_url,nonce,timestamp,token,order_num,praise_num,channel,errno,nerrmsg)
+		VALUES
+		(#{src_type},#{order_id},#{third_order_id},#{bef_lng},#{bef_lat},#{bef_phone},#{lng},#{lat},#{driver_name},#{taxi_no},#{taxi_company},#{phone},#{photo_url},#{nonce},#{timestamp},#{token},#{order_num},#{praise_num},#{channel},#{errno},#{nerrmsg})
+	</insert>
+
+	<!-- 添加 （匹配有值的字段） -->
+	<insert id="insertSelective" parameterType="com.szty.dd.order.model.DdOrder">
+		INSERT INTO dd_order
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="src_type != null">
+				src_type,
+			</if>
+			<if test="order_id != null">
+				order_id,
+			</if>
+			<if test="third_order_id != null">
+				third_order_id,
+			</if>
+			<if test="bef_lng != null">
+				bef_lng,
+			</if>
+			<if test="bef_lat != null">
+				bef_lat,
+			</if>
+			<if test="bef_phone != null">
+				bef_phone,
+			</if>
+			<if test="lng != null">
+				lng,
+			</if>
+			<if test="lat != null">
+				lat,
+			</if>
+			<if test="driver_name != null">
+				driver_name,
+			</if>
+			<if test="taxi_no != null">
+				taxi_no,
+			</if>
+			<if test="taxi_company != null">
+				taxi_company,
+			</if>
+			<if test="phone != null">
+				phone,
+			</if>
+			<if test="photo_url != null">
+				photo_url,
+			</if>
+			<if test="nonce != null">
+				nonce,
+			</if>
+			<if test="timestamp != null">
+				timestamp,
+			</if>
+			<if test="token != null">
+				token,
+			</if>
+			<if test="order_num != null">
+				order_num,
+			</if>
+			<if test="praise_num != null">
+				praise_num,
+			</if>
+			<if test="channel != null">
+				channel,
+			</if>
+			<if test="errno != null">
+				errno,
+			</if>
+			<if test="nerrmsg != null">
+				nerrmsg,
+			</if>
+
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id!=null and id!='' ">
+				#{id},
+			</if>
+			<if test="src_type!=null and src_type!='' ">
+				#{src_type},
+			</if>
+			<if test="order_id!=null and order_id!='' ">
+				#{order_id},
+			</if>
+			<if test="third_order_id!=null and third_order_id!='' ">
+				#{third_order_id},
+			</if>
+			<if test="bef_lng!=null and bef_lng!='' ">
+				#{bef_lng},
+			</if>
+			<if test="bef_lat!=null and bef_lat!='' ">
+				#{bef_lat},
+			</if>
+			<if test="bef_phone!=null and bef_phone!='' ">
+				#{bef_phone},
+			</if>
+			<if test="lng!=null and lng!='' ">
+				#{lng},
+			</if>
+			<if test="lat!=null and lat!='' ">
+				#{lat},
+			</if>
+			<if test="driver_name!=null and driver_name!='' ">
+				#{driver_name},
+			</if>
+			<if test="taxi_no!=null and taxi_no!='' ">
+				#{taxi_no},
+			</if>
+			<if test="taxi_company!=null and taxi_company!='' ">
+				#{taxi_company},
+			</if>
+			<if test="phone!=null and phone!='' ">
+				#{phone},
+			</if>
+			<if test="photo_url!=null and photo_url!='' ">
+				#{photo_url},
+			</if>
+			<if test="nonce!=null and nonce!='' ">
+				#{nonce},
+			</if>
+			<if test="timestamp!=null and timestamp!='' ">
+				#{timestamp},
+			</if>
+			<if test="token!=null and token!='' ">
+				#{token},
+			</if>
+			<if test="order_num!=null and order_num!='' ">
+				#{order_num},
+			</if>
+			<if test="praise_num!=null and praise_num!='' ">
+				#{praise_num},
+			</if>
+			<if test="channel!=null and channel!='' ">
+				#{channel},
+			</if>
+			<if test="errno!=null and errno!='' ">
+				#{errno},
+			</if>
+			<if test="nerrmsg!=null and nerrmsg!='' ">
+				#{nerrmsg},
+			</if>
+		</trim>
+	</insert>
+
+
+	<!-- 修 改 -->
+	<update id="updateByPrimaryKeySelective" parameterType="com.szty.dd.order.model.DdOrder">
+		UPDATE dd_order
+		<set>
+			<if test="id!=null and id!='' ">
+				id = #{id},
+			</if>
+			<if test="src_type!=null and src_type!='' ">
+				src_type = #{src_type},
+			</if>
+			<if test="order_id!=null and order_id!='' ">
+				#{order_id},
+			</if>
+			<if test="third_order_id!=null and third_order_id!='' ">
+				third_order_id = #{third_order_id},
+			</if>
+			<if test="bef_lng!=null and bef_lng!='' ">
+				bef_lng = #{bef_lng},
+			</if>
+			<if test="bef_lat!=null and bef_lat!='' ">
+				bef_lat = #{bef_lat},
+			</if>
+			<if test="bef_phone!=null and bef_phone!='' ">
+				bef_phone = #{bef_phone},
+			</if>
+			<if test="lng!=null and lng!='' ">
+				lng = #{lng},
+			</if>
+			<if test="lat!=null and lat!='' ">
+				lat = #{lat},
+			</if>
+			<if test="driver_name!=null and driver_name!='' ">
+				driver_name = #{driver_name},
+			</if>
+			<if test="taxi_no!=null and taxi_no!='' ">
+				taxi_no = #{taxi_no},
+			</if>
+			<if test="taxi_company!=null and taxi_company!='' ">
+				taxi_company = #{taxi_company},
+			</if>
+			<if test="phone!=null and phone!='' ">
+				phone = #{phone},
+			</if>
+			<if test="photo_url!=null and photo_url!='' ">
+				photo_url= #{photo_url},
+			</if>
+			<if test="nonce!=null and nonce!='' ">
+				nonce = #{nonce},
+			</if>
+			<if test="timestamp!=null and timestamp!='' ">
+				timestamp = #{timestamp},
+			</if>
+			<if test="token!=null and token!='' ">
+				token = #{token},
+			</if>
+			<if test="order_num!=null and order_num!='' ">
+				order_num = #{order_num},
+			</if>
+			<if test="praise_num!=null and praise_num!='' ">
+				praise_num = #{praise_num},
+			</if>
+			<if test="channel!=null and channel!='' ">
+				channel = #{channel},
+			</if>
+			<if test="errno!=null and errno!='' ">
+				errno = #{errno},
+			</if>
+			<if test="nerrmsg!=null and nerrmsg!='' ">
+				nerrmsg = #{nerrmsg},
+			</if>
+		</set>
+		WHERE id = #{id}
+	</update>
+
+	<!-- 修 改 -->
+	<update id="updateByPrimaryKey" parameterType="com.szty.dd.order.model.DdOrder">
+		UPDATE dd_order
+		SET
+		<if test="src_type != null">
+			src_type = #{src_type},
+		</if>
+		<if test="order_id != null">
+			order_id = #{order_id},
+		</if>
+		<if test="third_order_id != null">
+			third_order_id = #{third_order_id},
+		</if>
+		<if test="bef_lng != null">
+			bef_lng = #{bef_lng},
+		</if>
+		<if test="bef_lat != null">
+			bef_lat = #{bef_lat},
+		</if>
+		<if test="bef_phone != null">
+			bef_phone = #{bef_phone},
+		</if>
+		<if test="lng != null">
+			lng = #{lng},
+		</if>
+		<if test="lat != null">
+			lat = #{lat},
+		</if>
+		<if test="driver_name != null">
+			driver_name = #{driver_name},
+		</if>
+		<if test="taxi_no != null">
+			taxi_no = #{taxi_no},
+		</if>
+		<if test="taxi_company != null">
+			taxi_company = #{taxi_company},
+		</if>
+		<if test="phone != null">
+			phone = #{phone},
+		</if>
+		<if test="photo_url != null">
+			photo_url = #{photo_url},
+		</if>
+		<if test="nonce != null">
+			nonce = #{nonce},
+		</if>
+		<if test="timestamp != null">
+			timestamp = #{timestamp},
+		</if>
+		<if test="token != null">
+			token = #{token},
+		</if>
+		<if test="order_num != null">
+			order_num = #{order_num},
+		</if>
+		<if test="praise_num != null">
+			praise_num = #{praise_num},
+		</if>
+		<if test="channel != null">
+			channel = #{channel},
+		</if>
+		<if test="errno != null">
+			errno = #{errno},
+		</if>
+		<if test="nerrmsg != null">
+			nerrmsg = #{nerrmsg},
+		</if>
+		WHERE id = #{id}
+	</update>
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectByPrimaryKey" resultMap="ddOrderResultMap"
+		parameterType="java.lang.String">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM dd_order
+		WHERE order_id = #{order_id}
+	</select>
+
+	<!-- 查询 List 查询 -->
+	<select id="queryList" resultMap="ddOrderResultMap"
+		parameterType="com.szty.dd.order.model.DdOrder">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM dd_order
+		<include refid="modelwheresql" />
+	</select>
+
+	<!-- 查询 分页总数 -->
+	<select id="queryCount" resultType="java.lang.Integer"
+		parameterType="com.szty.dd.order.model.DdOrder">
+		SELECT
+		count(1)
+		FROM dd_order
+
+		<include refid="modelwheresql" />
+	</select>
+	<!-- 查询 分页查询 -->
+	<select id="queryPageList" resultMap="ddOrderResultMap"
+		parameterType="com.szty.dd.order.model.DdOrder">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM dd_order
+		<include refid="modelwheresql" />
+		<include refid="limitsql" />
+	</select>
+
+
+	<!-- 修 改 -->
+	<update id="upOrderByOrderIdAndPhone" parameterType="com.szty.dd.order.model.DdOrder">
+		UPDATE dd_order
+		<set>
+			<if test="id!=null and id!='' ">
+				id = #{id},
+			</if>
+			<if test="src_type!=null and src_type!='' ">
+				src_type = #{src_type},
+			</if>
+			<if test="order_id!=null and order_id!='' ">
+				order_id = #{order_id},
+			</if>
+			<if test="third_order_id!=null and third_order_id!='' ">
+				third_order_id = #{third_order_id},
+			</if>
+			<if test="bef_lng!=null and bef_lng!='' ">
+				bef_lng = #{bef_lng},
+			</if>
+			<if test="bef_lat!=null and bef_lat!='' ">
+				bef_lat = #{bef_lat},
+			</if>
+			<if test="bef_phone!=null and bef_phone!='' ">
+				bef_phone = #{bef_phone},
+			</if>
+			<if test="lng!=null and lng!='' ">
+				lng = #{lng},
+			</if>
+			<if test="lat!=null and lat!='' ">
+				lat = #{lat},
+			</if>
+			<if test="driver_name!=null and driver_name!='' ">
+				driver_name = #{driver_name},
+			</if>
+			<if test="taxi_no!=null and taxi_no!='' ">
+				taxi_no = #{taxi_no},
+			</if>
+			<if test="taxi_company!=null and taxi_company!='' ">
+				taxi_company = #{taxi_company},
+			</if>
+			<if test="phone!=null and phone!='' ">
+				phone = #{phone},
+			</if>
+			<if test="photo_url!=null and photo_url!='' ">
+				photo_url= #{photo_url},
+			</if>
+			<if test="nonce!=null and nonce!='' ">
+				nonce = #{nonce},
+			</if>
+			<if test="timestamp!=null and timestamp!='' ">
+				timestamp = #{timestamp},
+			</if>
+			<if test="token!=null and token!='' ">
+				token = #{token},
+			</if>
+			<if test="order_num!=null and order_num!='' ">
+				order_num = #{order_num},
+			</if>
+			<if test="praise_num!=null and praise_num!='' ">
+				praise_num = #{praise_num},
+			</if>
+			<if test="channel!=null and channel!='' ">
+				channel = #{channel},
+			</if>
+			<if test="errno!=null and errno!='' ">
+				errno = #{errno},
+			</if>
+			<if test="nerrmsg!=null and nerrmsg!='' ">
+				nerrmsg = #{nerrmsg},
+			</if>
+		</set>
+		WHERE order_id = #{order_id}
+	</update>
+
+
+	<!-- 查询 分页总数 -->
+	<select id="findOderByPhone" resultType="java.lang.Integer"
+		parameterType="java.lang.String">
+		SELECT
+		count(1)
+		FROM dd_order
+
+		where order_id is null and bef_phone = #{bef_phone}
+	</select>
+
+</mapper>
