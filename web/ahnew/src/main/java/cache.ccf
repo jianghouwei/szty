@@ -1,0 +1,19 @@
+# PRE-DEFINED CACHE REGIONS
+jcs.region.proxyCache=DC
+jcs.region.proxyCache.cacheattributes=org.apache.jcs.engine.CompositeCacheAttributes
+
+jcs.region.proxyCache.cacheattributes.MaxObjects=500
+jcs.region.proxyCache.cacheattributes.MemoryCacheName=org.apache.jcs.engine.memory.lru.LRUMemoryCache
+jcs.region.proxyCache.cacheattributes.UseMemoryShrinker=true
+jcs.region.proxyCache.cacheattributes.MaxMemoryIdleTimeSeconds=36000
+jcs.region.proxyCache.cacheattributes.ShrinkerIntervalSeconds=600
+jcs.region.proxyCache.cacheattributes.MaxSpoolPerRun=500
+jcs.region.proxyCache.elementattributes=org.apache.jcs.engine.ElementAttributes
+jcs.region.proxyCache.elementattributes.IsEternal=false
+# AVAILABLE AUXILIARY CACHES 
+jcs.auxiliary.DC=org.apache.jcs.auxiliary.disk.indexed.IndexedDiskCacheFactory
+jcs.auxiliary.DC.attributes=org.apache.jcs.auxiliary.disk.indexed.IndexedDiskCacheAttributes
+jcs.auxiliary.DC.attributes.DiskPath=c:/jcs/
+jcs.auxiliary.DC.attributes.maxKeySize=100000
+ 
+

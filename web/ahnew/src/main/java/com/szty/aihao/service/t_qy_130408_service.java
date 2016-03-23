@@ -1,0 +1,150 @@
+﻿/*
+ *@===================================================================
+ *@项目说明
+ *@作者：宋春林 
+ *@版本信息:@Copy Right 2011-2015
+ *@文件： iDataT_qy_130408.java
+ *@项目名称：JAVA项目管理
+ *@创建时间：2015/10/15
+ *@===================================================================
+ */
+
+package com.szty.aihao.service;
+
+import com.szty.aihao.dao.t_qy_130408_Dao;
+import com.szty.aihao.core.t_qy_130408_core;
+import com.szty.aihao.factory.classFactory;
+import java.util.Dictionary;
+import java.util.List;
+
+
+    /**
+    *@文件说明
+    *@T_QY_130408逻辑层接口
+    *@作者：宋春林 
+    */
+
+	public class t_qy_130408_service
+	{
+        public  t_qy_130408_core _dal=classFactory.gett_qy_130408();
+	
+     
+         /**
+         * 向数据库中插入一条新记录。
+         * @param T_QY_130408实体
+         * @return 新插入记录的编号
+         */
+		public int insert_t_qy_130408 (t_qy_130408_Dao _T_QY_130408Model )  throws Exception{
+         return _dal.insert_t_qy_130408( _T_QY_130408Model);
+		}
+        
+        /**
+         * 向数据库中插入一条新记录。
+         * @param T_QY_130408prrameter
+         * @return 新插入记录的编号
+         */
+         public int insert_t_qy_130408(Object[] _para)  throws Exception{
+        return _dal.insert_t_qy_130408( _para);
+        }
+	
+		 /**
+         * 向数据库中插入一条新记录。
+         * @param T_QY_130408实体
+         * @return 影响的行数
+         */
+		public int update_t_qy_130408(t_qy_130408_Dao _T_QY_130408Model)  throws Exception{
+        return _dal.update_t_qy_130408( _T_QY_130408Model);
+		}
+	
+		
+
+         /**
+         *  删除数据表T_QY_130408中的一条记录
+         * @param T_QY_130408实体
+         * @return 新插入记录的编号
+         */
+		public int delete_t_qy_130408(int Pcontent)  throws Exception{
+        return _dal.delete_t_qy_130408( Pcontent);
+		}
+
+		
+
+       
+          /**
+         * 得到 t_qy_130408 数据实体
+         * @param Pcontent">Pcontent
+         * @return<t_qy_130408 数据实体
+        * @throws Exception 
+         */
+		public t_qy_130408_Dao get_t_qy_130408Dao(int Pcontent) throws Exception{
+        return _dal.get_t_qy_130408Dao( Pcontent);
+		}
+		
+		    /**
+         * 根据T_QY_130408返回的查询DataRow创建一个T_QY_130408Entity对象
+         * @param T_QY_130408 row
+         * @returnT_QY_130408List对象
+        * @throws Exception 
+         */
+		public List<t_qy_130408_Dao> get_t_qy_130408_All() throws Exception{
+            return _dal.get_t_qy_130408_All();
+            }
+		    /**
+         * 根据T_QY_130408返回的查询DataRow创建一个T_QY_130408Entity对象
+         * @param T_QY_130408 row
+         * @returnT_QY_130408List对象
+        * @throws Exception 
+         */
+		public List<t_qy_130408_Dao> get_t_qy_130408_All(String strWhere) throws Exception{
+            return _dal.get_t_qy_130408_All(strWhere);
+            } 
+     /* 根据SCLTEST返回 分页数据
+	 * 
+	 * @param SCLTEST
+	 *            row
+	 * @returnSCLTESTList对象
+	 * @throws Exception
+	 */
+	public List<t_qy_130408_Dao> get_t_qy_130408_Page(int pageSize, int pageIndex,String strWhere) throws Exception 
+            {
+                return _dal.get_t_qy_130408_Page(pageSize,pageIndex,strWhere);
+            }
+           /**
+         * 根据T_QY_130408返回的查询DataRow创建一个T_QY_130408Entity对象
+         * @param T_QY_130408 row
+         * @returnT_QY_130408Dictionary对象
+        * @throws Exception 
+         */
+        public Dictionary<Integer, t_qy_130408_Dao> get_t_qy_130408_Dictionary(String strWhere) throws Exception{
+            return _dal.get_t_qy_130408_Dictionary(strWhere);
+            }
+		 /**
+         * 更新T_QY_130408字段加一
+         * @param FieldName
+         * @param sid
+         */
+	    public int create_t_qy_130408_UpdateIncreate(String FieldName,int sid)  throws Exception{
+            return _dal.create_t_qy_130408_UpdateIncreate( FieldName, sid);
+            }
+         /**
+         * 更新T_QY_130408Int型字段
+         * @param FieldName
+         * @param Num
+         * @param sid
+         */
+	    public int create_t_qy_130408_UpdateInteger(String FieldName,int Num,int sid)  throws Exception{
+            return _dal.create_t_qy_130408_UpdateInteger( FieldName, Num, sid);
+            }
+          /**
+         * 更新T_QY_130408IString型字段
+         * @param FieldName
+         * @param Value
+         * @param sid
+         */
+	    public int createt_qy_130408_UpdateString(String FieldName,String Value,int sid)  throws Exception{
+            
+            return _dal.create_t_qy_130408_UpdateString( FieldName, Value, sid);
+            }
+        
+        
+    }

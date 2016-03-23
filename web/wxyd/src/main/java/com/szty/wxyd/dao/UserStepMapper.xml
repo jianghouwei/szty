@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szty.wxyd.dao.UserStepMapper">
+
+	<!--实体映射-->
+	<resultMap id="userStepResultMap" type="UserStep">
+		<!---->
+		<result column="id"  property="id" />
+		<!---->
+		<result column="openId"  property="openId" />
+		<!--用户物理Ip-->
+		<result column="mac"  property="mac" />
+		<!--当前步数-->
+		<result column="step_now"  property="stepNow" />
+		<!--上传时间-->
+		<result column="create_time"  property="createTime" />
+	</resultMap>
+
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+	id,	openId,	mac,	step_now,	create_time
+	</sql>
+
+
+
+
+	<!-- 查询条件-->
+	<sql id="modelwheresql">
+	<where>
+
+			<if test="id != null and id != '' ">
+				 and id = #{id}
+			</if>
+			<if test="idBegin != null and idBegin != '' ">
+				 <![CDATA[  
+				 and id >= #{idBegin}
+				 ]]>  
+			</if>
+			<if test="openId != null and openId != '' ">
+				 and openId = #{openId}
+			</if>
+			<if test="openIdBegin != null and openIdBegin != '' ">
+				 <![CDATA[  
+				 and openId >= #{openIdBegin}
+				 ]]>  
+			</if>
+			<if test="mac != null and mac != '' ">
+				 and mac = #{mac}
+			</if>
+			<if test="macBegin != null and macBegin != '' ">
+				 <![CDATA[  
+				 and mac >= #{macBegin}
+				 ]]>  
+			</if>
+			<if test="stepNow != null and stepNow != '' ">
+				 and step_now = #{stepNow}
+			</if>
+			<if test="stepNowBegin != null and stepNowBegin != '' ">
+				 <![CDATA[  
+				 and step_now >= #{stepNowBegin}
+				 ]]>  
+			</if>
+			<if test="createTime != null and createTime != '' ">
+				 and create_time = #{createTime}
+			</if>
+			<if test="createTimeEnd != null and createTimeEnd != '' ">
+				 <![CDATA[  
+				 and create_time <= #{createTimeEnd}
+				 ]]>  
+			</if>
+			<if test="createTimeBegin != null and createTimeBegin != '' ">
+				 <![CDATA[  
+				 and create_time >= #{createTimeBegin}
+				 ]]>  
+			</if>
+
+	</where>
+	</sql>
+
+
+	<sql id="limitsql">
+			<if test="limitStart != null and pageSize != null">
+				 <![CDATA[  
+				 order by id desc limit #{limitStart} , #{pageSize} 
+				 ]]>  
+			</if>
+	</sql>	<!-- 添加 -->
+	<insert id="save" parameterType="UserStep">
+		 <selectKey resultType="long" keyProperty="id">
+		 SELECT LAST_INSERT_ID()
+		 </selectKey>
+		 INSERT INTO user_step
+ 		(openId,mac,step_now,create_time) 
+		 VALUES 
+ 		(#{openId},#{mac},#{stepNow},#{createTime}) 
+	</insert>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="userStep">
+		 INSERT INTO user_step
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null">
+				 id,
+			</if>
+			<if test="openId != null">
+				 openId,
+			</if>
+			<if test="mac != null">
+				 mac,
+			</if>
+			<if test="stepNow != null">
+				 step_now,
+			</if>
+			<if test="createTime != null">
+				 create_time,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="id!=null and id!='' ">
+				 #{id},
+			</if>
+			<if test="openId!=null and openId!='' ">
+				 #{openId},
+			</if>
+			<if test="mac!=null and mac!='' ">
+				 #{mac},
+			</if>
+			<if test="stepNow!=null and stepNow!='' ">
+				 #{stepNow},
+			</if>
+			<if test="createTime!=null and createTime!='' ">
+				 #{createTime},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 添加 -->
+	<insert id="saveBatchUserStep" parameterType="java.util.List">
+		 INSERT INTO user_step
+ 		(openId,mac,step_now,create_time) 
+		 VALUES 
+ 		 <foreach collection="list" item="item" index="index" separator="," >  
+ 		(#{item.openId},#{item.mac},#{item.stepNow},#{item.createTime}) 
+ 		 </foreach>
+	</insert>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKeySelective" parameterType="userStep">
+		 UPDATE user_step
+ 		 <set> 
+			<if test="id!=null and id!='' ">
+				 #{id},
+			</if>
+			<if test="openId!=null and openId!='' ">
+				 #{openId},
+			</if>
+			<if test="mac!=null and mac!='' ">
+				 #{mac},
+			</if>
+			<if test="stepNow!=null and stepNow!='' ">
+				 #{stepNow},
+			</if>
+			<if test="createTime!=null and createTime!='' ">
+				 #{createTime},
+			</if>
+
+ 		 </set>
+		 WHERE id = #{id}
+	</update>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKey" parameterType="userStep">
+		 UPDATE user_step
+		 SET 
+			<if test="openId != null">
+				 openId = #{openId},
+			</if>
+			<if test="mac != null">
+				 mac = #{mac},
+			</if>
+			<if test="stepNow != null">
+				 step_now = #{stepNow},
+			</if>
+			<if test="createTime != null">
+				 create_time = #{createTime},
+			</if>
+		 WHERE id = #{id}
+	</update>
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectByPrimaryKey"  resultMap="userStepResultMap" parameterType="java.lang.Long">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM user_step
+		 WHERE id = #{id}
+	</select>
+
+	<!-- 查询  List 查询 -->
+	<select id="queryList" resultMap="userStepResultMap" parameterType="UserStep">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM user_step
+		  
+		 <include refid="modelwheresql" />
+	</select>
+
+	<!-- 查询 分页总数 -->
+	<select id="queryCount"  resultType="java.lang.Integer"  parameterType="UserStep">
+		 SELECT
+		 count(1)
+		 FROM user_step
+		  
+		 <include refid="modelwheresql" />
+	</select>
+	<!-- 查询 分页查询 -->
+	<select id="queryPageList" resultMap="userStepResultMap" parameterType="UserStep">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM user_step
+		  
+		 <include refid="modelwheresql" />
+		 <include refid="limitsql" />
+	</select>
+	
+	<!-- 查询 List 查询 -->
+	<select id="queryListByMaxCreatTime" resultMap="userStepResultMap"
+		parameterType="UserStep">
+		SELECT
+		Max(create_time),id, openId, mac, step_now
+		FROM user_step
+		<include refid="modelwheresql" />
+	</select>
+
+</mapper>
