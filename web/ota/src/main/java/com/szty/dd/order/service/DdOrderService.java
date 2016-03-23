@@ -50,4 +50,7 @@ public interface DdOrderService {
 	
 	Boolean findOderByPhone(String phone);
 	
+	
+	DdOrder queryOrderByOrderIdAndPhone(String phone,String orderId);
+	
 }

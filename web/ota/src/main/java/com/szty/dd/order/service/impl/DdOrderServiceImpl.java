@@ -45,6 +45,13 @@ public class DdOrderServiceImpl implements DdOrderService{
 		}
 		return Boolean.FALSE;
 	}
+
+
+	@Override
+	public DdOrder queryOrderByOrderIdAndPhone(String phone, String orderId) {
+		
+		return ddOrderMapper.selectByPrimaryKey(orderId);
+	}
 	
 	
 	

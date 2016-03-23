@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.alibaba.fastjson.JSON;
 import com.szty.dd.order.model.DdMsg;
 import com.szty.dd.order.model.DdOrder;
 import com.szty.dd.order.service.DOrderUtils;
@@ -81,4 +82,25 @@ public class DdOrderController {
 		}
 		return null;
 	}
+	
+	@RequestMapping(value = "/queryOrder")
+	public String getOrderByOrderIdAndPhone(HttpServletRequest request, HttpServletResponse response,DdOrder ddorder) {
+		String orderId = request.getParameter("order_id");
+		String phone = request.getParameter("phone");
+		if (orderId == null) {
+			ResponseUtil.outJson(response, RepMsg.JsonMsg("false", "orderId订单号码为空"));
+			return null;
+		}
+		log.info("依据订单号查询订单【【【【【【" + orderId + "】】】】】】】】】】】】】】】】】】");
+		DdOrder ddOrder = ddOrderService.queryOrderByOrderIdAndPhone(phone, orderId);
+		if(ddOrder != null){
+			ResponseUtil.outJson(response,JSON.toJSONString(ddOrder));
+		}else{
+			ResponseUtil.outJson(response, DdMsg.JsonMsg("1", "订单不存在"));
+		}
+		return null;
+	}
+	
+	
+	
 }

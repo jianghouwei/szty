@@ -30,7 +30,9 @@ public class SendSms {
 		PostMethod method = new PostMethod(SmsProperject.SMS_URL);
 		client.getParams().setContentCharset("UTF-8");
 		method.setRequestHeader("ContentType", "application/x-www-form-urlencoded;charset=UTF-8");
-		String contents = new String("您的验证码是：【" + content + "】。请不要把验证码泄露给其他人。如非本人操作，可不用理会！");
+		//String contents = new String("您的验证码是：【" + content + "】。请不要把验证码泄露给其他人。如非本人操作，可不用理会！");
+		String contents = new String("统计信息 【"+content+"】 最高在线数:【0】 使用注册总数:【0】 七天内未使用的用户数:【0】 ");
+		
 		NameValuePair[] data = { // 提交短信
 				new NameValuePair("account", SmsProperject.SMS_ACCOUNT),
 				new NameValuePair("password", SmsProperject.SMS_PSSWORD), // 密码可以使用明文密码或使用32位MD5加密
