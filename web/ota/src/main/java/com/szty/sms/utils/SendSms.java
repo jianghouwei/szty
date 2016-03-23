@@ -27,13 +27,13 @@ public class SendSms {
 	public static String sendSms(String mobile, String content) {
 
 		HttpClient client = new HttpClient();
-		PostMethod method = new PostMethod(smsProperject.SMS_URL);
+		PostMethod method = new PostMethod(SmsProperject.SMS_URL);
 		client.getParams().setContentCharset("UTF-8");
 		method.setRequestHeader("ContentType", "application/x-www-form-urlencoded;charset=UTF-8");
 		String contents = new String("您的验证码是：【" + content + "】。请不要把验证码泄露给其他人。如非本人操作，可不用理会！");
 		NameValuePair[] data = { // 提交短信
-				new NameValuePair("account", smsProperject.SMS_ACCOUNT),
-				new NameValuePair("password", smsProperject.SMS_PSSWORD), // 密码可以使用明文密码或使用32位MD5加密
+				new NameValuePair("account", SmsProperject.SMS_ACCOUNT),
+				new NameValuePair("password", SmsProperject.SMS_PSSWORD), // 密码可以使用明文密码或使用32位MD5加密
 				// new NameValuePair("password",
 				// StringUtil.MD5Encode("密码")),
 				new NameValuePair("mobile", mobile), 

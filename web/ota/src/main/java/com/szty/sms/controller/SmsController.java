@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.szty.framework.base.msg.RepMsg;
 import com.szty.sms.service.SmsService;
-import com.szty.sms.utils.smsProperject;
+import com.szty.sms.utils.SmsProperject;
 import com.szty.web.ota.controller.ResponseUtil;
 
 /**
@@ -46,7 +46,7 @@ public class SmsController {
 	 */
 	@RequestMapping(value = "/sendMsm")
 	public String sendMsm(HttpServletRequest request, HttpServletResponse response) {
-		String mobile = request.getParameter("mobile");
+		String mobile = request.getParameter("phone");
 		if (mobile == null) {
 			ResponseUtil.outJson(response, RepMsg.JsonMsg("false", "手机号码为空"));
 			return null;
@@ -81,13 +81,13 @@ public class SmsController {
 	 */
 	@RequestMapping(value = "/isMsM")
 	public String isMsm(HttpServletRequest request, HttpServletResponse response) {
-		String mobile = request.getParameter("mobile");
+		String mobile = request.getParameter("phone");
 		String code = request.getParameter("code");
 		if (code == null) {
 			ResponseUtil.outJson(response, RepMsg.JsonMsg("false", "验证码为空"));
 			return null;
 		}
-		if (code.length() != smsProperject.CODE_LENTH.intValue()) {
+		if (code.length() != SmsProperject.CODE_LENTH.intValue()) {
 			ResponseUtil.outJson(response, RepMsg.JsonMsg("false", "验证码长度不对"));
 			return null;
 		}

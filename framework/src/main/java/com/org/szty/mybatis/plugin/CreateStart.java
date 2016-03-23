@@ -23,14 +23,16 @@ public class CreateStart {
 	public static final String user = "root";
 	// 数据库连接password
 	public static final String password = "root";
-	// 单个表生成
-	public static final String TABLENAME = "users";
-
+	// 指定表生成
+	public static final Boolean CREATESINGLE = Boolean.FALSE;
+	public static final String[] TABLENAME = { "users", "" };
+	//表字段是 false=原生， true=要驼峰
+	public static final Boolean ISFILEDM = Boolean.FALSE;
 	/*********************** 文件夹生成目录设置 **************************************/
-	
-	//文件生成路径  --  可以直接配置到项目对应目录下面
+
+	// 文件生成路径 -- 可以直接配置到项目对应目录下面
 	public static final String PATH = "D:/entity_bean/";
-	//基础包名，如 com.szty.wxyd.data.model
+	// 基础包名，如 com.szty.wxyd.data.model
 	public static final String PACKAGE = "com.szty.wxyd.data";// Java 实体类
 
 	/**
@@ -46,6 +48,7 @@ public class CreateStart {
 	public static final String type_bit = "bit";
 	public static final String type_decimal = "decimal";
 	public static final String type_blob = "blob";
+	/* 依据主见查询与此有关 */
 	public static final String primary_key = "id";// 主键列名
 
 	/**

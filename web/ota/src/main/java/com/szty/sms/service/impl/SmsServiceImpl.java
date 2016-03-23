@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.szty.sms.service.SmsService;
 import com.szty.sms.utils.MsmModel;
 import com.szty.sms.utils.SendSms;
-import com.szty.sms.utils.smsProperject;
+import com.szty.sms.utils.SmsProperject;
 
 @Service
 public class SmsServiceImpl implements SmsService {
@@ -24,7 +24,7 @@ public class SmsServiceImpl implements SmsService {
 	@Override
 	public Boolean sendMsm(String mobile,Long time ) {
 		// 获取验证码
-		String content = smsProperject.getSmsCode();
+		String content = SmsProperject.getSmsCode();
 		log.info("后台生成验证码："+content);
 		// 发送验证码
 		String code = SendSms.sendSms(mobile, content);
@@ -67,15 +67,15 @@ public class SmsServiceImpl implements SmsService {
 		if (sms == null) {
 			return Boolean.TRUE;
 		} else {
-			if(time.longValue() - smsProperject.mis.longValue() >= sms.getDataTime().longValue()){
+			if(time.longValue() - SmsProperject.mis.longValue() >= sms.getDataTime().longValue()){
 				return Boolean.TRUE;
 			}else{
 				
-				if(sms.getCount().intValue() < smsProperject.SMS_COUNT.intValue() ){
+				if(sms.getCount().intValue() < SmsProperject.SMS_COUNT.intValue() ){
 					return Boolean.TRUE;
 				}
 				//间隔时间大于一分钟
-				if(time-sms.getUpdateTime() > smsProperject.submis){
+				if(time-sms.getUpdateTime() > SmsProperject.submis){
 					return Boolean.TRUE;
 				}
 			}
@@ -109,7 +109,7 @@ public class SmsServiceImpl implements SmsService {
 		} else {
 			log.info("SUFFICESS====读取缓存信息成功：>>>>>>>"+sms.toString());
 			sms.setCount(sms.getCount().intValue() + 1);
-			if(time - sms.getDataTime() > smsProperject.mis){
+			if(time - sms.getDataTime() > SmsProperject.mis){
 				//缓存记录大于一天，清空记录
 				sms.setCount(1);
 				sms.setDataTime(time);

@@ -64,7 +64,7 @@ public class DdOrderController {
 		}
 		ddOrder.setBef_phone(phone);
 		String orderId = ddOrderService.setLocOrder(ddOrder);
-		ResponseUtil.outJson(response, RepMsg.JsonMsg("true", "ok"));
+		ResponseUtil.outJson(response, RepMsg.JsonMsg("true", "ok",orderId));
 		return orderId;
 	}
 

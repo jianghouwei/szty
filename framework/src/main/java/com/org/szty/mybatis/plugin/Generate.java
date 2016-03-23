@@ -28,6 +28,7 @@ public class Generate {
 		List<String> types = null;
 		List<String> comments = null;
 		PreparedStatement pstate = null;
+		//获取要所有的表
 		List<String> tables = MyBatisConUtil.getTables();
 		Map<String, String> tableComments = TableUtil.getTableComment();
 		for (String table : tables) {

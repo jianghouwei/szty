@@ -18,7 +18,7 @@ import java.io.OutputStreamWriter;
 public class MapperJavaUtil {
 
 	public static final String mapper_path = CreateStart.PATH + "dao";
-	public static final String mapper_package = CreateStart.PACKAGE + "dao";
+	public static final String mapper_package = CreateStart.PACKAGE + ".dao";
 	
 	/**
 	 * 构建Mapper文件
