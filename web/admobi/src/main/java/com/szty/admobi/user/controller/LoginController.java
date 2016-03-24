@@ -41,7 +41,7 @@ public class LoginController {
 		UsernamePasswordToken token = new UsernamePasswordToken();
 		String userName = request.getParameter("userName");
 		String passWord = request.getParameter("passWord");
-		// String rememberMe = request.getParameter("RememberMe");
+		//tring rememberMe = request.getParameter("RememberMe");
 		//token.setRememberMe(true);
 		token.setUsername(userName);
 		token.setPassword(passWord.toCharArray());

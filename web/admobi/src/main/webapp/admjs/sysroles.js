@@ -74,7 +74,6 @@ function destroyUser() {
 function authRole() {
 	$('#dlg_AuthRole').dialog('open').dialog('center').dialog('setTitle',
 			'权限分配');
-	
 }
 /**
  * 分配角色

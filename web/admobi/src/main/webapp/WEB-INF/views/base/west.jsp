@@ -13,27 +13,32 @@
 			data-options="selected:true,iconCls:'icon-large-picture'"
 			style="padding: 10px;">
 			<p>
-				<shiro:hasPermission name="user:*">
+				<shiro:hasPermission name="admin:*,:user:*">
 					<a href="#" class="easyui-linkbutton"
 						data-options="iconCls:'icon-large-picture'"
 						onclick="addTab('sysmba/sysuser', '用户管理')">用户管理</a>
 				</shiro:hasPermission>
 			</p>
 			<p>
-				<a href="#" class="easyui-linkbutton"
-					data-options="iconCls:'icon-large-clipart',size:'large',"
-					onclick="addTab('sysmba/sysroles', '角色管理')">角色管理</a>
-			</p>
-
-			<p>
-				<a href="#" class="easyui-linkbutton"
-					data-options="iconCls:'icon-large-shapes',size:'large',iconAlign:'top'"
-					onclick="addTab('sysmba/sysresources', '资源管理')">资源管理</a>
+				<shiro:hasPermission name="admin:*,:role:*">
+					<a href="#" class="easyui-linkbutton"
+						data-options="iconCls:'icon-large-clipart',size:'large',"
+						onclick="addTab('sysmba/sysroles', '角色管理')">角色管理</a>
+				</shiro:hasPermission>
 			</p>
 			<p>
-				<a href="#" class="easyui-linkbutton"
-					data-options="iconCls:'icon-large-smartart',size:'large',iconAlign:'top'"
-					onclick="addTab('sysmba/sysgroups', '组别管理')">组别管理</a>
+				<shiro:hasPermission name="admin:*,:resource:*">
+					<a href="#" class="easyui-linkbutton"
+						data-options="iconCls:'icon-large-shapes',size:'large',iconAlign:'top'"
+						onclick="addTab('sysmba/sysresources', '资源管理')">资源管理</a>
+				</shiro:hasPermission>
+			</p>
+			<p>
+				<shiro:hasPermission name="admin:*,:group:*">
+					<a href="#" class="easyui-linkbutton"
+						data-options="iconCls:'icon-large-smartart',size:'large',iconAlign:'top'"
+						onclick="addTab('sysmba/sysgroups', '组别管理')">组别管理</a>
+				</shiro:hasPermission>
 			</p>
 		</div>
 		<div title="报表管理" data-options="selected:true" style="padding: 10px">

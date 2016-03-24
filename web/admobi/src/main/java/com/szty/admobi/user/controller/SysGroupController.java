@@ -61,7 +61,6 @@ public class SysGroupController {
 	@RequestMapping(value = "/groupsEdit")
 	public @ResponseBody String setGroupsEdit(HttpServletRequest request,SysGroups sysGroups, String logo) {
 		sysGroupsService.updateSysGroups(sysGroups);
-		
 		return JSON.toJSONString(new ControllerMsg("ok","成功")); 
 	}
 
@@ -85,7 +84,6 @@ public class SysGroupController {
 
 	@RequestMapping(value = "/groupsUnEnable")
 	public @ResponseBody String setGroupsUnEnable(HttpServletRequest request) {
-
 		return JSON.toJSONString(new ControllerMsg("ok","成功")); 
 	}
 }

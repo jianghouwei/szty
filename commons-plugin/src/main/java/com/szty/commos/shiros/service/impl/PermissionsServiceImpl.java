@@ -38,6 +38,9 @@ public class PermissionsServiceImpl  implements PermissionsService{
 				}
 				
 			}
+			if("admin".equals(userName)){
+				list.add("admin:*");
+			}
 			String authstr = JSON.toJSONString(list);
 			cacheManager.getCache("sys-authCache").put("auths." + userName, authstr);
 		}

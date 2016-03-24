@@ -33,7 +33,7 @@
 				id="tologin"></a>
 			<div id="wrapper">
 				<div id="login" class="animate form">
-					<form action="login" autocomplete="on">
+					<form action="login" autocomplete="on" method="post">
 						<h1>登录</h1>
 						<p>
 							<label for="username" class="uname" data-icon="u"> 邮箱/用户名</label> 

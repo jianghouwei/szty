@@ -7,17 +7,20 @@ $(function() {
 			}
 		}
 	});
-	
+
 	/**
 	 * 点击用户节点== 获取 该角色信息
 	 */
-	$('#ttusers').tree({
-		
-		onClick: function(node){
-			$("#ttroles").tree("options").url='rolesCheckTrees?userId='+node.id;
-			$('#ttroles').tree('reload');
-		}
-	});
+	$('#ttusers')
+			.tree(
+					{
+						onClick : function(node) {
+							$("#ttroles").tree("options").url = 'rolesCheckTrees?userId='
+									+ node.id;
+							$('#ttroles').tree('reload');
+						}
+					});
+	
 });
 
 var url;
@@ -34,7 +37,6 @@ function newUser() {
  */
 function editUser() {
 	var row = $('#tt').datagrid('getSelected');
-	// var row = $('#tt').datagrid('getSelections');
 	if (row) {
 		$('#dlg').dialog('open').dialog('center').dialog('setTitle', '编辑');
 		$('#fm').form('load', row);
@@ -93,26 +95,28 @@ function destroyUser() {
  * 分配角色
  */
 function assignRole() {
+	
 	$('#dlg_assignRole').dialog('open').dialog('center').dialog('setTitle',
 			'角色分配');
-	
 }
 /**
  * 分配角色
  */
 function assignRoleSave() {
-	
+
 	var userIds = getChecked("ttusers");
 	var roleIds = getChecked("ttroles");
 	$.ajax({
 		type : "GET",
-		url :"rolesUsers",
+		url : "rolesUsers",
 		async : false,
 		data : {
-			userIds:userIds,
-			roleIds:roleIds
+			userIds : userIds,
+			roleIds : roleIds
 		},
 		success : function(data) {
+			alert(123123);
+			$('#dlg_assignRole').datagrid('reload'); // reload the user data
 		}
 	});
 }
@@ -120,13 +124,13 @@ function assignRoleSave() {
 /**
  * 获取选择节点Id
  */
-function getChecked(treeId){
-	var nodes = $('#'+treeId).tree('getChecked');
+function getChecked(treeId) {
+	var nodes = $('#' + treeId).tree('getChecked');
 	var s = '';
-	for(var i=0; i<nodes.length; i++){
-		if (s != '') s += ',';
+	for (var i = 0; i < nodes.length; i++) {
+		if (s != '')
+			s += ',';
 		s += nodes[i].id;
 	}
 	return s;
 }
-
