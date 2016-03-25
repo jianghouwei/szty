@@ -81,7 +81,7 @@
 	<!-- 角色分配  -->
 	<div id="dlg_assignRole" class="easyui-dialog"
 		style="width: 700px; height: 480px; padding: 1px 2px" closed="true"
-		buttons="#dlgRole-buttons">
+		buttons="#dlgRole-buttons" cache="false">
 		<div class="easyui-layout" data-options="fit:true">
 			<div data-options="region:'west',split:true" style="width: 350px">
 				<ul id="ttusers" class="easyui-tree"

@@ -95,7 +95,6 @@ function destroyUser() {
  * 分配角色
  */
 function assignRole() {
-	
 	$('#dlg_assignRole').dialog('open').dialog('center').dialog('setTitle',
 			'角色分配');
 }
